@@ -1,9 +1,11 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", Arial;
+.availability-form{
+    margin-top: -50px;
+    z-index: 2;
+    position: relative;
 }
-.new-font{
-    font-family: "Merienda", cursive;
+@media screen and (max-width: 575px){
+    .availability-form{
+        margin-top: 25px;
+        padding: 0 35px;
+    }
 }
