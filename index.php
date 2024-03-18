@@ -363,14 +363,39 @@
 
     <!-- Testimonials -->
     <h2 class="mt-5 pt-4 mb-4 text-center fw-bold new-font">Testimonials</h2>
-    <!-- Swiper -->
-    <div class="container">
+    <div class="container mt-5">
         <div class="swiper swiper-testimonials">
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper mb-5">
                 <div class="swiper-slide bg-white p-4">
-                    <div class="profile d-flex align-items-center p-4">
+                    <div class="profile align-items-center mb-3">
                         <img src="./images/about/staff.svg" alt="" width="30px">
-                        <h6 class="m-0 ms-4">Random User</h6>
+                        <h6 class="mt-2">Random User</h6>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, reiciendis eligendi voluptates possimus corrupti iste magni excepturi atque sapiente laudantium!</p>
+                        <div class="rating">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide bg-white p-4">
+                    <div class="profile align-items-center mb-3">
+                        <img src="./images/about/staff.svg" alt="" width="30px">
+                        <h6 class="mt-2">Random User</h6>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, reiciendis eligendi voluptates possimus corrupti iste magni excepturi atque sapiente laudantium!</p>
+                        <div class="rating">
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide bg-white p-4">
+                    <div class="profile align-items-center mb-3">
+                        <img src="./images/about/staff.svg" alt="" width="30px">
+                        <h6 class="mt-2">Random User</h6>
                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis, reiciendis eligendi voluptates possimus corrupti iste magni excepturi atque sapiente laudantium!</p>
                         <div class="rating">
                             <i class="bi bi-star-fill text-warning"></i>
@@ -383,9 +408,67 @@
             </div>
             <div class="swiper-pagination"></div>
         </div>
+        <div class="col-lg-12 text-center mt-5">
+            <a href="" class="btn btn-sm btn-outline-dark rounded fw-bold shadow-none">Know More >>></a>
+        </div>
     </div>
 
-    <br><br><br>
-    <br><br><br>
+    <!-- Reach Us -->
+    <h2 class="mt-5 pt-4 mb-4 text-center fw-bold new-font">Reach Us</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 p-4 mb-lg-0 bg-white rounded">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15249885.318783779!2d82.75252935!3d21.0680074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30635ff06b92b791%3A0xd78c4fa1854213a6!2sIndia!5e0!3m2!1sen!2sin!4v1710790360654!5m2!1sen!2sin" height="380" loading="lazy" class="w-100 rounded"></iframe>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <div class="bg-white p-4 rounded mb-4">
+                    <h5>Call Us</h5>
+                    <a href="tel: +91123456789" class="d-inline-block mb-2 text-decoration-none text-dark">
+                        <i class="bi bi-telephone-fill"></i> +91123456789
+                    </a><br>
+                    <a href="tel: +91987654321" class="d-inline-block text-decoration-none text-dark">
+                        <i class="bi bi-telephone-fill"></i> +91987654321
+                    </a>
+                </div>
+                <div class="bg-white p-4 rounded mb-4">
+                    <h5>Follow Us</h5>
+                    <a href="" class="d-inline-block mb-3">
+                        <span class="badge bg-light text-dark fs-6 p-2"><i class="bi bi-twitter me-1"></i> Twitter</span>
+                    </a><br>
+                    <a href="" class="d-inline-block mb-3">
+                        <span class="badge bg-light text-dark fs-6 p-2"><i class="bi bi-facebook"></i> Facebook</span>
+                    </a><br>
+                    <a href="" class="d-inline-block mb-3">
+                        <span class="badge bg-light text-dark fs-6 p-2"><i class="bi bi-instagram"></i> Instagram</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="container-fluid mt-5 bg-white">
+        <div class="row">
+            <div class="col-lg-4 p-4">
+                <h3 class="new-font fs-3 fw-bold mb-2">GODLIKE RESTURANT</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut numquam exercitationem neque, dignissimos nostrum ipsum distinctio nesciunt quos. Quod, totam?</p>
+            </div>
+            <div class="col-lg-4 p-4">
+                <h5 class="mb-3">Links</h5>
+                <a href="" class="d-inline-block mb-2 text-dark text-decoration-none">Home</a><br>
+                <a href="" class="d-inline-block mb-2 text-dark text-decoration-none">Facilities</a><br>
+                <a href="" class="d-inline-block mb-2 text-dark text-decoration-none">Rooms</a><br>
+                <a href="" class="d-inline-block mb-2 text-dark text-decoration-none">Contact</a><br>
+                <a href="" class="d-inline-block mb-2 text-dark text-decoration-none">About</a><br>
+            </div>
+            <div class="col-lg-4 p-4">
+                <h5 class="mb-3">Follow Us</h5>
+                <a href="" class="d-inline-block text-dark text-decoration-none mb-2"><i class="bi bi-instagram"></i> Instagram</a><br>
+                <a href="" class="d-inline-block text-dark text-decoration-none mb-2"><i class="bi bi-facebook"></i> Facebook</a><br>
+                <a href="" class="d-inline-block text-dark text-decoration-none"><i class="bi bi-twitter"></i> Twitter</a>
+            </div>
+        </div>
+    </div>
+    <h6 class="text-center bg-dark text-white p-3 m-0">Designed and Developed by Godlike-Creation.</h6>
 </body>
 </html>
