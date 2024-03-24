@@ -1,10 +1,11 @@
-let generalData = document.getElementById("general-s");
+let generalData, contactData;
+let generalSForm = document.getElementById("general-s-form");
+let siteTitleInput = document.getElementById("site-title-inp");
+let siteAboutInput = document.getElementById("site-about-inp");
 
 function getGeneral(){
     let siteTitle = document.getElementById("site-title");
     let siteAbout = document.getElementById("site-about");
-    let siteTitleInput = document.getElementById("site-title-inp");
-    let siteAboutInput = document.getElementById("site-about-inp");
     let shutdownToggle = document.getElementById("shutdown-toggle");
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "./ajax/settings_crud.php", true);
@@ -25,6 +26,11 @@ function getGeneral(){
     }
     xhr.send("getGeneral");
 }
+
+generalSForm.addEventListener("submit", function(event){
+    event.preventDefault();
+    updateGeneral(siteTitleInput.value, siteAboutInput.value);
+});
 
 function updateGeneral(siteTitleValue, siteAboutValue){
     let xhr = new XMLHttpRequest();
@@ -59,6 +65,32 @@ function updateShutdown(value){
     xhr.send("updateShutdown="+value);
 }
 
+function getContact(){
+    let contactsPId = ["address", "gmap", "ph1", "ph2", "email", "fb", "insta", "tw"];
+    let iframe = document.getElementById("iframe");
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "./ajax/settings_crud.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onload = function(){
+        contactData = JSON.parse(this.responseText);
+        contactData = Object.values(contactData);
+        for(let i=0; i<contactsPId.length; i++){
+            document.getElementById(contactsPId[i]).innerText = contactData[i+1];
+        }
+        iframe.src = contactData[9];
+        contactsInput(contactData);
+    }
+    xhr.send("getContact");
+}
+
+function contactsInput(data){
+    let contactInputId = ["address-inp", "gmap-inp", "ph1-inp", "ph2-inp", "email-inp", "fb-inp", "insta-inp", "tw-inp", "iframe-inp"];
+    for(let i=0; i<contactInputId.length; i++){
+        document.getElementById(contactInputId[i]).value = data[i+1];
+    }
+}
+
 window.onload = function(){
     getGeneral();
+    getContact();
 }
