@@ -19,4 +19,12 @@
         $result = update($query, $values, "ssi");
         echo $result;
     }
+
+    if(isset($_POST["updateShutdown"])){
+        $filterData = ($_POST["updateShutdown"] == 0) ? 1 : 0;
+        $query = "UPDATE `settings` SET `shutdown`=? WHERE `sr_no`=?";
+        $values = [$filterData, 1];
+        $result = update($query, $values, "ii");
+        echo $result;
+    }
 ?>

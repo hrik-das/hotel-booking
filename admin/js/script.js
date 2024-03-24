@@ -6,7 +6,6 @@ function alert(type, message, position="body"){
             <strong class="me-3">${message}</strong>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>    
         </div>`;
-
     if(position == "body"){
         document.body.append(element);
         element.classList.add("custom-alert");

@@ -6,7 +6,6 @@
         header("Location: dashboard.php");
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +34,6 @@
     <?php
         if(isset($_POST["login"])){
             $filterData = filteration($_POST);
-            
             $query = "SELECT * FROM `admin_cred` WHERE `admin_name`=? AND `admin_pass`=?";
             $values = [$filterData["adminName"], $filterData["adminPass"]];
             $datatypes = "ss";    // "s" -> String Type
