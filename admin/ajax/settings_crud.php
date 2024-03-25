@@ -36,4 +36,12 @@
         $jsonData = json_encode($data);
         echo $jsonData;
     }
+
+    if(isset($_POST["updateContact"])){
+        $filterData = filteration($_POST);
+        $query = "UPDATE `contact_details` SET `address`=?, `gmap`=?, `phone1`=?, `phone2`=?, `email`=?, `fb`=?, `insta`=?, `tw`=?, `iframe`=? WHERE `sr_no`=?";
+        $values = [$filterData["address"], $filterData["gmap"], $filterData["ph1"], $filterData["ph2"], $filterData["email"], $filterData["fb"], $filterData["insta"], $filterData["tw"], $filterData["iframe"], 1];
+        $result = update($query, $values, "sssssssssi");
+        echo $result;
+    }
 ?>

@@ -152,11 +152,11 @@
                                                     <label class="form-label fw-bold">Phone Numbers</label>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text" id="basic-addon1"><i class="bi bi-telephone-fill"></i></span>
-                                                        <input type="number" name="ph1" id="ph1-inp" class="form-control shadow-none" required>
+                                                        <input type="text" name="ph1" id="ph1-inp" class="form-control shadow-none" required>
                                                     </div>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text" id="basic-addon1"><i class="bi bi-telephone-fill"></i></span>
-                                                        <input type="number" name="ph2" id="ph2-inp" class="form-control shadow-none">
+                                                        <input type="text" name="ph2" id="ph2-inp" class="form-control shadow-none">
                                                     </div>
                                                 </div>
                                                 <div class="mb-3">
@@ -189,7 +189,7 @@
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn text-secondary shadow-none" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="button" onclick="contactsInput(contactData)" class="btn text-secondary shadow-none" data-bs-dismiss="modal">Cancel</button>
                                     <button type="submit" name="updateContact" class="btn custom-bg text-white shadow-none">Save</button>
                                 </div>
                             </div>

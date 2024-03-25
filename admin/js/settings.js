@@ -1,5 +1,6 @@
 let generalData, contactData;
 let generalSForm = document.getElementById("general-s-form");
+let contactSForm = document.getElementById("contact-s-form");
 let siteTitleInput = document.getElementById("site-title-inp");
 let siteAboutInput = document.getElementById("site-about-inp");
 
@@ -88,6 +89,36 @@ function contactsInput(data){
     for(let i=0; i<contactInputId.length; i++){
         document.getElementById(contactInputId[i]).value = data[i+1];
     }
+}
+
+contactSForm.addEventListener("submit", function(event){
+    event.preventDefault();
+    updateContact();
+});
+
+function updateContact(){
+    let data = "";
+    let index = ["address", "gmap", "ph1", "ph2", "email", "fb", "insta", "tw", "iframe"];
+    let contactInputId = ["address-inp", "gmap-inp", "ph1-inp", "ph2-inp", "email-inp", "fb-inp", "insta-inp", "tw-inp", "iframe-inp"];
+    for(let i=0; i<index.length; i++){
+        data += index[i] + "=" + document.getElementById(contactInputId[i]).value + "&";
+    }
+    data += "updateContact";
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "./ajax/settings_crud.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onload = function(){
+        var myModal = document.getElementById("contact-s");
+        var modal = bootstrap.Modal.getInstance(myModal);
+        modal.hide();
+        if(this.responseText == 1){
+            alert("success", "Chnages Saved!");
+            getContact();
+        }else{
+            alert("error", "No Changes Made!");
+        }
+    }
+    xhr.send(data);
 }
 
 window.onload = function(){
