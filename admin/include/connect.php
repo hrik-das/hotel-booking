@@ -21,9 +21,9 @@
     }
 
     function selectAll($table){
-        $con = $GLOBALS["connect"];
+        $connect = $GLOBALS["connect"];
         $query = "SELECT * FROM $table";
-        $result = mysqli_query($con, $query);
+        $result = mysqli_query($connect, $query);
         return $result;
     }
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2024 at 11:04 AM
+-- Generation Time: Mar 25, 2024 at 08:56 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -86,6 +86,18 @@ CREATE TABLE `settings` (
 INSERT INTO `settings` (`sr_no`, `site_title`, `site_about`, `shutdown`) VALUES
 (1, 'Godlike Restaurant', 'The Hotel Admin Panel is a web-based management system designed to streamline hotel operations and enhance guest experiences. It offers a range of features, including room management, reservation tracking, guest check-in/check-out, billing and invoicing.', 0);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `team_details`
+--
+
+CREATE TABLE `team_details` (
+  `sr_no` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `picture` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Indexes for dumped tables
 --
@@ -109,6 +121,12 @@ ALTER TABLE `settings`
   ADD PRIMARY KEY (`sr_no`);
 
 --
+-- Indexes for table `team_details`
+--
+ALTER TABLE `team_details`
+  ADD PRIMARY KEY (`sr_no`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -129,6 +147,12 @@ ALTER TABLE `contact_details`
 --
 ALTER TABLE `settings`
   MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `team_details`
+--
+ALTER TABLE `team_details`
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
