@@ -6,17 +6,23 @@
         </div>
         <div class="col-lg-4 p-4">
             <h5 class="mb-3">Links</h5>
-            <a href="" class="d-inline-block mb-2 text-dark text-decoration-none">Home</a><br>
-            <a href="" class="d-inline-block mb-2 text-dark text-decoration-none">Facilities</a><br>
-            <a href="" class="d-inline-block mb-2 text-dark text-decoration-none">Rooms</a><br>
-            <a href="" class="d-inline-block mb-2 text-dark text-decoration-none">Contact</a><br>
-            <a href="" class="d-inline-block mb-2 text-dark text-decoration-none">About</a><br>
+            <a href="index.php" class="d-inline-block mb-2 text-dark text-decoration-none">Home</a><br>
+            <a href="facilities.php" class="d-inline-block mb-2 text-dark text-decoration-none">Facilities</a><br>
+            <a href="rooms.php" class="d-inline-block mb-2 text-dark text-decoration-none">Rooms</a><br>
+            <a href="contact.php" class="d-inline-block mb-2 text-dark text-decoration-none">Contact</a><br>
+            <a href="about.php" class="d-inline-block mb-2 text-dark text-decoration-none">About</a><br>
         </div>
         <div class="col-lg-4 p-4">
             <h5 class="mb-3">Follow Us</h5>
-            <a href="" class="d-inline-block text-dark text-decoration-none mb-2"><i class="bi bi-instagram"></i> Instagram</a><br>
-            <a href="" class="d-inline-block text-dark text-decoration-none mb-2"><i class="bi bi-facebook"></i> Facebook</a><br>
-            <a href="" class="d-inline-block text-dark text-decoration-none"><i class="bi bi-twitter"></i> Twitter</a>
+            <a href="<?php echo $contactResult['insta']; ?>" class="d-inline-block text-dark text-decoration-none mb-2"><i class="bi bi-instagram"></i> Instagram</a><br>
+            <a href="<?php echo $contactResult['fb']; ?>" class="d-inline-block text-dark text-decoration-none mb-2"><i class="bi bi-facebook"></i> Facebook</a><br>
+            <?php
+                if($contactResult["tw"] != ""){
+                    echo<<<data
+                        <a href="$contactResult[tw]" class="d-inline-block text-dark text-decoration-none"><i class="bi bi-twitter"></i> Twitter</a>
+                    data;
+                }
+            ?>
         </div>
     </div>
 </div>

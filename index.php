@@ -18,24 +18,17 @@
     <div class="container-fluid px-lg-4 mt-4">
         <div class="swiper swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <img src="./images/carousel/1.png" class="w-100 d-block"/>
-                </div>
-                <div class="swiper-slide">
-                    <img src="./images/carousel/2.png" class="w-100 d-block"/>
-                </div>
-                <div class="swiper-slide">
-                    <img src="./images/carousel/3.png" class="w-100 d-block"/>
-                </div>
-                <div class="swiper-slide">
-                    <img src="./images/carousel/4.png" class="w-100 d-block"/>
-                </div>
-                <div class="swiper-slide">
-                    <img src="./images/carousel/5.png" class="w-100 d-block"/>
-                </div>
-                <div class="swiper-slide">
-                    <img src="./images/carousel/6.png" class="w-100 d-block"/>
-                </div>
+                <?php
+                    $result = selectAll("carousel");
+                    while($data = mysqli_fetch_assoc($result)){
+                        $path = CAROUSEL_IMG_PATH;
+                        echo<<<data
+                            <div class="swiper-slide">
+                                <img src="$path$data[image]" class="w-100 d-block"/>
+                            </div>
+                        data;
+                    }
+                ?>
             </div>
         </div>
     </div>
@@ -309,27 +302,39 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-8 p-4 mb-lg-0 bg-white rounded">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15249885.318783779!2d82.75252935!3d21.0680074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30635ff06b92b791%3A0xd78c4fa1854213a6!2sIndia!5e0!3m2!1sen!2sin!4v1710790360654!5m2!1sen!2sin" height="380" loading="lazy" class="w-100 rounded"></iframe>
+                <iframe src="<?php echo $contactResult['iframe']; ?>" height="380" loading="lazy" class="w-100 rounded"></iframe>
             </div>
             <div class="col-lg-4 col-md-4">
                 <div class="bg-white p-4 rounded mb-4">
                     <h5>Call Us</h5>
-                    <a href="tel: +91123456789" class="d-inline-block mb-2 text-decoration-none text-dark">
-                        <i class="bi bi-telephone-fill"></i> +91123456789
+                    <a href="tel: <?php echo $contactResult['phone1']; ?>" class="d-inline-block mb-2 text-decoration-none text-dark">
+                        <i class="bi bi-telephone-fill"></i> +<?php echo $contactResult["phone1"]; ?>
                     </a><br>
-                    <a href="tel: +91987654321" class="d-inline-block text-decoration-none text-dark">
-                        <i class="bi bi-telephone-fill"></i> +91987654321
-                    </a>
+                    <?php
+                        if($contactResult["phone2"] != ""){
+                            echo<<<data
+                                <a href="tel: +$contactResult[phone2]" class="d-inline-block text-decoration-none text-dark">
+                                    <i class="bi bi-telephone-fill"></i> +$contactResult[phone2]
+                                </a>
+                            data;
+                        }
+                    ?>
                 </div>
                 <div class="bg-white p-4 rounded mb-4">
                     <h5>Follow Us</h5>
-                    <a href="" class="d-inline-block mb-3">
-                        <span class="badge bg-light text-dark fs-6 p-2"><i class="bi bi-twitter me-1"></i> Twitter</span>
-                    </a><br>
-                    <a href="" class="d-inline-block mb-3">
+                    <?php 
+                        if($contactResult["tw"] != ""){
+                            echo<<<data
+                                <a href="$contactResult[tw]" class="d-inline-block mb-3">
+                                    <span class="badge bg-light text-dark fs-6 p-2"><i class="bi bi-twitter me-1"></i> Twitter</span>
+                                </a><br>
+                            data;
+                        }
+                    ?>
+                    <a href="<?php echo $contactResult['fb']; ?>" class="d-inline-block mb-3">
                         <span class="badge bg-light text-dark fs-6 p-2"><i class="bi bi-facebook"></i> Facebook</span>
                     </a><br>
-                    <a href="" class="d-inline-block mb-3">
+                    <a href="<?php echo $contactResult['insta']; ?>" class="d-inline-block mb-3">
                         <span class="badge bg-light text-dark fs-6 p-2"><i class="bi bi-instagram"></i> Instagram</span>
                     </a>
                 </div>

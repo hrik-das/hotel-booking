@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2024 at 08:56 PM
+-- Generation Time: Mar 26, 2024 at 04:25 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,6 +43,29 @@ INSERT INTO `admin_cred` (`sr_no`, `admin_name`, `admin_pass`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `carousel`
+--
+
+CREATE TABLE `carousel` (
+  `sr_no` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `carousel`
+--
+
+INSERT INTO `carousel` (`sr_no`, `image`) VALUES
+(7, 'IMG_35073.png'),
+(8, 'IMG_52964.png'),
+(9, 'IMG_64144.png'),
+(10, 'IMG_39549.png'),
+(11, 'IMG_99023.png'),
+(12, 'IMG_49943.png');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `contact_details`
 --
 
@@ -64,7 +87,7 @@ CREATE TABLE `contact_details` (
 --
 
 INSERT INTO `contact_details` (`sr_no`, `address`, `gmap`, `phone1`, `phone2`, `email`, `fb`, `insta`, `tw`, `iframe`) VALUES
-(1, 'XYZ, Hawrah, Kolkata', 'https://maps.app.goo.gl/o3wkTANpFaJsVdFJ9', '911234567811', '910987654311', 'hrikdas012@gmail.com', 'https://www.facebook.com', 'https://www.instagram.com', 'https://www.twitter.com', 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d30499770.719593283!2d82.752529!3d21.068007!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30635ff06b92b791:0xd78c4fa1854213a6!2sIndia!5e0!3m2!1sen!2sin!4v1711310426669!5m2!1sen!2sin');
+(1, 'XYZ, Hawrah, Kolkata', 'https://maps.app.goo.gl/o3wkTANpFaJsVdFJ9', '919988776655', '911122334455', 'hrikdas012@gmail.com', 'https://www.facebook.com', 'https://www.instagram.com', 'https://www.twitter.com', 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d30499770.719593283!2d82.752529!3d21.068007!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30635ff06b92b791:0xd78c4fa1854213a6!2sIndia!5e0!3m2!1sen!2sin!4v1711310426669!5m2!1sen!2sin');
 
 -- --------------------------------------------------------
 
@@ -99,6 +122,16 @@ CREATE TABLE `team_details` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `team_details`
+--
+
+INSERT INTO `team_details` (`sr_no`, `name`, `picture`) VALUES
+(11, 'Miya', 'IMG_58669.jpg'),
+(12, 'Jake', 'IMG_97922.jpg'),
+(13, 'Georgia', 'IMG_58292.jpg'),
+(14, 'Henry', 'IMG_54698.jpg');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -106,6 +139,12 @@ CREATE TABLE `team_details` (
 -- Indexes for table `admin_cred`
 --
 ALTER TABLE `admin_cred`
+  ADD PRIMARY KEY (`sr_no`);
+
+--
+-- Indexes for table `carousel`
+--
+ALTER TABLE `carousel`
   ADD PRIMARY KEY (`sr_no`);
 
 --
@@ -137,6 +176,12 @@ ALTER TABLE `admin_cred`
   MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `carousel`
+--
+ALTER TABLE `carousel`
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT for table `contact_details`
 --
 ALTER TABLE `contact_details`
@@ -152,7 +197,7 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `team_details`
 --
 ALTER TABLE `team_details`
-  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

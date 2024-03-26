@@ -23,22 +23,22 @@
                         <div class="collapse show px-3 small mb-1" id="bookingLinks">
                             <ul class="nav nav-pills flex-column rounded border border-secondry">
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" href="newBookings.php">New Bookings</a>
+                                    <a class="nav-link text-white" href="booking.php">New Bookings</a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="users.php">Users</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link text-white" href="rooms.php">Rooms</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="features.php">Features and Facilities</a>
+                        <a class="nav-link text-white" href="users.php">Users</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="userQueries.php">User Queries</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="features.php">Features and Facilities</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="carousel.php">Carousel</a>

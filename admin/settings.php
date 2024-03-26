@@ -152,11 +152,11 @@
                                                     <label class="form-label fw-bold">Phone Numbers</label>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text" id="basic-addon1"><i class="bi bi-telephone-fill"></i></span>
-                                                        <input type="text" name="ph1" id="ph1-inp" class="form-control shadow-none" required>
+                                                        <input type="number" name="ph1" id="ph1-inp" class="form-control shadow-none" required>
                                                     </div>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text" id="basic-addon1"><i class="bi bi-telephone-fill"></i></span>
-                                                        <input type="text" name="ph2" id="ph2-inp" class="form-control shadow-none">
+                                                        <input type="number" name="ph2" id="ph2-inp" class="form-control shadow-none">
                                                     </div>
                                                 </div>
                                                 <div class="mb-3">
