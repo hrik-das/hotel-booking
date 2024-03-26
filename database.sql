@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2024 at 04:25 PM
+-- Generation Time: Mar 26, 2024 at 07:10 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -61,7 +61,10 @@ INSERT INTO `carousel` (`sr_no`, `image`) VALUES
 (9, 'IMG_64144.png'),
 (10, 'IMG_39549.png'),
 (11, 'IMG_99023.png'),
-(12, 'IMG_49943.png');
+(12, 'IMG_49943.png'),
+(13, 'IMG_24688.jpg'),
+(16, 'IMG_51665.jpg'),
+(18, 'IMG_39957.jpg');
 
 -- --------------------------------------------------------
 
@@ -126,10 +129,45 @@ CREATE TABLE `team_details` (
 --
 
 INSERT INTO `team_details` (`sr_no`, `name`, `picture`) VALUES
-(11, 'Miya', 'IMG_58669.jpg'),
-(12, 'Jake', 'IMG_97922.jpg'),
-(13, 'Georgia', 'IMG_58292.jpg'),
-(14, 'Henry', 'IMG_54698.jpg');
+(17, 'Jacob', 'IMG_71797.png'),
+(19, 'Georgia', 'IMG_42747.jpg'),
+(20, 'Jake', 'IMG_92850.jpg'),
+(22, 'Miya', 'IMG_47109.jpg'),
+(23, 'Mark', 'IMG_18423.png'),
+(24, 'Jenelia', 'IMG_47641.jpg'),
+(25, 'Edward', 'IMG_17171.jpg'),
+(28, 'Lily', 'IMG_78984.jpg'),
+(30, 'Amelia', 'IMG_56813.jpg'),
+(33, 'Lucas', 'IMG_69903.jpg'),
+(36, 'Charlie', 'IMG_28257.jpg'),
+(45, 'Melissa', 'IMG_25634.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_queries`
+--
+
+CREATE TABLE `user_queries` (
+  `sr_no` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` tinyint(255) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `message` varchar(500) NOT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp(),
+  `seen` tinyint(4) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_queries`
+--
+
+INSERT INTO `user_queries` (`sr_no`, `name`, `email`, `subject`, `message`, `date`, `seen`) VALUES
+(6, 'Melissa Humerra', 0, 'Complaint', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere voluptate, saepe quas sapiente fugiat ipsum totam! Voluptatem a hic quod.', '2024-03-27', 0),
+(7, 'Jacob Dalni', 0, 'Complaint', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere voluptate, saepe quas sapiente fugiat ipsum totam! Voluptatem a hic quod.', '2024-03-27', 0),
+(8, 'Erika Damini', 0, 'Complaint', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere voluptate, saepe quas sapiente fugiat ipsum totam! Voluptatem a hic quod.', '2024-03-27', 0),
+(9, 'Jane Doe', 0, 'Complaint', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere voluptate, saepe quas sapiente fugiat ipsum totam! Voluptatem a hic quod.', '2024-03-27', 0),
+(10, 'Jhon Doe', 0, 'Complaint', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere voluptate, saepe quas sapiente fugiat ipsum totam! Voluptatem a hic quod.', '2024-03-27', 0);
 
 --
 -- Indexes for dumped tables
@@ -166,6 +204,12 @@ ALTER TABLE `team_details`
   ADD PRIMARY KEY (`sr_no`);
 
 --
+-- Indexes for table `user_queries`
+--
+ALTER TABLE `user_queries`
+  ADD PRIMARY KEY (`sr_no`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -179,7 +223,7 @@ ALTER TABLE `admin_cred`
 -- AUTO_INCREMENT for table `carousel`
 --
 ALTER TABLE `carousel`
-  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `contact_details`
@@ -197,7 +241,13 @@ ALTER TABLE `settings`
 -- AUTO_INCREMENT for table `team_details`
 --
 ALTER TABLE `team_details`
-  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+
+--
+-- AUTO_INCREMENT for table `user_queries`
+--
+ALTER TABLE `user_queries`
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
