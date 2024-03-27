@@ -33,16 +33,16 @@
     if(isset($_POST["deleteFeature"])){
         $filterData = filteration($_POST);
         $values = [$filterData["deleteFeature"]];
-        // $checkQuery = "SELECT * FROM `room_features` WHERE `features_id`=?";
-        // $checkValues = [$filterData['deleteFeature']];
-        // $check = select($checkQuery, $checkValues, "i");
-        // if(mysqli_num_rows($check) == 0){
+        $checkQuery = "SELECT * FROM `room_features` WHERE `features_id`=?";
+        $checkValues = [$filterData["deleteFeature"]];
+        $check = select($checkQuery, $checkValues, "i");
+        if(mysqli_num_rows($check) == 0){
             $query = "DELETE FROM `features` WHERE `id`=?";
             $result = delete($query, $values, "i");
             echo $result;
-        // }else{
-            // echo "room_added";
-        // }
+        }else{
+            echo "room_added";
+        }
     }
 
     if(isset($_POST["addFacility"])){
@@ -70,7 +70,7 @@
             echo<<<data
                 <tr class="align-middle">
                     <td>$i</td>
-                    <td><img src="$path$data[icon]" width="100px"></td>
+                    <td><img src="$path$data[icon]" width="50px"></td>
                     <td>$data[name]</td>
                     <td>$data[description]</td>
                     <td>
@@ -87,16 +87,22 @@
     if(isset($_POST["deleteFacility"])){
         $filterData = filteration($_POST);
         $values = [$filterData["deleteFacility"]];
-        $preQuery = "SELECT * FROM `facilities` WHERE `id`=?";
-        $preResult = select($preQuery, $values, "i");
-        $image = mysqli_fetch_assoc($preResult);
-        if(deleteImage($image["icon"], FACILITIES_FOLDER)){
-            $query = "DELETE FROM `facilities` WHERE `id`=?";
-            $result = delete($query, $values, "i");
-            echo $result;
+        $checkQuery = "SELECT * FROM `room_facilities` WHERE `facilities_id`=?";
+        $checkValues = [$filterData["deleteFacility"]];
+        $check = select($checkQuery, $checkValues, "i");
+        if(mysqli_num_rows($check) == 0){
+            $preQurey = "SELECT * FROM `facilities` WHERE `id`=?";
+            $result = select($preQurey, $values, "i");
+            $image = mysqli_fetch_assoc($result);
+            if(deleteImage($image["icon"], FACILITIES_FOLDER)){
+                $query = "DELETE FROM `facilities` WHERE `id`=?";
+                $result = delete($query, $values, "i");
+                echo $result;
+            }else{
+                echo 0;
+            }
         }else{
-            echo 0;
-        }
-        
+            echo "room_added";
+        }      
     }
 ?>

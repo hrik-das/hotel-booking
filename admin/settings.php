@@ -218,11 +218,11 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="mb-3">
-                                        <label class="form-label fw-bold">Name</label>
+                                        <label class="form-label fw-bold">Member Name</label>
                                         <input type="text" name="member_name" id="member-name-inp" class="form-control shadow-none" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label class="form-label fw-bold">Picture</label>
+                                        <label class="form-label fw-bold">Member Picture</label>
                                         <input type="file" name="member_picture" id="member-picture-inp" accept=".png, .jpg, .jpeg, .webp" class="form-control shadow-none" required>
                                     </div>
                                 </div>

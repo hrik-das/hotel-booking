@@ -27,7 +27,7 @@
                             <button type="button" class="btn btn-dark shadow-none btn-sm" data-bs-toggle="modal" data-bs-target="#features-s"><i class="bi bi-plus-square"></i> Add</button>
                         </div>
                         <div class="table-responsive-md" style="height: 350px; overflow-y: scroll;">
-                            <table class="table table-hover border">
+                            <table class="table table-hover border text-center">
                                 <thead>
                                     <tr class="bg-dark text-light">
                                         <th scope="col">#</th>

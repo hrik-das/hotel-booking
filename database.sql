@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2024 at 12:08 PM
+-- Generation Time: Mar 27, 2024 at 05:28 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -143,6 +143,84 @@ INSERT INTO `features` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `rooms`
+--
+
+CREATE TABLE `rooms` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `area` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `adult` int(11) NOT NULL,
+  `children` int(11) NOT NULL,
+  `description` varchar(500) NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `rooms`
+--
+
+INSERT INTO `rooms` (`id`, `name`, `area`, `price`, `quantity`, `adult`, `children`, `description`, `status`) VALUES
+(3, 'Simple Room', 149, 299, 50, 3, 3, 'This is a Simple Room for Night Stays for Tourist.', 1),
+(4, 'Deluxe Room', 241, 899, 40, 2, 1, 'This is Deluxe Room which is a Special Room for our Deluxe and VIP Customers.', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `room_facilities`
+--
+
+CREATE TABLE `room_facilities` (
+  `sr_no` int(11) NOT NULL,
+  `room_id` int(11) NOT NULL,
+  `facilities_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `room_facilities`
+--
+
+INSERT INTO `room_facilities` (`sr_no`, `room_id`, `facilities_id`) VALUES
+(16, 4, 13),
+(17, 4, 14),
+(18, 4, 15),
+(19, 4, 18),
+(36, 3, 14),
+(37, 3, 15),
+(38, 3, 18);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `room_features`
+--
+
+CREATE TABLE `room_features` (
+  `sr_no` int(11) NOT NULL,
+  `room_id` int(11) NOT NULL,
+  `features_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `room_features`
+--
+
+INSERT INTO `room_features` (`sr_no`, `room_id`, `features_id`) VALUES
+(11, 4, 23),
+(12, 4, 24),
+(13, 4, 25),
+(14, 4, 26),
+(15, 4, 27),
+(37, 3, 23),
+(38, 3, 24),
+(39, 3, 26),
+(40, 3, 27);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `settings`
 --
 
@@ -252,6 +330,28 @@ ALTER TABLE `features`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `rooms`
+--
+ALTER TABLE `rooms`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `room_facilities`
+--
+ALTER TABLE `room_facilities`
+  ADD PRIMARY KEY (`sr_no`),
+  ADD KEY `facilities id` (`facilities_id`),
+  ADD KEY `room id` (`room_id`);
+
+--
+-- Indexes for table `room_features`
+--
+ALTER TABLE `room_features`
+  ADD PRIMARY KEY (`sr_no`),
+  ADD KEY `features id` (`features_id`),
+  ADD KEY `room_id` (`room_id`);
+
+--
 -- Indexes for table `settings`
 --
 ALTER TABLE `settings`
@@ -295,13 +395,31 @@ ALTER TABLE `contact_details`
 -- AUTO_INCREMENT for table `facilities`
 --
 ALTER TABLE `facilities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `features`
 --
 ALTER TABLE `features`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `rooms`
+--
+ALTER TABLE `rooms`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `room_facilities`
+--
+ALTER TABLE `room_facilities`
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
+-- AUTO_INCREMENT for table `room_features`
+--
+ALTER TABLE `room_features`
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `settings`
@@ -320,6 +438,24 @@ ALTER TABLE `team_details`
 --
 ALTER TABLE `user_queries`
   MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `room_facilities`
+--
+ALTER TABLE `room_facilities`
+  ADD CONSTRAINT `facilities id` FOREIGN KEY (`facilities_id`) REFERENCES `facilities` (`id`) ON UPDATE NO ACTION,
+  ADD CONSTRAINT `room id` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`) ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `room_features`
+--
+ALTER TABLE `room_features`
+  ADD CONSTRAINT `features id` FOREIGN KEY (`features_id`) REFERENCES `features` (`id`) ON UPDATE NO ACTION,
+  ADD CONSTRAINT `room_id` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`) ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
