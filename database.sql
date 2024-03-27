@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 26, 2024 at 07:10 PM
+-- Generation Time: Mar 27, 2024 at 10:11 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -91,6 +91,54 @@ CREATE TABLE `contact_details` (
 
 INSERT INTO `contact_details` (`sr_no`, `address`, `gmap`, `phone1`, `phone2`, `email`, `fb`, `insta`, `tw`, `iframe`) VALUES
 (1, 'XYZ, Hawrah, Kolkata', 'https://maps.app.goo.gl/o3wkTANpFaJsVdFJ9', '919988776655', '911122334455', 'hrikdas012@gmail.com', 'https://www.facebook.com', 'https://www.instagram.com', 'https://www.twitter.com', 'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d30499770.719593283!2d82.752529!3d21.068007!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30635ff06b92b791:0xd78c4fa1854213a6!2sIndia!5e0!3m2!1sen!2sin!4v1711310426669!5m2!1sen!2sin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `facilities`
+--
+
+CREATE TABLE `facilities` (
+  `id` int(11) NOT NULL,
+  `icon` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `facilities`
+--
+
+INSERT INTO `facilities` (`id`, `icon`, `name`, `description`) VALUES
+(7, 'IMG_38935.svg', 'Unlimited Wifi', 'Unlimited Wifi available in our Restaurant.'),
+(8, 'IMG_80080.svg', 'Air Conditioner', 'Air Conditioner is available in our Restaurant.'),
+(9, 'IMG_94560.svg', 'Smart Television', 'Smart Television available for our Customers Entertainment.'),
+(10, 'IMG_77736.svg', 'Massage Parlour', 'Massage Parlour is Available for our Customers Relaxation.'),
+(11, 'IMG_55454.svg', 'Room Heater', 'Room Heater is available for our Customers in our Restaurant.'),
+(12, 'IMG_37682.svg', 'Geyser', 'Geyser is available in every Bathroom in our Restaurant.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `features`
+--
+
+CREATE TABLE `features` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `features`
+--
+
+INSERT INTO `features` (`id`, `name`) VALUES
+(23, 'Bedroom'),
+(24, 'Bathroom'),
+(25, 'Balcony'),
+(26, 'Kitchen'),
+(27, 'Sofa'),
+(28, 'Living Room');
 
 -- --------------------------------------------------------
 
@@ -192,6 +240,18 @@ ALTER TABLE `contact_details`
   ADD PRIMARY KEY (`sr_no`);
 
 --
+-- Indexes for table `facilities`
+--
+ALTER TABLE `facilities`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `features`
+--
+ALTER TABLE `features`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `settings`
 --
 ALTER TABLE `settings`
@@ -230,6 +290,18 @@ ALTER TABLE `carousel`
 --
 ALTER TABLE `contact_details`
   MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `facilities`
+--
+ALTER TABLE `facilities`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `features`
+--
+ALTER TABLE `features`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `settings`

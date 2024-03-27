@@ -38,7 +38,7 @@
                         <a class="nav-link text-white" href="user_queries.php">User Queries</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="features.php">Features and Facilities</a>
+                        <a class="nav-link text-white" href="features_facilities.php">Features and Facilities</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="carousel.php">Carousel</a>
