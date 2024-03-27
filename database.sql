@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2024 at 10:11 AM
+-- Generation Time: Mar 27, 2024 at 12:08 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -110,12 +110,12 @@ CREATE TABLE `facilities` (
 --
 
 INSERT INTO `facilities` (`id`, `icon`, `name`, `description`) VALUES
-(7, 'IMG_38935.svg', 'Unlimited Wifi', 'Unlimited Wifi available in our Restaurant.'),
-(8, 'IMG_80080.svg', 'Air Conditioner', 'Air Conditioner is available in our Restaurant.'),
-(9, 'IMG_94560.svg', 'Smart Television', 'Smart Television available for our Customers Entertainment.'),
-(10, 'IMG_77736.svg', 'Massage Parlour', 'Massage Parlour is Available for our Customers Relaxation.'),
-(11, 'IMG_55454.svg', 'Room Heater', 'Room Heater is available for our Customers in our Restaurant.'),
-(12, 'IMG_37682.svg', 'Geyser', 'Geyser is available in every Bathroom in our Restaurant.');
+(13, 'IMG_37211.svg', 'Air Conditioner', 'Air Conditioner is available for our Customers in our Restaurant Rooms.'),
+(14, 'IMG_75029.svg', 'Geyser', 'Geyser is available for our Customer Relaxation in our Restaurant.'),
+(15, 'IMG_80488.svg', 'Room Heater', 'Room Heater is available for our Customers in our Restaurant.'),
+(16, 'IMG_21993.svg', 'Unlimited Wifi', 'Unlimited Internet Connectivity available for our Customers in our Restaurant.'),
+(17, 'IMG_83401.svg', 'Massage Parlour', 'Massage Parlor is available for our Customers Relaxation in our Restaurant.'),
+(18, 'IMG_32503.svg', 'Smart Television', 'Smart Television is available for our Customers Entertainment in our Restaurant.');
 
 -- --------------------------------------------------------
 
@@ -295,7 +295,7 @@ ALTER TABLE `contact_details`
 -- AUTO_INCREMENT for table `facilities`
 --
 ALTER TABLE `facilities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `features`

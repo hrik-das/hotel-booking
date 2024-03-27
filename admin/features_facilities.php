@@ -48,7 +48,7 @@
                         </div>
                         <div class="table-responsive-md" style="height: 350px; overflow-y: scroll;">
                             <table class="table table-hover border">
-                                <thead>
+                                <thead class="sticky-top">
                                     <tr class="bg-dark text-light">
                                         <th scope="col">#</th>
                                         <th scope="col">Icon</th>

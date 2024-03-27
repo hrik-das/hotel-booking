@@ -87,17 +87,9 @@
     if(isset($_POST["deleteFacility"])){
         $filterData = filteration($_POST);
         $values = [$filterData["deleteFacility"]];
-        // $checkQuery = "SELECT * FROM `room_facilities` WHERE `facilities_id`=?";
-        // $checkValues = [$filterData["deleteFacility"]];
-        // $check = select($checkQuery, $checkValues, "i");
-        // if(mysqli_num_rows($check) == 0){
-        // }else{
-        //     echo "room_added";
-        // }
-        $preQurey = "SELECT * FROM `facilities` WHERE `id`=?";
-        $result = select($preQurey, $values, "i");
-        $image = mysqli_fetch_assoc($result);
-
+        $preQuery = "SELECT * FROM `facilities` WHERE `id`=?";
+        $preResult = select($preQuery, $values, "i");
+        $image = mysqli_fetch_assoc($preResult);
         if(deleteImage($image["icon"], FACILITIES_FOLDER)){
             $query = "DELETE FROM `facilities` WHERE `id`=?";
             $result = delete($query, $values, "i");
@@ -105,8 +97,6 @@
         }else{
             echo 0;
         }
-        $query = "DELETE FROM `facilities` WHERE `id`=?";
-        $result = delete($query, $values, "i");
-        echo $result;
+        
     }
 ?>
