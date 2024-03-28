@@ -1,5 +1,6 @@
 let addRoomForm = document.getElementById("add-room-form");
 let editRoomForm = document.getElementById("edit-room-form");
+let addImageForm = document.getElementById("add-image-form");
 
 addRoomForm.addEventListener("submit", function(event){
     event.preventDefault();
@@ -78,7 +79,6 @@ function editDetails(id){
     xhr.onload = function(){
         if(xhr.status >= 200 && xhr.status < 300){
             let data = JSON.parse(this.responseText);
-            console.log(data);
             editRoomForm.elements["name"].value = data.roomdata.name;
             editRoomForm.elements["area"].value = data.roomdata.area;
             editRoomForm.elements["price"].value = data.roomdata.price;
@@ -181,6 +181,137 @@ function toggleStatus(id, value){
         console.error("Network error occurred!");
     }
     xhr.send("toggleStatus="+id+"&value="+value);
+}
+
+addImageForm.addEventListener("submit", function(event){
+    event.preventDefault();
+    addImage();
+});
+
+function addImage(){
+    let data = new FormData();
+    data.append("image", addImageForm.elements["image"].files[0]);
+    data.append("room_id", addImageForm.elements["room_id"].value);
+    data.append("addImage", "");
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "./ajax/rooms.php", true);
+    xhr.onload = function(){
+        if(xhr.status >= 200 && xhr.status < 300){
+            if(this.responseText == "invalidImage"){
+                alert("error", "Only JPG, PNG, JPEG and WEBP Formats are allowed!", "image-alert");
+            }else if(this.responseText == "invalidSize"){
+                alert("error", "Image Should be less than 2 MB!", "image-alert");
+            }else if(this.responseText == "uploadFailed"){
+                alert('error', "Image Upload Failed, Server Down!", "image-alert");
+            }else{
+                alert("success", "New Image Added Successfully!", "image-alert");
+                roomImages(addImageForm.elements["room_id"].value, document.querySelector("#room-images .modal-title").innerText);
+                addImageForm.reset();
+            }
+        }else{
+            console.error("Request failed with status : ", xhr.status);
+        }
+    }
+    xhr.onerror = function(){
+        console.error("Network error occurred!");
+    }
+    xhr.send(data);
+}
+
+function roomImages(id, name){
+    document.querySelector("#room-images .modal-title").innerText = name;
+    addImageForm.elements["room_id"].value = id;
+    addImageForm.elements["image"].value = "";
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "./ajax/rooms.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.onload = function(){
+        if(xhr.status >= 200 && xhr.status < 300){
+            document.getElementById("room-image-data").innerHTML = this.responseText;
+        }else{
+            console.error("Request failed with status : ", xhr.status);
+        }
+    }
+    xhr.onerror = function(){
+        console.error("Network error occurred!");
+    }
+    xhr.send("getRoomImages="+id);
+}
+
+function removeImage(imageId, roomId){
+    let data = new FormData();
+    data.append("image_id", imageId);
+    data.append("room_id", roomId);
+    data.append("removeImage", "");
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "./ajax/rooms.php", true);
+    xhr.onload = function(){
+        if(xhr.status >= 200 && xhr.status < 300){
+            if(this.responseText == 1){
+                alert("success", "Image Removed!", "image-alert");
+                roomImages(roomId, document.querySelector("#room-images .modal-title").innerText);
+            }else{
+                alert("error", "Image Removal Failed!", "image-alert");
+            }
+        }else{
+            console.error("Request failed with status : ", xhr.status);
+        }
+    }
+    xhr.onerror = function(){
+        console.error("Network error occurred!");
+    }
+    xhr.send(data);
+}
+
+function thumbnailImage(imageId, roomId){
+    let data = new FormData();
+    data.append("image_id", imageId);
+    data.append("room_id", roomId);
+    data.append("thumbnailImage", "");
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "./ajax/rooms.php", true);
+    xhr.onload = function(){
+        if(xhr.status >= 200 && xhr.status < 300){
+            if(this.responseText == 1){
+                alert("success", "Image Thumbnail Changed!", "image-alert");
+                roomImages(roomId, document.querySelector("#room-images .modal-title").innerText);
+            }else{
+                alert("error", "Image Thumbnail did not Changed!", "image-alert");
+            }
+        }else{
+            console.error("Request failed with status : ", xhr.status);
+        }
+    }
+    xhr.onerror = function(){
+        console.error("Network error occurred!");
+    }
+    xhr.send(data);
+}
+
+function removeRoom(roomId){
+    if(confirm("You want to Delete this Room. Are Your Sure?")){
+        let data = new FormData();
+        data.append("room_id", roomId);
+        data.append("removeRoom", "");
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "./ajax/rooms.php", true);
+        xhr.onload = function(){
+            if(xhr.status >= 200 && xhr.status < 300){
+                if(this.responseText == 1){
+                    alert("success", "Room Removed Successfully!");
+                    getAllRooms();
+                }else{
+                    alert("error", "Room Removal Failed!");
+                }
+            }else{
+                console.error("Request failed with status : ", xhr.status);
+            }
+        }
+        xhr.onerror = function(){
+            console.error("Network error occurred!");
+        }
+        xhr.send(data);
+    }
 }
 
 window.onload = function(){

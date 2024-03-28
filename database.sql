@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2024 at 05:28 PM
+-- Generation Time: Mar 28, 2024 at 11:03 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -155,16 +155,9 @@ CREATE TABLE `rooms` (
   `adult` int(11) NOT NULL,
   `children` int(11) NOT NULL,
   `description` varchar(500) NOT NULL,
-  `status` tinyint(4) NOT NULL DEFAULT 1
+  `status` tinyint(4) NOT NULL DEFAULT 1,
+  `removed` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `rooms`
---
-
-INSERT INTO `rooms` (`id`, `name`, `area`, `price`, `quantity`, `adult`, `children`, `description`, `status`) VALUES
-(3, 'Simple Room', 149, 299, 50, 3, 3, 'This is a Simple Room for Night Stays for Tourist.', 1),
-(4, 'Deluxe Room', 241, 899, 40, 2, 1, 'This is Deluxe Room which is a Special Room for our Deluxe and VIP Customers.', 1);
 
 -- --------------------------------------------------------
 
@@ -178,19 +171,6 @@ CREATE TABLE `room_facilities` (
   `facilities_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `room_facilities`
---
-
-INSERT INTO `room_facilities` (`sr_no`, `room_id`, `facilities_id`) VALUES
-(16, 4, 13),
-(17, 4, 14),
-(18, 4, 15),
-(19, 4, 18),
-(36, 3, 14),
-(37, 3, 15),
-(38, 3, 18);
-
 -- --------------------------------------------------------
 
 --
@@ -203,20 +183,18 @@ CREATE TABLE `room_features` (
   `features_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `room_features`
+-- Table structure for table `room_image`
 --
 
-INSERT INTO `room_features` (`sr_no`, `room_id`, `features_id`) VALUES
-(11, 4, 23),
-(12, 4, 24),
-(13, 4, 25),
-(14, 4, 26),
-(15, 4, 27),
-(37, 3, 23),
-(38, 3, 24),
-(39, 3, 26),
-(40, 3, 27);
+CREATE TABLE `room_image` (
+  `sr_no` int(11) NOT NULL,
+  `room_id` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `thumbnail` tinyint(4) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -352,6 +330,13 @@ ALTER TABLE `room_features`
   ADD KEY `room_id` (`room_id`);
 
 --
+-- Indexes for table `room_image`
+--
+ALTER TABLE `room_image`
+  ADD PRIMARY KEY (`sr_no`),
+  ADD KEY `room_id` (`room_id`);
+
+--
 -- Indexes for table `settings`
 --
 ALTER TABLE `settings`
@@ -413,13 +398,19 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `room_facilities`
 --
 ALTER TABLE `room_facilities`
-  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `room_features`
 --
 ALTER TABLE `room_features`
-  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+
+--
+-- AUTO_INCREMENT for table `room_image`
+--
+ALTER TABLE `room_image`
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `settings`
@@ -456,6 +447,12 @@ ALTER TABLE `room_facilities`
 ALTER TABLE `room_features`
   ADD CONSTRAINT `features id` FOREIGN KEY (`features_id`) REFERENCES `features` (`id`) ON UPDATE NO ACTION,
   ADD CONSTRAINT `room_id` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`) ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `room_image`
+--
+ALTER TABLE `room_image`
+  ADD CONSTRAINT `room_image_ibfk_1` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

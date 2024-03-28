@@ -218,5 +218,40 @@
             </form>
         </div>
     </div>
+
+    <!-- Room Images Modal -->
+    <div class="modal fade" id="room-images" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Room Name</h5>
+                    <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="image-alert"></div>
+                    <div class="border-bottom border-3 pb-3 mb-3">
+                        <form action="" id="add-image-form">
+                            <label class="form-label fw-bold">Add Image</label>
+                            <input type="file" name="image" class="form-control shadow-none mb-3" accept=".png, .jpg, .jpeg, .webp" required>
+                            <button type="submit" class="btn custom-bg text-white shadow-none">Add</button>
+                            <input type="hidden" name="room_id">
+                        </form>
+                    </div>
+                    <div class="table-responsive-lg" style="height: 350px; overflow-y: scroll;">
+                        <table class="table table-hover border text-center">
+                            <thead>
+                                <tr class="bg-dark text-light sticky-top">
+                                    <th scope="col" width="50%">Image</th>
+                                    <th scope="col">Thumbnail</th>
+                                    <th scope="col">Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody id="room-image-data"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
