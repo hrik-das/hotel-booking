@@ -1,6 +1,6 @@
 <?php
     // Frontend Purpose Data
-    define("SITE_URL", "http://127.0.0.1/PHP/Hotel Booking/");
+    define("SITE_URL", "http://127.0.0.1/PHP/Hotel-Booking/");
     define("ABOUT_IMG_PATH", SITE_URL."images/about/");
     define("CAROUSEL_IMG_PATH", SITE_URL."images/carousel/");
     define("FACILITIES_IMG_PATH", SITE_URL."images/facilities/");
@@ -8,12 +8,17 @@
     define("USER_IMG_PATH", SITE_URL."images/users/");
 
     // Backend Upload Process
-    define("UPLOAD_IMAGE_PATH", $_SERVER["DOCUMENT_ROOT"]."/PHP/Hotel Booking/images/");
+    define("UPLOAD_IMAGE_PATH", $_SERVER["DOCUMENT_ROOT"]."/PHP/Hotel-Booking/images/");
     define("ABOUT_FOLDER", "about/");
     define("CAROUSEL_FOLDER", "carousel/");
     define("FACILITIES_FOLDER", "facilities/");
     define("ROOM_FOLDER", "rooms/");
     define("USER_FOLDER", "users/");
+
+    // SENDGRID API KEY
+    define("SENDGRID_API_KEY", "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");
+    define("SENDGRID_NAME", "GODLIKE RESTAURANT");
+    define("SENDGRID_EMAIL", "hrikdas012@gmail.com");
 
     function alert($type, $message){
         $bs_class = ($type == "success") ? "alert-success" : "alert-danger";
@@ -77,6 +82,30 @@
             $rname = "IMG_".random_int(11111, 99999).".$extension";
             $imagePath = UPLOAD_IMAGE_PATH.$folder.$rname;
             if(move_uploaded_file($image["tmp_name"], $imagePath)){
+                return $rname;
+            }else{
+                return "uploadFailed";
+            }
+        }
+    }
+
+    function uploadUserImage($image){
+        $validateMime = ["image/jpeg", "image/png", "image/webp", "image/jpg"];
+        $imageMime = $image["type"];
+        if(!in_array($imageMime, $validateMime)){
+            return "invalidImage";    // Invalid Image
+        }else{
+            $extension = pathinfo($image["name"], PATHINFO_EXTENSION);
+            $rname = "IMG_".random_int(11111, 99999).".jpeg";
+            $imgPath = UPLOAD_IMAGE_PATH.USER_FOLDER.$rname;
+            if($extension == "png" || $extension == "PNG"){
+                $img = imagecreatefrompng($image["tmp_name"]);
+            }else if($extension == "webp" || $extension == "WEBP"){
+                $img = imagecreatefromwebp($image["tmp_name"]);
+            }else{
+                $img = imagecreatefromjpeg($image["tmp_name"]);
+            }
+            if(imagejpeg($img, $imgPath, 75)){
                 return $rname;
             }else{
                 return "uploadFailed";

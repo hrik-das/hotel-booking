@@ -8,7 +8,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm sticky-top" id="navbar">
     <div class="container-fluid">
-        <a class="navbar-brand me-5 fw-bold new-font fs-3" href="index.php">GODLIKE RESTAURANT</a>
+        <a class="navbar-brand me-5 fw-bold new-font fs-3" href="index.php"><?php $settings_r["site_title"]; ?></a>
         <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -85,7 +85,7 @@
                                 <label class="form-label">Full Name</label>
                                 <input type="text" name="name" class="form-control shadow-none" required>
                             </div>
-                            <div class="col-md-6 p-0 mb-3">
+                            <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Email Address</label>
                                 <input type="email" name="email" class="form-control shadow-none" required>
                             </div>
@@ -93,11 +93,11 @@
                                 <label class="form-label">Phone Number</label>
                                 <input type="number" name="phone" class="form-control shadow-none" required>
                             </div>
-                            <div class="col-md-6 p-0 mb-3">
+                            <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Picture</label>
                                 <input type="file" name="profile" class="form-control shadow-none" accept=".jpg, .png, .jpeg, .webp" required>
                             </div>
-                            <div class="col-md-12 p-0 mb-3">
+                            <div class="col-md-12 ps-0 mb-3">
                                 <label class="form-label">Address</label>
                                 <textarea rows="1" name="address" class="form-control shadow-none" required></textarea>
                             </div>
@@ -105,7 +105,7 @@
                                 <label class="form-label">Pincode</label>
                                 <input type="number" name="pincode" class="form-control shadow-none" required>
                             </div>
-                            <div class="col-md-6 p-0 mb-3">
+                            <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Date of Birth</label>
                                 <input type="date" name="dob" class="form-control shadow-none" required>
                             </div>
@@ -113,7 +113,7 @@
                                 <label class="form-label">Password</label>
                                 <input type="password" name="pass" class="form-control shadow-none" required>
                             </div>
-                            <div class="col-md-6 p-0 mb-3">
+                            <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Confirm Password</label>
                                 <input type="password" name="cpass" class="form-control shadow-none" required>
                             </div>
