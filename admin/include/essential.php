@@ -16,7 +16,7 @@
     define("USER_FOLDER", "users/");
 
     // SENDGRID API KEY
-    define("SENDGRID_API_KEY", "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");
+    define("SENDGRID_API_KEY", "YOUR API KEY");
     define("SENDGRID_NAME", "GODLIKE RESTAURANT");
     define("SENDGRID_EMAIL", "hrikdas012@gmail.com");
 
