@@ -70,7 +70,7 @@
 <div class="modal fade" id="registerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="">
+            <form action="" id="register-form">
                 <div class="modal-header">
                     <h5 class="modal-title d-flex align-items-center"><i class="bi bi-person-lines-fill fs-3 me-2"></i> User Registration</h5>
                     <button type="reset" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -83,39 +83,39 @@
                         <div class="row">
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Full Name</label>
-                                <input type="text" class="form-control shadow-none">
+                                <input type="text" name="name" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-6 p-0 mb-3">
                                 <label class="form-label">Email Address</label>
-                                <input type="email" class="form-control shadow-none">
+                                <input type="email" name="email" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Phone Number</label>
-                                <input type="number" class="form-control shadow-none">
+                                <input type="number" name="phone" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-6 p-0 mb-3">
                                 <label class="form-label">Picture</label>
-                                <input type="file" class="form-control shadow-none">
+                                <input type="file" name="profile" class="form-control shadow-none" accept=".jpg, .png, .jpeg, .webp" required>
                             </div>
                             <div class="col-md-12 p-0 mb-3">
                                 <label class="form-label">Address</label>
-                                <textarea rows="1" class="form-control shadow-none"></textarea>
+                                <textarea rows="1" name="address" class="form-control shadow-none" required></textarea>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Pincode</label>
-                                <input type="number" class="form-control shadow-none">
+                                <input type="number" name="pincode" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-6 p-0 mb-3">
                                 <label class="form-label">Date of Birth</label>
-                                <input type="date" class="form-control shadow-none">
+                                <input type="date" name="dob" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">Password</label>
-                                <input type="password" class="form-control shadow-none">
+                                <input type="password" name="pass" class="form-control shadow-none" required>
                             </div>
                             <div class="col-md-6 p-0 mb-3">
                                 <label class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control shadow-none">
+                                <input type="password" name="cpass" class="form-control shadow-none" required>
                             </div>
                         </div>
                     </div>
