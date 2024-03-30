@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 28, 2024 at 11:03 AM
+-- Generation Time: Mar 30, 2024 at 11:07 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -159,6 +159,16 @@ CREATE TABLE `rooms` (
   `removed` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `rooms`
+--
+
+INSERT INTO `rooms` (`id`, `name`, `area`, `price`, `quantity`, `adult`, `children`, `description`, `status`, `removed`) VALUES
+(6, 'Simple Room', 149, 399, 50, 3, 3, 'This is a Simple Room for Night Stays specially for Tourist. Very Comfortable Room with Single Bedroom and a Single Bathroom and a Kitchen. Geyser for and Room Heater is also Available for our Customers facilities.', 1, 0),
+(7, 'Deluxe Room', 240, 899, 20, 2, 1, 'This is a Deluxe Room with Super Features and Facilities added for Customers Relaxation with a Double Bedroom and Single Bathroom and a Kitchen with 2 Sofas and a Living Room for Enjoy.', 1, 0),
+(8, 'Super Deluxe Room', 500, 2499, 10, 1, 1, 'A Super Deluxe Room for our Extremely Deluxe Customers with 2 Double Bedrooms and 2 Bathrooms and 2 Kitchen for Comfort and a Living Room for Relaxation with Room Heater and Unlimited Internet Connectivity to Enjoy the Fullest.', 1, 0),
+(9, 'Luxury Room', 587, 2899, 10, 1, 1, 'A Luxury Room for our VIP Customers and Celebrities for Night Stays and Enjoy with Internet Connectivity and Room Heater Bathroom Geyser and Living Room and Massage Parlour for Relaxation and 24x7 Room Service Available.', 1, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -170,6 +180,30 @@ CREATE TABLE `room_facilities` (
   `room_id` int(11) NOT NULL,
   `facilities_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `room_facilities`
+--
+
+INSERT INTO `room_facilities` (`sr_no`, `room_id`, `facilities_id`) VALUES
+(49, 6, 14),
+(50, 6, 15),
+(51, 7, 13),
+(52, 7, 14),
+(53, 7, 15),
+(54, 7, 16),
+(55, 7, 18),
+(62, 9, 13),
+(63, 9, 14),
+(64, 9, 15),
+(65, 9, 16),
+(66, 9, 17),
+(67, 9, 18),
+(68, 8, 13),
+(69, 8, 14),
+(70, 8, 15),
+(71, 8, 16),
+(72, 8, 18);
 
 -- --------------------------------------------------------
 
@@ -183,6 +217,31 @@ CREATE TABLE `room_features` (
   `features_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `room_features`
+--
+
+INSERT INTO `room_features` (`sr_no`, `room_id`, `features_id`) VALUES
+(54, 6, 23),
+(55, 6, 24),
+(56, 6, 26),
+(57, 7, 23),
+(58, 7, 24),
+(59, 7, 26),
+(60, 7, 27),
+(61, 7, 28),
+(68, 9, 23),
+(69, 9, 24),
+(70, 9, 25),
+(71, 9, 26),
+(72, 9, 27),
+(73, 9, 28),
+(74, 8, 23),
+(75, 8, 24),
+(76, 8, 26),
+(77, 8, 27),
+(78, 8, 28);
+
 -- --------------------------------------------------------
 
 --
@@ -195,6 +254,35 @@ CREATE TABLE `room_image` (
   `image` varchar(255) NOT NULL,
   `thumbnail` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `room_image`
+--
+
+INSERT INTO `room_image` (`sr_no`, `room_id`, `image`, `thumbnail`) VALUES
+(8, 6, 'IMG_70582.png', 1),
+(9, 6, 'IMG_91207.png', 0),
+(10, 6, 'IMG_14956.png', 0),
+(11, 7, 'IMG_39621.png', 1),
+(12, 7, 'IMG_64129.png', 0),
+(13, 7, 'IMG_15589.png', 0),
+(14, 7, 'IMG_39688.png', 0),
+(15, 7, 'IMG_75459.png', 0),
+(16, 6, 'IMG_38085.png', 0),
+(17, 6, 'IMG_29293.png', 0),
+(18, 8, 'IMG_43250.png', 1),
+(20, 8, 'IMG_25996.png', 0),
+(21, 8, 'IMG_73354.jpg', 0),
+(22, 8, 'IMG_76899.jpg', 0),
+(25, 8, 'IMG_88544.jpg', 0),
+(26, 8, 'IMG_75569.png', 0),
+(27, 8, 'IMG_48574.png', 0),
+(28, 9, 'IMG_60917.png', 1),
+(29, 9, 'IMG_55270.png', 0),
+(30, 9, 'IMG_24524.png', 0),
+(31, 9, 'IMG_39950.png', 0),
+(32, 9, 'IMG_30247.jpg', 0),
+(33, 9, 'IMG_53880.jpg', 0);
 
 -- --------------------------------------------------------
 
@@ -245,6 +333,36 @@ INSERT INTO `team_details` (`sr_no`, `name`, `picture`) VALUES
 (33, 'Lucas', 'IMG_69903.jpg'),
 (36, 'Charlie', 'IMG_28257.jpg'),
 (45, 'Melissa', 'IMG_25634.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_cred`
+--
+
+CREATE TABLE `user_cred` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `pincode` int(11) NOT NULL,
+  `dob` date NOT NULL,
+  `profile` varchar(255) NOT NULL,
+  `pass` varchar(255) NOT NULL,
+  `isVerified` tinyint(4) NOT NULL DEFAULT 0,
+  `token` varchar(255) DEFAULT NULL,
+  `tokenExpire` date DEFAULT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1,
+  `dateTime` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user_cred`
+--
+
+INSERT INTO `user_cred` (`id`, `name`, `email`, `address`, `phone`, `pincode`, `dob`, `profile`, `pass`, `isVerified`, `token`, `tokenExpire`, `status`, `dateTime`) VALUES
+(8, 'Hrik Das', 'emptynull01@gmail.com', 'India', '9387500659', 788710, '2003-11-10', 'IMG_88971.jpeg', '$2y$10$ciOmP/70q2GgrOu49N2oo.8E1dS6nAYxghBea7Mzg2ZC8sxV3WLIu', 1, '5006bb1d2bd0f2f8828c4eb1ec3b19a3', NULL, 1, '2024-03-30 16:06:19');
 
 -- --------------------------------------------------------
 
@@ -349,6 +467,12 @@ ALTER TABLE `team_details`
   ADD PRIMARY KEY (`sr_no`);
 
 --
+-- Indexes for table `user_cred`
+--
+ALTER TABLE `user_cred`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user_queries`
 --
 ALTER TABLE `user_queries`
@@ -392,25 +516,25 @@ ALTER TABLE `features`
 -- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `room_facilities`
 --
 ALTER TABLE `room_facilities`
-  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT for table `room_features`
 --
 ALTER TABLE `room_features`
-  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
 -- AUTO_INCREMENT for table `room_image`
 --
 ALTER TABLE `room_image`
-  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `settings`
@@ -423,6 +547,12 @@ ALTER TABLE `settings`
 --
 ALTER TABLE `team_details`
   MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+
+--
+-- AUTO_INCREMENT for table `user_cred`
+--
+ALTER TABLE `user_cred`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user_queries`

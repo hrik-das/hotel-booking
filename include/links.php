@@ -7,21 +7,11 @@
 <script src="./js/auth.js" defer></script>
 
 <?php
-    session_start();
-    date_default_timezone_set("Asia/Kolkata");
     require("./admin/include/connect.php");
     require("./admin/include/essential.php");
     $contactQuery = "SELECT * FROM `contact_details` WHERE `sr_no`=?";
     $settingsQuery = "SELECT * FROM `settings` WHERE `sr_no`=?";
     $values = [1];
-    $contact_r = mysqli_fetch_assoc(select($contactQuery, $values, "i"));
+    $contactResult = mysqli_fetch_assoc(select($contactQuery, $values, "i"));
     $settings_r = mysqli_fetch_assoc(select($settingsQuery, $values, "i"));
-    if($settings_r["shutdown"] == true){
-        echo<<<alertbar
-            <div class='bg-danger fw-bold text-center text-white p-2'>
-                <i class='bi bi-exclamation-triangle-fill'></i>
-                Bookings are temporarily Closed!
-            </div>
-        alertbar;
-    }
 ?>

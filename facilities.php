@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/facilities.css">
     <?php require("include/links.php"); ?>
-    <title>Godlike Restaurant - Facilities</title>
+    <title><?php echo $settings_r["site_title"]; ?> - Facilities</title>
 </head>
 <body class="bg-light">
     <!-- Header -->

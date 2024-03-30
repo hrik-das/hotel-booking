@@ -1,14 +1,7 @@
-<?php
-    require("./admin/include/connect.php");
-    require("./admin/include/essential.php");
-    $contactQuery = "SELECT * FROM `contact_details` WHERE `sr_no`=?";
-    $values = [1];
-    $contactResult = mysqli_fetch_assoc(select($contactQuery, $values, "i"));
-?>
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm sticky-top" id="navbar">
     <div class="container-fluid">
-        <a class="navbar-brand me-5 fw-bold new-font fs-3" href="index.php"><?php $settings_r["site_title"]; ?></a>
+        <a class="navbar-brand me-5 fw-bold new-font fs-3" href="index.php"><?php echo $settings_r["site_title"]; ?></a>
         <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>

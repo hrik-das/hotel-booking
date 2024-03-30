@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require("./include/links.php"); ?>
-    <title><?php echo $settings_r['site_title']; ?> - Room Details</title>
+    <title><?php echo $settings_r["site_title"]; ?> - Room Details</title>
 </head>
 <body class="bg-light">
     <!-- Header -->

@@ -4,7 +4,6 @@
     $password = "";
     $database = "hotel-booking";
     $connect = mysqli_connect($hostname, $username, $password, $database);
-
     if(!$connect){
         die("Something went Wrong! ".mysqli_connect_error());
     }

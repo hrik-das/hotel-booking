@@ -1,8 +1,8 @@
 <div class="container-fluid mt-5 bg-white">
     <div class="row">
         <div class="col-lg-4 p-4">
-            <h3 class="new-font fs-3 fw-bold mb-2">GODLIKE RESTURANT</h3>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut numquam exercitationem neque, dignissimos nostrum ipsum distinctio nesciunt quos. Quod, totam?</p>
+            <h3 class="new-font fs-3 fw-bold mb-2"><?php echo $settings_r["site_title"]; ?></h3>
+            <p><?php echo $settings_r["site_about"]; ?></p>
         </div>
         <div class="col-lg-4 p-4">
             <h5 class="mb-3">Links</h5>

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/about.css">
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="./js/swiper.js" defer></script>
-    <title>Godlike Restaurant - About</title>
+    <title><?php echo $settings_r["site_title"]; ?> - About</title>
 </head>
 <body class="bg-light">
     <!-- Header -->

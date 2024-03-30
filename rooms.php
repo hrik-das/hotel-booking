@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require("include/links.php"); ?>
-    <title>Godlike Restaurant - Rooms</title>
+    <title><?php echo $settings_r["site_title"]; ?> - Rooms</title>
 </head>
 <body class="bg-light">
     <!-- Header -->

@@ -17,7 +17,7 @@
 
     // SENDGRID API KEY
     define("SENDGRID_API_KEY", "YOUR API KEY");
-    define("SENDGRID_NAME", "GODLIKE RESTAURANT");
+    define("SENDGRID_NAME", "Godlike Restaurant");
     define("SENDGRID_EMAIL", "hrikdas012@gmail.com");
 
     function alert($type, $message){
