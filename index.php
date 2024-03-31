@@ -8,6 +8,7 @@
     <?php require("include/links.php"); ?>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="./js/swiper.js" defer></script>
+    <script src="./js/recover_password.js" defer></script>
     <title><?php echo $settings_r["site_title"]; ?> - Home</title>
 </head>
 <body class="bg-light">
@@ -104,14 +105,14 @@
                         $thumbnailResult = mysqli_fetch_assoc($thumbnailQuery);
                         $roomThumbnail = ROOM_IMG_PATH.$thumbnailResult["image"];
                     }
-                    // $bookButton = "";
-                    // if(!($settings_r["shutdown"])){
-                    //     $login = 0;
-                    //     if(isset($_SESSION["login"]) && $_SESSION["login"] == true){
-                    //         $login = 1;
-                    //     }
-                    //     $bookButton = "<button onclick='checkLoginToBook($login, $data[id])' class='btn btn-sm w-100 text-white custom-bg shadow-none mb-2'>Book Now</button>";
-                    // }
+                    $bookButton = "";
+                    if(!($settings_r["shutdown"])){
+                        $login = 0;
+                        if(isset($_SESSION["login"]) && $_SESSION["login"] == true){
+                            $login = 1;
+                        }
+                        $bookButton = "<button onclick='checkLoginToBook($login, $data[id])' class='btn btn-sm w-100 text-white custom-bg shadow-none mb-2'>Book Now</button>";
+                    }
                     // Print Room Card
                     echo<<<data
                         <div class="col-lg-4 col-md-6 my-3">
@@ -274,6 +275,34 @@
         </div>
     </div>
 
+    <!-- Password Reset Modal -->
+    <div class="modal fade" id="recoveryModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="recovery-form">
+                    <div class="modal-header">
+                        <h5 class="modal-title d-flex align-items-center">
+                            <i class="bi bi-shield-lock fs-3 me-2"></i> Set Up New Password
+                        </h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-4">
+                            <label class="form-label">New Password</label>
+                            <input type="password" name="pass" class="form-control shadow-none" required>
+                            <input type="hidden" name="email">
+                            <input type="hidden" name="token">
+                        </div>
+                        <div class="text-end mb-2">
+                            <button type="button" class="btn shadow-none" data-bs-toggle="modal" data-bs-target="#recoveryModal" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-dark shadow-none">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <?php require("./ajax/recovery_password.php"); ?>
     <!-- Footer -->
     <?php require("include/footer.php"); ?>
 </body>

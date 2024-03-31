@@ -93,14 +93,14 @@
                             $thumbnailResult = mysqli_fetch_assoc($thumbnailQuery);
                             $roomThumbnail = ROOM_IMG_PATH.$thumbnailResult["image"];
                         }
-                        // $bookButton = "";
-                        // if(!($settings_r["shutdown"])){
-                        //     $login = 0;
-                        //     if(isset($_SESSION["login"]) && $_SESSION["login"] == true){
-                        //         $login = 1;
-                        //     }
-                        //     $bookButton = "<button onclick='checkLoginToBook($login, $data[id])' class='btn btn-sm w-100 text-white custom-bg shadow-none mb-2'>Book Now</button>";
-                        // }
+                        $bookButton = "";
+                        if(!($settings_r["shutdown"])){
+                            $login = 0;
+                            if(isset($_SESSION["login"]) && $_SESSION["login"] == true){
+                                $login = 1;
+                            }
+                            $bookButton = "<button onclick='checkLoginToBook($login, $data[id])' class='btn btn-sm w-100 text-white custom-bg shadow-none mb-2'>Book Now</button>";
+                        }
                         // Print Room Card
                         echo<<<data
                             <div class="card mb-4 border-0 shadow">

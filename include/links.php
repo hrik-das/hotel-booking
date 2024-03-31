@@ -7,8 +7,10 @@
 <script src="./js/auth.js" defer></script>
 
 <?php
+    session_start();
     require("./admin/include/connect.php");
     require("./admin/include/essential.php");
+    date_default_timezone_set("Asia/Kolkata");
     $contactQuery = "SELECT * FROM `contact_details` WHERE `sr_no`=?";
     $settingsQuery = "SELECT * FROM `settings` WHERE `sr_no`=?";
     $values = [1];

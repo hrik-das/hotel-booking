@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 30, 2024 at 11:07 AM
+-- Generation Time: Mar 31, 2024 at 12:28 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -349,7 +349,7 @@ CREATE TABLE `user_cred` (
   `pincode` int(11) NOT NULL,
   `dob` date NOT NULL,
   `profile` varchar(255) NOT NULL,
-  `pass` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `isVerified` tinyint(4) NOT NULL DEFAULT 0,
   `token` varchar(255) DEFAULT NULL,
   `tokenExpire` date DEFAULT NULL,
@@ -361,8 +361,9 @@ CREATE TABLE `user_cred` (
 -- Dumping data for table `user_cred`
 --
 
-INSERT INTO `user_cred` (`id`, `name`, `email`, `address`, `phone`, `pincode`, `dob`, `profile`, `pass`, `isVerified`, `token`, `tokenExpire`, `status`, `dateTime`) VALUES
-(8, 'Hrik Das', 'emptynull01@gmail.com', 'India', '9387500659', 788710, '2003-11-10', 'IMG_88971.jpeg', '$2y$10$ciOmP/70q2GgrOu49N2oo.8E1dS6nAYxghBea7Mzg2ZC8sxV3WLIu', 1, '5006bb1d2bd0f2f8828c4eb1ec3b19a3', NULL, 1, '2024-03-30 16:06:19');
+INSERT INTO `user_cred` (`id`, `name`, `email`, `address`, `phone`, `pincode`, `dob`, `profile`, `password`, `isVerified`, `token`, `tokenExpire`, `status`, `dateTime`) VALUES
+(8, 'Hrik Das', 'emptynull01@gmail.com', 'India', '9387500659', 788710, '2003-11-10', 'IMG_88971.jpeg', '$2y$10$msIXVM7Y58PxCKaH643TAOjoaohqFucNehNsxc./2k6E9USGXy.na', 1, NULL, NULL, 1, '2024-03-30 16:06:19'),
+(9, 'Nanda Gopal Das', 'hrikdas012@gmail.com', 'India', '6002584505', 788710, '2003-11-10', 'IMG_42986.jpeg', '$2y$10$GfKc7PYeVYX4EmKF3ElWCuHDp.UoYgmIIMbbJAW8qnk6vKy9W74s6', 0, '828bb40f131d7a922d8d6de02ece8d69', NULL, 1, '2024-03-31 02:30:44');
 
 -- --------------------------------------------------------
 
@@ -552,7 +553,7 @@ ALTER TABLE `team_details`
 -- AUTO_INCREMENT for table `user_cred`
 --
 ALTER TABLE `user_cred`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `user_queries`
