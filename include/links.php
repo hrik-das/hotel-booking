@@ -16,4 +16,12 @@
     $values = [1];
     $contactResult = mysqli_fetch_assoc(select($contactQuery, $values, "i"));
     $settings_r = mysqli_fetch_assoc(select($settingsQuery, $values, "i"));
+    if($settings_r["shutdown"]){
+        echo<<<alertbar
+            <div class="bg-danger fw-bold text-center p-2">
+                <i class="bi bi-exclamation-triangle-fill"></i>
+                Bookings are Temporarily Closed!!!
+            </div>
+        alertbar;
+    }
 ?>

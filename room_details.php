@@ -119,7 +119,7 @@
                                     <span class='badge rounded-pill bg-light text-dark text-wrap me-1 mb-1 lh-base'>$data[area] sqft.</span>
                                 </div>
                             area;
-                            if(!($settings_r['shutdown'])){
+                            if(!($settings_r["shutdown"])){
                                 $login = 0;
                                 if(isset($_SESSION['login']) && $_SESSION['login'] == true){
                                     $login = 1;

@@ -29,10 +29,10 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="rooms.php">Rooms</a>
+                        <a class="nav-link text-white" href="users.php">Users</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="users.php">Users</a>
+                        <a class="nav-link text-white" href="rooms.php">Rooms</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="user_queries.php">User Queries</a>

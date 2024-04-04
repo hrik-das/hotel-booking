@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2024 at 12:28 PM
+-- Generation Time: Apr 04, 2024 at 01:40 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -357,14 +357,6 @@ CREATE TABLE `user_cred` (
   `dateTime` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `user_cred`
---
-
-INSERT INTO `user_cred` (`id`, `name`, `email`, `address`, `phone`, `pincode`, `dob`, `profile`, `password`, `isVerified`, `token`, `tokenExpire`, `status`, `dateTime`) VALUES
-(8, 'Hrik Das', 'emptynull01@gmail.com', 'India', '9387500659', 788710, '2003-11-10', 'IMG_88971.jpeg', '$2y$10$msIXVM7Y58PxCKaH643TAOjoaohqFucNehNsxc./2k6E9USGXy.na', 1, NULL, NULL, 1, '2024-03-30 16:06:19'),
-(9, 'Nanda Gopal Das', 'hrikdas012@gmail.com', 'India', '6002584505', 788710, '2003-11-10', 'IMG_42986.jpeg', '$2y$10$GfKc7PYeVYX4EmKF3ElWCuHDp.UoYgmIIMbbJAW8qnk6vKy9W74s6', 0, '828bb40f131d7a922d8d6de02ece8d69', NULL, 1, '2024-03-31 02:30:44');
-
 -- --------------------------------------------------------
 
 --
@@ -553,7 +545,7 @@ ALTER TABLE `team_details`
 -- AUTO_INCREMENT for table `user_cred`
 --
 ALTER TABLE `user_cred`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `user_queries`

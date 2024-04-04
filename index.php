@@ -107,11 +107,12 @@
                     }
                     $bookButton = "";
                     if(!($settings_r["shutdown"])){
-                        $login = 0;
-                        if(isset($_SESSION["login"]) && $_SESSION["login"] == true){
-                            $login = 1;
-                        }
-                        $bookButton = "<button onclick='checkLoginToBook($login, $data[id])' class='btn btn-sm w-100 text-white custom-bg shadow-none mb-2'>Book Now</button>";
+                        $bookButton = "<a href='#' class='btn btn-sm text-white custom-bg shadow-none'>Book Now</a>";
+                        // $login = 0;
+                        // if(isset($_SESSION["login"]) && $_SESSION["login"] == true){
+                        //     $login = 1;
+                        // }
+                        // $bookButton = "<button onclick='checkLoginToBook($login, $data[id])' class='btn btn-sm w-100 text-white custom-bg shadow-none mb-2'>Book Now</button>";
                     }
                     // Print Room Card
                     echo<<<data
@@ -144,7 +145,7 @@
                                         </span>
                                     </div>
                                     <div class="d-flex justify-content-evenly mb-2">
-                                        <a href="#" class="btn btn-sm text-white custom-bg shadow-none">Book Now</a>
+                                        $bookButton
                                         <a href="room_details.php?id=$data[id]" class="btn btn-sm btn-outline-dark shadow-none">More Details</a>
                                     </div>
                                 </div>
