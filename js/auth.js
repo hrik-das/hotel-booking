@@ -159,8 +159,8 @@ function forgotPassword(){
 
 function checkLoginToBook(status, roomId){
     if(status){
-        window.location.href = "confirmBooking.php?id="+roomId;
+        window.location.href = "confirm_booking.php?id="+roomId;
     }else{
         alert("error", "Please Login to Book Your Room!");
     }
-}   
+}

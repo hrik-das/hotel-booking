@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 04, 2024 at 01:40 PM
+-- Generation Time: Apr 06, 2024 at 08:37 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -39,6 +39,67 @@ CREATE TABLE `admin_cred` (
 
 INSERT INTO `admin_cred` (`sr_no`, `admin_name`, `admin_pass`) VALUES
 (1, 'godlike', '12345');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booking_details`
+--
+
+CREATE TABLE `booking_details` (
+  `sr_no` int(11) NOT NULL,
+  `booking_id` int(11) NOT NULL,
+  `room_name` varchar(255) NOT NULL,
+  `price` int(11) NOT NULL,
+  `total_pay` int(11) NOT NULL,
+  `room_no` int(11) DEFAULT NULL,
+  `username` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `booking_details`
+--
+
+INSERT INTO `booking_details` (`sr_no`, `booking_id`, `room_name`, `price`, `total_pay`, `room_no`, `username`, `phone`, `address`) VALUES
+(1, 1, 'Simple Room', 399, 1197, NULL, 'Hrik Das', '09387500659', 'India'),
+(2, 2, 'Simple Room', 399, 1596, NULL, 'Hrik Das', '09387500659', 'India'),
+(3, 3, 'Simple Room', 399, 1596, NULL, 'Hrik Das', '09387500659', 'India'),
+(7, 7, 'Simple Room', 399, 5586, NULL, 'Hrik Das', '09387500659', 'India');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `booking_order`
+--
+
+CREATE TABLE `booking_order` (
+  `booking_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `room_id` int(11) NOT NULL,
+  `checkin` date NOT NULL,
+  `checkout` date NOT NULL,
+  `arrival` tinyint(4) NOT NULL DEFAULT 0,
+  `refund` int(11) DEFAULT NULL,
+  `booking_status` varchar(255) NOT NULL DEFAULT 'pending',
+  `order_id` varchar(255) NOT NULL,
+  `transaction_id` varchar(255) DEFAULT NULL,
+  `transaction_amount` bigint(11) NOT NULL,
+  `transaction_status` varchar(255) NOT NULL DEFAULT 'pending',
+  `response_message` varchar(255) DEFAULT NULL,
+  `dateTime` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `booking_order`
+--
+
+INSERT INTO `booking_order` (`booking_id`, `user_id`, `room_id`, `checkin`, `checkout`, `arrival`, `refund`, `booking_status`, `order_id`, `transaction_id`, `transaction_amount`, `transaction_status`, `response_message`, `dateTime`) VALUES
+(1, 12, 6, '2024-04-06', '2024-04-09', 0, NULL, 'pending', 'ORD_126202185', NULL, 0, 'pending', NULL, '2024-04-06'),
+(2, 12, 6, '2024-04-06', '2024-04-10', 0, NULL, 'booked', 'ORD_12490237', '20220720111212800110168128204225279', 1596, 'TXN_SUCCESS', 'Txn Success', '2024-04-06'),
+(3, 12, 6, '2024-04-06', '2024-04-10', 0, NULL, 'payment failed', 'ORD_127974782', '20220720111212800110168128204226547', 0, 'TXN_FAILURE', 'Your Payment has been declined by your bank.', '2024-04-06'),
+(7, 12, 6, '2024-04-06', '2024-04-20', 0, NULL, 'pending', 'ORD_121989775', NULL, 0, 'pending', NULL, '2024-04-06');
 
 -- --------------------------------------------------------
 
@@ -357,6 +418,13 @@ CREATE TABLE `user_cred` (
   `dateTime` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `user_cred`
+--
+
+INSERT INTO `user_cred` (`id`, `name`, `email`, `address`, `phone`, `pincode`, `dob`, `profile`, `password`, `isVerified`, `token`, `tokenExpire`, `status`, `dateTime`) VALUES
+(12, 'Hrik Das', 'emptynull01@gmail.com', 'India', '09387500659', 788710, '2003-11-10', 'IMG_22872.jpeg', '$2y$10$Y2P8oUl5sBxemT57OqNPjOz//7hI8szhx/udXURQPnCgj7x3HKinq', 1, '2b72d37d1efe8c16c56942812f05cb77', NULL, 1, '2024-04-05 16:29:37');
+
 -- --------------------------------------------------------
 
 --
@@ -393,6 +461,21 @@ INSERT INTO `user_queries` (`sr_no`, `name`, `email`, `subject`, `message`, `dat
 --
 ALTER TABLE `admin_cred`
   ADD PRIMARY KEY (`sr_no`);
+
+--
+-- Indexes for table `booking_details`
+--
+ALTER TABLE `booking_details`
+  ADD PRIMARY KEY (`sr_no`),
+  ADD KEY `booking_id` (`booking_id`);
+
+--
+-- Indexes for table `booking_order`
+--
+ALTER TABLE `booking_order`
+  ADD PRIMARY KEY (`booking_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `room_id` (`room_id`);
 
 --
 -- Indexes for table `carousel`
@@ -482,6 +565,18 @@ ALTER TABLE `admin_cred`
   MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `booking_details`
+--
+ALTER TABLE `booking_details`
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `booking_order`
+--
+ALTER TABLE `booking_order`
+  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `carousel`
 --
 ALTER TABLE `carousel`
@@ -545,7 +640,7 @@ ALTER TABLE `team_details`
 -- AUTO_INCREMENT for table `user_cred`
 --
 ALTER TABLE `user_cred`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `user_queries`
@@ -556,6 +651,19 @@ ALTER TABLE `user_queries`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `booking_details`
+--
+ALTER TABLE `booking_details`
+  ADD CONSTRAINT `booking_details_ibfk_1` FOREIGN KEY (`booking_id`) REFERENCES `booking_order` (`booking_id`);
+
+--
+-- Constraints for table `booking_order`
+--
+ALTER TABLE `booking_order`
+  ADD CONSTRAINT `booking_order_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user_cred` (`id`),
+  ADD CONSTRAINT `booking_order_ibfk_2` FOREIGN KEY (`room_id`) REFERENCES `rooms` (`id`);
 
 --
 -- Constraints for table `room_facilities`

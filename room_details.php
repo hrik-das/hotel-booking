@@ -121,7 +121,7 @@
                             area;
                             if(!($settings_r["shutdown"])){
                                 $login = 0;
-                                if(isset($_SESSION['login']) && $_SESSION['login'] == true){
+                                if(isset($_SESSION["login"]) && $_SESSION["login"] == true){
                                     $login = 1;
                                 }
                                 echo<<<book
