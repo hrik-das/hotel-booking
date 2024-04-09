@@ -23,7 +23,13 @@
                         <div class="collapse show px-3 small mb-1" id="bookingLinks">
                             <ul class="nav nav-pills flex-column rounded border border-secondry">
                                 <li class="nav-item">
-                                    <a class="nav-link text-white" href="booking.php">New Bookings</a>
+                                    <a class="nav-link text-white" href="new_bookings.php">New Bookings</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="refund_bookings.php">Refund Bookings</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" href="booking_records.php">Booking Records</a>
                                 </li>
                             </ul>
                         </div>

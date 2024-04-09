@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2024 at 08:37 PM
+-- Generation Time: Apr 09, 2024 at 10:44 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -52,7 +52,7 @@ CREATE TABLE `booking_details` (
   `room_name` varchar(255) NOT NULL,
   `price` int(11) NOT NULL,
   `total_pay` int(11) NOT NULL,
-  `room_no` int(11) DEFAULT NULL,
+  `room_no` varchar(255) DEFAULT NULL,
   `username` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL
@@ -64,9 +64,12 @@ CREATE TABLE `booking_details` (
 
 INSERT INTO `booking_details` (`sr_no`, `booking_id`, `room_name`, `price`, `total_pay`, `room_no`, `username`, `phone`, `address`) VALUES
 (1, 1, 'Simple Room', 399, 1197, NULL, 'Hrik Das', '09387500659', 'India'),
-(2, 2, 'Simple Room', 399, 1596, NULL, 'Hrik Das', '09387500659', 'India'),
+(2, 2, 'Simple Room', 399, 1596, 'A5', 'Hrik Das', '09387500659', 'India'),
 (3, 3, 'Simple Room', 399, 1596, NULL, 'Hrik Das', '09387500659', 'India'),
-(7, 7, 'Simple Room', 399, 5586, NULL, 'Hrik Das', '09387500659', 'India');
+(8, 8, 'Simple Room', 399, 3990, NULL, 'Hrik Das', '09387500659', 'India'),
+(9, 9, 'Simple Room', 399, 1197, NULL, 'Hrik Das', '09387500659', 'India'),
+(10, 10, 'Simple Room', 399, 7182, NULL, 'Hrik Das', '09387500659', 'India'),
+(11, 11, 'Deluxe Room', 899, 11687, NULL, 'Hrik Das', '09387500659', 'India');
 
 -- --------------------------------------------------------
 
@@ -97,9 +100,12 @@ CREATE TABLE `booking_order` (
 
 INSERT INTO `booking_order` (`booking_id`, `user_id`, `room_id`, `checkin`, `checkout`, `arrival`, `refund`, `booking_status`, `order_id`, `transaction_id`, `transaction_amount`, `transaction_status`, `response_message`, `dateTime`) VALUES
 (1, 12, 6, '2024-04-06', '2024-04-09', 0, NULL, 'pending', 'ORD_126202185', NULL, 0, 'pending', NULL, '2024-04-06'),
-(2, 12, 6, '2024-04-06', '2024-04-10', 0, NULL, 'booked', 'ORD_12490237', '20220720111212800110168128204225279', 1596, 'TXN_SUCCESS', 'Txn Success', '2024-04-06'),
-(3, 12, 6, '2024-04-06', '2024-04-10', 0, NULL, 'payment failed', 'ORD_127974782', '20220720111212800110168128204226547', 0, 'TXN_FAILURE', 'Your Payment has been declined by your bank.', '2024-04-06'),
-(7, 12, 6, '2024-04-06', '2024-04-20', 0, NULL, 'pending', 'ORD_121989775', NULL, 0, 'pending', NULL, '2024-04-06');
+(2, 12, 6, '2024-04-06', '2024-04-10', 1, NULL, 'booked', 'ORD_12490237', '20220720111212800110168128204225279', 1596, 'TXN_SUCCESS', 'Txn Success', '2024-04-06'),
+(3, 12, 6, '2024-04-06', '2024-04-10', 0, NULL, 'payment failed', 'ORD_127974782', '20220720111212800110168128204226547', 1596, 'TXN_FAILURE', 'Your Payment has been declined by your bank.', '2024-04-06'),
+(8, 12, 6, '2024-04-10', '2024-04-20', 0, 1, 'cancelled', 'ORD_127784936', '20220720111212800110168128204226777', 3990, 'TXN_SUCCESS', 'Txn Success', '2024-04-09'),
+(9, 12, 6, '2024-04-26', '2024-04-29', 0, NULL, 'booked', 'ORD_126960088', '20220720111212800110168128204226888', 1197, 'TXN_SUCCESS', 'Txn Success', '2024-04-09'),
+(10, 12, 6, '2024-04-11', '2024-04-29', 0, NULL, 'booked', 'ORD_127936095', '20220720111212800110168128204226897', 7182, 'TXN_SUCCESS', 'Txn Success', '2024-04-09'),
+(11, 12, 7, '2024-04-20', '2024-05-03', 0, 0, 'cancelled', 'ORD_124347931', '20220720111212800110168128204226741', 11687, 'TXN_SUCCESS', 'Txn Success', '2024-04-10');
 
 -- --------------------------------------------------------
 
@@ -423,7 +429,9 @@ CREATE TABLE `user_cred` (
 --
 
 INSERT INTO `user_cred` (`id`, `name`, `email`, `address`, `phone`, `pincode`, `dob`, `profile`, `password`, `isVerified`, `token`, `tokenExpire`, `status`, `dateTime`) VALUES
-(12, 'Hrik Das', 'emptynull01@gmail.com', 'India', '09387500659', 788710, '2003-11-10', 'IMG_22872.jpeg', '$2y$10$Y2P8oUl5sBxemT57OqNPjOz//7hI8szhx/udXURQPnCgj7x3HKinq', 1, '2b72d37d1efe8c16c56942812f05cb77', NULL, 1, '2024-04-05 16:29:37');
+(12, 'Hrik Das', 'emptynull01@gmail.com', 'India', '09387500659', 788710, '2003-11-10', 'IMG_22872.jpeg', '$2y$10$Y2P8oUl5sBxemT57OqNPjOz//7hI8szhx/udXURQPnCgj7x3HKinq', 1, '2b72d37d1efe8c16c56942812f05cb77', NULL, 1, '2024-04-05 16:29:37'),
+(13, 'Jhon Doe', 'jhon.12doe@gmail.com', 'India', '0123456789', 788710, '2001-01-01', 'IMG_58671.jpeg', '$2y$10$ONZ2E39b9I389zH7RomDT.TggzugnpAVSVvtAqnf/l7/QfGLDGryC', 0, 'beeab0f56f89a19238793968629b684e', NULL, 1, '2024-04-09 00:16:58'),
+(15, 'Jane Doe', 'jane.12doe@yahoo.in', 'India', '0123456788', 788710, '2001-01-01', 'IMG_25478.jpeg', '$2y$10$2haUkGd6ufLEvqqjM6q05..5YiVAOjOe5.gqhMuL64zkwsxtXIP5i', 0, 'dde7f1523a13dc39c9c1e517b58cf136', NULL, 1, '2024-04-09 00:18:18');
 
 -- --------------------------------------------------------
 
@@ -568,13 +576,13 @@ ALTER TABLE `admin_cred`
 -- AUTO_INCREMENT for table `booking_details`
 --
 ALTER TABLE `booking_details`
-  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `booking_order`
 --
 ALTER TABLE `booking_order`
-  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `carousel`
@@ -640,7 +648,7 @@ ALTER TABLE `team_details`
 -- AUTO_INCREMENT for table `user_cred`
 --
 ALTER TABLE `user_cred`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `user_queries`

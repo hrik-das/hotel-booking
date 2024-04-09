@@ -1,5 +1,3 @@
-
-
 function getUsers(){
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "./ajax/users.php", true);
