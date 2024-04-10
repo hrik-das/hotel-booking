@@ -5,7 +5,7 @@
 
     if(isset($_POST["getBookings"])){
         $filterData = filteration($_POST);
-        $limit = 1;    // Change this limit variable to Select How many Rows of data you wanna show in the pagination
+        $limit = 2;    // Change this limit variable to Select How many Rows of data you wanna show in the pagination
         $page = $filterData["page"];
         $start = ($page - 1) * $limit;
         $i = $start + 1;

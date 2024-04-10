@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 09, 2024 at 10:44 PM
+-- Generation Time: Apr 10, 2024 at 01:23 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -69,7 +69,8 @@ INSERT INTO `booking_details` (`sr_no`, `booking_id`, `room_name`, `price`, `tot
 (8, 8, 'Simple Room', 399, 3990, NULL, 'Hrik Das', '09387500659', 'India'),
 (9, 9, 'Simple Room', 399, 1197, NULL, 'Hrik Das', '09387500659', 'India'),
 (10, 10, 'Simple Room', 399, 7182, NULL, 'Hrik Das', '09387500659', 'India'),
-(11, 11, 'Deluxe Room', 899, 11687, NULL, 'Hrik Das', '09387500659', 'India');
+(11, 11, 'Deluxe Room', 899, 11687, NULL, 'Hrik Das', '09387500659', 'India'),
+(12, 12, 'Simple Room', 399, 7581, NULL, 'Hrik Das', '09387500659', 'India');
 
 -- --------------------------------------------------------
 
@@ -103,9 +104,10 @@ INSERT INTO `booking_order` (`booking_id`, `user_id`, `room_id`, `checkin`, `che
 (2, 12, 6, '2024-04-06', '2024-04-10', 1, NULL, 'booked', 'ORD_12490237', '20220720111212800110168128204225279', 1596, 'TXN_SUCCESS', 'Txn Success', '2024-04-06'),
 (3, 12, 6, '2024-04-06', '2024-04-10', 0, NULL, 'payment failed', 'ORD_127974782', '20220720111212800110168128204226547', 1596, 'TXN_FAILURE', 'Your Payment has been declined by your bank.', '2024-04-06'),
 (8, 12, 6, '2024-04-10', '2024-04-20', 0, 1, 'cancelled', 'ORD_127784936', '20220720111212800110168128204226777', 3990, 'TXN_SUCCESS', 'Txn Success', '2024-04-09'),
-(9, 12, 6, '2024-04-26', '2024-04-29', 0, NULL, 'booked', 'ORD_126960088', '20220720111212800110168128204226888', 1197, 'TXN_SUCCESS', 'Txn Success', '2024-04-09'),
-(10, 12, 6, '2024-04-11', '2024-04-29', 0, NULL, 'booked', 'ORD_127936095', '20220720111212800110168128204226897', 7182, 'TXN_SUCCESS', 'Txn Success', '2024-04-09'),
-(11, 12, 7, '2024-04-20', '2024-05-03', 0, 0, 'cancelled', 'ORD_124347931', '20220720111212800110168128204226741', 11687, 'TXN_SUCCESS', 'Txn Success', '2024-04-10');
+(9, 12, 6, '2024-04-26', '2024-04-29', 1, NULL, 'booked', 'ORD_126960088', '20220720111212800110168128204226888', 1197, 'TXN_SUCCESS', 'Txn Success', '2024-04-09'),
+(10, 12, 6, '2024-04-11', '2024-04-29', 1, NULL, 'booked', 'ORD_127936095', '20220720111212800110168128204226897', 7182, 'TXN_SUCCESS', 'Txn Success', '2024-04-09'),
+(11, 12, 7, '2024-04-20', '2024-05-03', 0, 1, 'cancelled', 'ORD_124347931', '20220720111212800110168128204226741', 11687, 'TXN_SUCCESS', 'Txn Success', '2024-04-10'),
+(12, 12, 6, '2024-04-12', '2024-05-01', 0, 1, 'cancelled', 'ORD_122863988', '20220720111212800110168128204221235', 7581, 'TXN_SUCCESS', 'Txn Success', '2024-04-10');
 
 -- --------------------------------------------------------
 
@@ -576,13 +578,13 @@ ALTER TABLE `admin_cred`
 -- AUTO_INCREMENT for table `booking_details`
 --
 ALTER TABLE `booking_details`
-  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `booking_order`
 --
 ALTER TABLE `booking_order`
-  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `carousel`

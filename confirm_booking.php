@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require("./include/links.php"); ?>
-    <script src="./js/booking.js" defer></script>
+    <script src="./js/confirm_booking.js" defer></script>
     <title><?php echo $settings_r["site_title"]; ?> - Confirm Booking</title>
 </head>
 <body class="bg-light">
@@ -36,7 +36,7 @@
     <!-- Filters -->
     <div class="container">
         <div class="row">
-            <div class="col-12 my-5 px-4">
+            <div class="col-12 my-5 px-4 mb-4">
                 <h2 class="fw-bold">Confirm Booking</h2>
                 <div id="room-style">
                     <a href="index.php" class="text-secondary text-decoration-none">Home</a>

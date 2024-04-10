@@ -1,8 +1,11 @@
 <?php
-    require("./include/connect.php");
-    require("./include/essential.php");
-    require("./include/mpdf/vendor/autoload.php");    // Require composer autoload
-    adminLogin();
+    require("./admin/include/connect.php");
+    require("./admin/include/essential.php");
+    require("./admin/include/mpdf/vendor/autoload.php");    // Require composer autoload
+    session_start();
+    if(!(isset($_SESSION["login"]) || $_SESSION["login"] == true)){
+        redirect("index.php");
+    }
 
     if(isset($_GET["generatepdf"]) && isset($_GET["id"])){
         $filterData = filteration($_GET);
@@ -10,7 +13,7 @@
         $result = mysqli_query($connect, $query);
         $totalRows = mysqli_num_rows($result);
         if($totalRows == 0){
-            header("Location: dashboard.php");
+            header("Location: index.php");
         }
         $data = mysqli_fetch_assoc($result);
         $date = date("h:iA | d-m-Y", strtotime($data["dateTime"]));
@@ -71,6 +74,6 @@
         $mpdf->Output($data["order_id"].".pdf", "D");    // Output a PDF file directly to the browser
         // "D" send to the browser and force a file download with the name given by $filename. This parameter sets HTTP headers using standard header PHP function.
     }else{
-        header("Location: dashboard.php");
+        header("Location: index.php");
     }
 ?>
