@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 10, 2024 at 01:23 PM
+-- Generation Time: Apr 12, 2024 at 12:59 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -64,13 +64,16 @@ CREATE TABLE `booking_details` (
 
 INSERT INTO `booking_details` (`sr_no`, `booking_id`, `room_name`, `price`, `total_pay`, `room_no`, `username`, `phone`, `address`) VALUES
 (1, 1, 'Simple Room', 399, 1197, NULL, 'Hrik Das', '09387500659', 'India'),
-(2, 2, 'Simple Room', 399, 1596, 'A5', 'Hrik Das', '09387500659', 'India'),
+(2, 2, 'Simple Room', 399, 1596, 'A6', 'Hrik Das', '09387500659', 'India'),
 (3, 3, 'Simple Room', 399, 1596, NULL, 'Hrik Das', '09387500659', 'India'),
-(8, 8, 'Simple Room', 399, 3990, NULL, 'Hrik Das', '09387500659', 'India'),
+(8, 8, 'Simple Room', 399, 3990, 'A5', 'Hrik Das', '09387500659', 'India'),
 (9, 9, 'Simple Room', 399, 1197, NULL, 'Hrik Das', '09387500659', 'India'),
 (10, 10, 'Simple Room', 399, 7182, NULL, 'Hrik Das', '09387500659', 'India'),
-(11, 11, 'Deluxe Room', 899, 11687, NULL, 'Hrik Das', '09387500659', 'India'),
-(12, 12, 'Simple Room', 399, 7581, NULL, 'Hrik Das', '09387500659', 'India');
+(12, 12, 'Simple Room', 399, 7581, NULL, 'Hrik Das', '09387500659', 'India'),
+(13, 13, 'Simple Room', 399, 5985, NULL, 'Hrik Das', '09387500659', 'India'),
+(14, 14, 'Deluxe Room', 899, 2697, NULL, 'Hrik Das', '09387500659', 'India'),
+(15, 15, 'Deluxe Room', 899, 5394, NULL, 'Hrik Das', '09387500659', 'India'),
+(16, 16, 'Deluxe Room', 899, 2697, NULL, 'Hrik Das', '09387500659', 'India');
 
 -- --------------------------------------------------------
 
@@ -103,11 +106,14 @@ INSERT INTO `booking_order` (`booking_id`, `user_id`, `room_id`, `checkin`, `che
 (1, 12, 6, '2024-04-06', '2024-04-09', 0, NULL, 'pending', 'ORD_126202185', NULL, 0, 'pending', NULL, '2024-04-06'),
 (2, 12, 6, '2024-04-06', '2024-04-10', 1, NULL, 'booked', 'ORD_12490237', '20220720111212800110168128204225279', 1596, 'TXN_SUCCESS', 'Txn Success', '2024-04-06'),
 (3, 12, 6, '2024-04-06', '2024-04-10', 0, NULL, 'payment failed', 'ORD_127974782', '20220720111212800110168128204226547', 1596, 'TXN_FAILURE', 'Your Payment has been declined by your bank.', '2024-04-06'),
-(8, 12, 6, '2024-04-10', '2024-04-20', 0, 1, 'cancelled', 'ORD_127784936', '20220720111212800110168128204226777', 3990, 'TXN_SUCCESS', 'Txn Success', '2024-04-09'),
+(8, 12, 6, '2024-04-10', '2024-04-20', 0, 0, 'cancelled', 'ORD_127784936', '20220720111212800110168128204226777', 3990, 'TXN_SUCCESS', 'Txn Success', '2024-04-09'),
 (9, 12, 6, '2024-04-26', '2024-04-29', 1, NULL, 'booked', 'ORD_126960088', '20220720111212800110168128204226888', 1197, 'TXN_SUCCESS', 'Txn Success', '2024-04-09'),
-(10, 12, 6, '2024-04-11', '2024-04-29', 1, NULL, 'booked', 'ORD_127936095', '20220720111212800110168128204226897', 7182, 'TXN_SUCCESS', 'Txn Success', '2024-04-09'),
-(11, 12, 7, '2024-04-20', '2024-05-03', 0, 1, 'cancelled', 'ORD_124347931', '20220720111212800110168128204226741', 11687, 'TXN_SUCCESS', 'Txn Success', '2024-04-10'),
-(12, 12, 6, '2024-04-12', '2024-05-01', 0, 1, 'cancelled', 'ORD_122863988', '20220720111212800110168128204221235', 7581, 'TXN_SUCCESS', 'Txn Success', '2024-04-10');
+(10, 12, 6, '2024-04-11', '2024-04-29', 0, NULL, 'booked', 'ORD_127936095', '20220720111212800110168128204226897', 7182, 'TXN_SUCCESS', 'Txn Success', '2024-04-09'),
+(12, 12, 6, '2024-04-12', '2024-05-01', 0, 1, 'cancelled', 'ORD_122863988', '20220720111212800110168128204221235', 7581, 'TXN_SUCCESS', 'Txn Success', '2024-04-10'),
+(13, 12, 6, '2024-04-10', '2024-04-25', 0, NULL, 'pending', 'ORD_123742900', NULL, 0, 'pending', NULL, '2024-04-10'),
+(14, 12, 7, '2024-04-12', '2024-04-15', 0, NULL, 'booked', 'ORD_126507178', '20220720111212800110168128204227894', 2697, 'TXN_SUCCESS', 'Txn Success', '2024-04-12'),
+(15, 12, 7, '2024-04-14', '2024-04-20', 0, NULL, 'booked', 'ORD_122951135', '20220720111212800110168128204228787', 5394, 'TXN_SUCCESS', 'Txn Success', '2024-04-12'),
+(16, 12, 7, '2024-04-15', '2024-04-18', 0, NULL, 'booked', 'ORD_127548929', '20220720111212800110168128204229898', 2697, 'TXN_SUCCESS', 'Txn Success', '2024-04-12');
 
 -- --------------------------------------------------------
 
@@ -234,7 +240,7 @@ CREATE TABLE `rooms` (
 
 INSERT INTO `rooms` (`id`, `name`, `area`, `price`, `quantity`, `adult`, `children`, `description`, `status`, `removed`) VALUES
 (6, 'Simple Room', 149, 399, 50, 3, 3, 'This is a Simple Room for Night Stays specially for Tourist. Very Comfortable Room with Single Bedroom and a Single Bathroom and a Kitchen. Geyser for and Room Heater is also Available for our Customers facilities.', 1, 0),
-(7, 'Deluxe Room', 240, 899, 20, 2, 1, 'This is a Deluxe Room with Super Features and Facilities added for Customers Relaxation with a Double Bedroom and Single Bathroom and a Kitchen with 2 Sofas and a Living Room for Enjoy.', 1, 0),
+(7, 'Deluxe Room', 240, 899, 3, 2, 1, 'This is a Deluxe Room with Super Features and Facilities added for Customers Relaxation with a Double Bedroom and Single Bathroom and a Kitchen with 2 Sofas and a Living Room for Enjoy.', 1, 0),
 (8, 'Super Deluxe Room', 500, 2499, 10, 1, 1, 'A Super Deluxe Room for our Extremely Deluxe Customers with 2 Double Bedrooms and 2 Bathrooms and 2 Kitchen for Comfort and a Living Room for Relaxation with Room Heater and Unlimited Internet Connectivity to Enjoy the Fullest.', 1, 0),
 (9, 'Luxury Room', 587, 2899, 10, 1, 1, 'A Luxury Room for our VIP Customers and Celebrities for Night Stays and Enjoy with Internet Connectivity and Room Heater Bathroom Geyser and Living Room and Massage Parlour for Relaxation and 24x7 Room Service Available.', 1, 0);
 
@@ -257,11 +263,6 @@ CREATE TABLE `room_facilities` (
 INSERT INTO `room_facilities` (`sr_no`, `room_id`, `facilities_id`) VALUES
 (49, 6, 14),
 (50, 6, 15),
-(51, 7, 13),
-(52, 7, 14),
-(53, 7, 15),
-(54, 7, 16),
-(55, 7, 18),
 (62, 9, 13),
 (63, 9, 14),
 (64, 9, 15),
@@ -272,7 +273,12 @@ INSERT INTO `room_facilities` (`sr_no`, `room_id`, `facilities_id`) VALUES
 (69, 8, 14),
 (70, 8, 15),
 (71, 8, 16),
-(72, 8, 18);
+(72, 8, 18),
+(78, 7, 13),
+(79, 7, 14),
+(80, 7, 15),
+(81, 7, 16),
+(82, 7, 18);
 
 -- --------------------------------------------------------
 
@@ -294,11 +300,6 @@ INSERT INTO `room_features` (`sr_no`, `room_id`, `features_id`) VALUES
 (54, 6, 23),
 (55, 6, 24),
 (56, 6, 26),
-(57, 7, 23),
-(58, 7, 24),
-(59, 7, 26),
-(60, 7, 27),
-(61, 7, 28),
 (68, 9, 23),
 (69, 9, 24),
 (70, 9, 25),
@@ -309,7 +310,12 @@ INSERT INTO `room_features` (`sr_no`, `room_id`, `features_id`) VALUES
 (75, 8, 24),
 (76, 8, 26),
 (77, 8, 27),
-(78, 8, 28);
+(78, 8, 28),
+(84, 7, 23),
+(85, 7, 24),
+(86, 7, 26),
+(87, 7, 27),
+(88, 7, 28);
 
 -- --------------------------------------------------------
 
@@ -431,7 +437,7 @@ CREATE TABLE `user_cred` (
 --
 
 INSERT INTO `user_cred` (`id`, `name`, `email`, `address`, `phone`, `pincode`, `dob`, `profile`, `password`, `isVerified`, `token`, `tokenExpire`, `status`, `dateTime`) VALUES
-(12, 'Hrik Das', 'emptynull01@gmail.com', 'India', '09387500659', 788710, '2003-11-10', 'IMG_22872.jpeg', '$2y$10$Y2P8oUl5sBxemT57OqNPjOz//7hI8szhx/udXURQPnCgj7x3HKinq', 1, '2b72d37d1efe8c16c56942812f05cb77', NULL, 1, '2024-04-05 16:29:37'),
+(12, 'Hrik Das', 'emptynull01@gmail.com', 'India', '09387500659', 788710, '2003-11-10', 'IMG_25972.jpeg', '$2y$10$Y2P8oUl5sBxemT57OqNPjOz//7hI8szhx/udXURQPnCgj7x3HKinq', 1, '2b72d37d1efe8c16c56942812f05cb77', NULL, 1, '2024-04-05 16:29:37'),
 (13, 'Jhon Doe', 'jhon.12doe@gmail.com', 'India', '0123456789', 788710, '2001-01-01', 'IMG_58671.jpeg', '$2y$10$ONZ2E39b9I389zH7RomDT.TggzugnpAVSVvtAqnf/l7/QfGLDGryC', 0, 'beeab0f56f89a19238793968629b684e', NULL, 1, '2024-04-09 00:16:58'),
 (15, 'Jane Doe', 'jane.12doe@yahoo.in', 'India', '0123456788', 788710, '2001-01-01', 'IMG_25478.jpeg', '$2y$10$2haUkGd6ufLEvqqjM6q05..5YiVAOjOe5.gqhMuL64zkwsxtXIP5i', 0, 'dde7f1523a13dc39c9c1e517b58cf136', NULL, 1, '2024-04-09 00:18:18');
 
@@ -578,13 +584,13 @@ ALTER TABLE `admin_cred`
 -- AUTO_INCREMENT for table `booking_details`
 --
 ALTER TABLE `booking_details`
-  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `booking_order`
 --
 ALTER TABLE `booking_order`
-  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `carousel`
@@ -620,13 +626,13 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `room_facilities`
 --
 ALTER TABLE `room_facilities`
-  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT for table `room_features`
 --
 ALTER TABLE `room_features`
-  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `sr_no` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT for table `room_image`
