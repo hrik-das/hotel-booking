@@ -62,6 +62,35 @@
                     </form>
                 </div>
             </div>
+            <div class="col-md-4 mb-5 px-4">
+                <div class="bg-white p-3 p-md-4 rounded shadow-sm">
+                    <form action="" id="profile-form">
+                        <h5 class="mb-3 fw-bold">Picture</h5>
+                        <img src="<?php echo USER_IMG_PATH.$userFetch['profile']; ?>" class="img-fluid mb-3" alt="">
+                        <label class="form-label">New Picture</label>
+                        <input type="file" name="profile" class="form-control shadow-none mb-4" accept=".jpg, .png, .jpeg, .webp" required>
+                        <button type="submit" class="btn btn-sm custom-bg text-white shadow-none">Save Canges</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-8 mb-5 px-4">
+                <div class="bg-white p-3 p-md-4 rounded shadow-sm">
+                    <form action="" id="pass-form">
+                        <h5 class="mb-3 fw-bold">Change Password</h5>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                    <label class="form-label">New Password</label>
+                                    <input type="password" name="new_pass" class="form-control shadow-none" required>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <label class="form-label">Confirm Password</label>
+                                    <input type="password" name="con_pass" class="form-control shadow-none" required>
+                                </div>
+                            </div>
+                        <button type="submit" class="btn btn-sm custom-bg text-white shadow-none">Save Canges</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 

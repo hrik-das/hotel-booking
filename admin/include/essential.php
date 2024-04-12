@@ -1,6 +1,6 @@
 <?php
     // Frontend Purpose Data
-    define("SITE_URL", "http://127.0.0.1/PHP/Hotel-Booking/");
+    define("SITE_URL", "http://127.0.0.1/PHP/hotel-booking/");
     define("ABOUT_IMG_PATH", SITE_URL."images/about/");
     define("CAROUSEL_IMG_PATH", SITE_URL."images/carousel/");
     define("FACILITIES_IMG_PATH", SITE_URL."images/facilities/");
@@ -8,7 +8,7 @@
     define("USER_IMG_PATH", SITE_URL."images/users/");
 
     // Backend Upload Process
-    define("UPLOAD_IMAGE_PATH", $_SERVER["DOCUMENT_ROOT"]."/PHP/Hotel-Booking/images/");
+    define("UPLOAD_IMAGE_PATH", $_SERVER["DOCUMENT_ROOT"]."/PHP/hotel-booking/images/");
     define("ABOUT_FOLDER", "about/");
     define("CAROUSEL_FOLDER", "carousel/");
     define("FACILITIES_FOLDER", "facilities/");

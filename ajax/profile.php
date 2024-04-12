@@ -20,4 +20,44 @@
             echo 0;
         }
     }
+
+    if(isset($_POST["profile-form"])){
+        session_start();
+        $image = uploadUserImage($_FILES["profile"]);
+        if($image == "invalidImage"){
+            echo "invalidImage";
+            exit();
+        }else if($image == "uploadFailed"){
+            echo "uploadFailed";
+            exit();
+        }
+        $userExist = select("SELECT `profile` FROM `user_cred` WHERE `id`=? LIMIT 1", [$_SESSION["userid"]], "i");
+        $userFetch = mysqli_fetch_assoc($userExist);
+        deleteImage($userFetch["profile"], USER_FOLDER);
+        $query = "UPDATE `user_cred` SET `profile`=? WHERE `id`=?";
+        $values = [$image, $_SESSION["userid"]];
+        if(update($query, $values, "ss")){
+            $_SESSION["userpic"] = $image;
+            echo 1;
+        }else{
+            echo 0;
+        }
+    }
+
+    if(isset($_POST["pass-form"])){
+        $filterData = filteration($_POST);
+        session_start();
+        if($filterData["new_pass"] != $filterData["confirm_pass"]){
+            echo "misMatched";
+            exit();
+        }
+        $encryptPassword = password_hash($filterData["new_pass"], PASSWORD_BCRYPT);
+        $query = "UPDATE `user_cred` SET `password`=? WHERE `id`=? LIMIT 1";
+        $values = [$encryptPassword, $_SESSION["userid"]];
+        if(update($query, $values, "si")){
+            echo 1;
+        }else{
+            echo 0;
+        }
+    }
 ?>
