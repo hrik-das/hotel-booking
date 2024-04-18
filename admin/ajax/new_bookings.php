@@ -53,9 +53,9 @@
 
     if(isset($_POST["assignRoom"])){
         $filterData = filteration($_POST);
-        $query = "UPDATE `booking_order` bo INNER JOIN `booking_details` bd ON bo.booking_id=bd.booking_id SET bo.arrival=?, bd.room_no=? WHERE bo.booking_id=?";
-        $values = [1, $filterData["room_number"], $filterData["booking_id"]];
-        $result = update($query, $values, "isi");    // It will Update 2 Rows will Return 2
+        $query = "UPDATE `booking_order` bo INNER JOIN `booking_details` bd ON bo.booking_id=bd.booking_id SET bo.arrival=?, bo.rate_review=?, bd.room_no=? WHERE bo.booking_id=?";
+        $values = [1, 0, $filterData["room_number"], $filterData["booking_id"]];
+        $result = update($query, $values, "iisi");    // It will Update 2 Rows will Return 2
         echo ($result == 2) ? 1 : 0;
     }
 

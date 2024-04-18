@@ -9,7 +9,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require("./include/links.php"); ?>
-    <script src="./js/script.js" defer></script>
     <script src="./js/new_bookings.js" defer></script>
     <title>Admin Panel - New Bookings</title>
 </head>
