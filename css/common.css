@@ -1,0 +1,51 @@
+:root{
+
+    --color: #3268cd;
+    --color-hover: #244d9f;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", Arial;
+}
+
+.new-font{
+    font-family: "Merienda", cursive;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number]{
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+.custom-background{
+    background-color: var(--color);
+    border: 1px solid var(--color-hover);
+}
+
+.custom-background:hover{
+    background-color: var(--color-hover);
+    border: 1px solid var(--color);
+}
+
+.horizontal-line{
+    width: 150px;
+    margin: 0 auto;
+    height: 1.7px;
+}
+
+.custom-alert{
+    position: fixed;
+    top: 80px;
+    right: 25px;
+    z-index: 11;
+}
