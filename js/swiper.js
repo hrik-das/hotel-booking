@@ -41,23 +41,23 @@ var swiper = new Swiper(".swiper-testimonials", {
     }
 });
 
-// var swiper = new Swiper(".mySwiper", {
-//     spaceBetween: 40,
-//     pagination: {
-//         el: ".swiper-pagination",
-//     },
-//     breakpoints: {
-//         320: {
-//             slidesPerView: 1,
-//         },
-//         640: {
-//             slidesPerView: 1,
-//         },
-//         768: {
-//             slidesPerView: 3,
-//         },
-//         1024: {
-//             slidesPerView: 3,
-//         }
-//     }
-// });
+var swiper = new Swiper(".about-swiper", {
+    spaceBetween: 40,
+    pagination: {
+        el: ".swiper-pagination",
+    },
+    breakpoints: {
+        320: {
+            slidesPerView: 1,
+        },
+        640: {
+            slidesPerView: 1,
+        },
+        768: {
+            slidesPerView: 3,
+        },
+        1024: {
+            slidesPerView: 3,
+        }
+    }
+});

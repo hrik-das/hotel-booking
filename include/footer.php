@@ -1,7 +1,7 @@
 <div class="container-fluid mt-5 bg-white">
     <div class="row">
         <div class="col-lg-4 p-4">
-            <h3 class="new-font fs-3 fw-bold mb-5">Godlike Restaurant</h3>
+            <h3 class="new-font fs-3 fw-bold mb-3">Godlike Restaurant</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta dignissimos quaerat tempore mollitia ratione earum quasi beatae quas neque officia. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, deleniti.</p>
         </div>
         <div class="col-lg-4 p-4 text-center">
