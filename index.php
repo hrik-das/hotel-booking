@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="./css/index.css">
-    <?php require_once("./include/links.php"); ?>
+    <?php require_once("./include/include.php"); ?>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="./js/swiper.js" defer></script>
     <title>Home - Godlike Restaurant</title>
@@ -114,8 +114,12 @@
                             </span>
                         </div>
                         <div class="d-flex justify-content-evenly mb-2">
-                            <button class="btn btn-sm text-white custom-background shadow-none mb-2">Book Now</button>
-                            <a href="" class="btn btn-sm btn-outline-dark shadow-none mb-2">More Details</a>
+                            <button class="btn btn-sm text-white custom-background shadow-none mb-2">
+                                <i class="bi bi-bookmark-fill"></i> Book Now
+                            </button>
+                            <a href="" class="btn btn-sm btn-outline-dark shadow-none mb-2">
+                                <i class="bi bi-info-circle-fill"></i> More Details
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -156,8 +160,12 @@
                             </span>
                         </div>
                         <div class="d-flex justify-content-evenly mb-2">
-                            <button class="btn btn-sm text-white custom-background shadow-none mb-2">Book Now</button>
-                            <a href="" class="btn btn-sm btn-outline-dark shadow-none mb-2">More Details</a>
+                            <button class="btn btn-sm text-white custom-background shadow-none mb-2">
+                                <i class="bi bi-bookmark-fill"></i> Book Now
+                            </button>
+                            <a href="" class="btn btn-sm btn-outline-dark shadow-none mb-2">
+                                <i class="bi bi-info-circle-fill"></i> More Details
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -198,8 +206,12 @@
                             </span>
                         </div>
                         <div class="d-flex justify-content-evenly mb-2">
-                            <button class="btn btn-sm text-white custom-background shadow-none mb-2">Book Now</button>
-                            <a href="" class="btn btn-sm btn-outline-dark shadow-none mb-2">More Details</a>
+                            <button class="btn btn-sm text-white custom-background shadow-none mb-2">
+                                <i class="bi bi-bookmark-fill"></i> Book Now
+                            </button>
+                            <a href="" class="btn btn-sm btn-outline-dark shadow-none mb-2">
+                                <i class="bi bi-info-circle-fill"></i> More Details
+                            </a>
                         </div>
                     </div>
                 </div>

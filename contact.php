@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php require_once("include/links.php"); ?>
+    <?php require_once("include/include.php"); ?>
     <title>Contact - Godlike Restaurant</title>
 </head>
 <body class="bg-light">
@@ -67,7 +67,9 @@
                             <label class="form-label fw-bold">Message</label>
                             <textarea rows="5" name="message" class="form-control shadow-none" style="resize: none;" required></textarea>
                         </div>
-                        <button type="submit" name="send" class="btn custom-background text-white mt-3 shadow-none">Send Message</button>
+                        <button type="submit" name="send" class="btn custom-background text-white mt-3 shadow-none">
+                            <i class="bi bi-send-fill"></i> Send Message
+                        </button>
                     </form>
                 </div>
             </div>
