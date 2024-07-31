@@ -1,5 +1,4 @@
 :root {
-
     --color: #3268cd;
     --color-hover: #244d9f;
 }
@@ -47,5 +46,39 @@ input[type=number] {
     position: fixed;
     top: 80px;
     right: 25px;
+}
+
+#dashboard-menu {
+    position: fixed;
+    height: 100%;
     z-index: 11;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(36, 36, 36);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #555555;
+}
+
+@media screen and (max-width: 992px) {
+    #dashboard-menu {
+        position: fixed;
+        height: auto;
+        width: 100%;
+    }
+
+    #main-content {
+        margin-top: 60px;
+    }
 }
