@@ -2,13 +2,13 @@
     require_once("./include/essential.php");
     adminLogin();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require_once("./include/include.php"); ?>
-    <script src="./js/script.js" defer></script>
     <title>Dashboard - Admin Panel</title>
 </head>
 <body class="bg-light">
