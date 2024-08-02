@@ -1,7 +1,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm sticky-top" id="navbar">
     <div class="container-fluid">
-        <a class="navbar-brand me-5 fw-bold new-font fs-3" href="index.php">Godlike Restaurant</a>
+        <a class="navbar-brand me-5 fw-bold new-font fs-3" href="index.php"><?php echo $settings_r["site_title"]; ?></a>
         <button class="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -123,7 +123,7 @@
     </div>
 </div>
 
-<!-- Forgot Modal -->
+<!-- Forgot Passwprd Modal -->
 <div class="modal fade" id="forgotModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

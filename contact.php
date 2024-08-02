@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php require_once("include/include.php"); ?>
-    <title>Contact - Godlike Restaurant</title>
+    <?php require_once("./include/include.php"); ?>
+    <title>Contact - <?php echo $settings_r["site_title"]; ?></title>
 </head>
 <body class="bg-light">
     <!-- Header -->
-    <?php require_once("include/header.php"); ?>
+    <?php require_once("./include/header.php"); ?>
 
     <!-- Body -->
     <div class="my-5 px-4">
@@ -21,28 +21,40 @@
         <div class="row">
             <div class="col-lg-6 col-md-6 mb-5 px-4">
                 <div class="bg-white rounded shadow p-4">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15283674.799797207!2d72.09858950579331!3d20.73595779415587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30635ff06b92b791%3A0xd78c4fa1854213a6!2sIndia!5e0!3m2!1sen!2sin!4v1722381461118!5m2!1sen!2sin" height="380" loading="lazy" class="w-100 rounded"></iframe>
+                    <iframe src="<?php echo $contact_r['iframe']; ?>" height="380" loading="lazy" class="w-100 rounded"></iframe>
                     <h5>Address</h5>
-                    <a href="https://maps.app.goo.gl/NtrofkJGcRmq3Tmt8" target="_blank" class="d-inline-block text-dark text-decoration-none mb-2">
+                    <a href="<?php echo $contact_r['google_map']; ?>" target="_blank" class="d-inline-block text-dark text-decoration-none mb-2">
                         <i class="bi bi-geo-alt-fill"></i> XYZ, Assam, India
                     </a>
                     <h5 class="mt-4">Call Us</h5>
-                    <a href="tel: +91-1234567890" class="d-inline-block mb-2 text-decoration-none text-dark">
-                        <i class="bi bi-telephone-fill"></i> +91-1234567890
+                    <a href="tel: +91-<?php echo $contact_r['phone1']; ?>" class="d-inline-block mb-2 text-decoration-none text-dark">
+                        <i class="bi bi-telephone-fill"></i> +91-<?php echo $contact_r['phone1']; ?>
                     </a><br>
-                    <a href="tel: +91-1234567890" class="d-inline-block text-decoration-none text-dark">
-                        <i class="bi bi-telephone-fill"></i> +91-1234567890
-                    </a>
+                    <?php
+                        if ($contact_r["phone2"] != "") {
+                            echo<<<data
+                                <a href="tel: +$contact_r[phone2]" class="d-inline-block text-decoration-none text-dark">
+                                    <i class="bi bi-telephone-fill"></i> +91-$contact_r[phone2]
+                                </a>
+                            data;
+                        }
+                    ?>
                     <h5 class="mt-4">Email Address</h5>
-                    <a href="mailto: hrikdas012@gmail.com" class="d-inline-block text-decoration-none text-dark"><i class="bi bi-envelope-fill"></i> hrikdas012@gmail.com</a>
+                    <a href="mailto: <?php echo $contact_r['email']; ?>" class="d-inline-block text-decoration-none text-dark"><i class="bi bi-envelope-fill"></i> <?php echo $contact_r['email']; ?></a>
                     <h5 class="mt-4">Follow Us</h5>
-                    <a href="" class="d-inline-block fs-5 text-dark me-2">
-                        <i class="bi bi-twitter me-1"></i>
-                    </a>
-                    <a href="" class="d-inline-block fs-5 text-dark me-2">
+                    <?php
+                        if ($contact_r["twitter"] != "") {
+                            echo<<<data
+                                <a href="$contact_r[twitter]" class="d-inline-block fs-5 text-dark me-1">
+                                    <i class="bi bi-twitter me-1"></i>
+                                </a>
+                            data;
+                        }
+                    ?>
+                    <a href="<?php echo $contact_r['facebook']; ?>" class="d-inline-block fs-5 text-dark me-2">
                         <i class="bi bi-facebook"></i>
                     </a>
-                    <a href="" class="d-inline-block fs-5 text-dark">
+                    <a href="<?php echo $contact_r['instagram']; ?>" class="d-inline-block fs-5 text-dark">
                         <i class="bi bi-instagram"></i>
                     </a>
                 </div>
@@ -77,6 +89,6 @@
     </div>
 
     <!-- Footer -->
-    <?php require_once("include/footer.php"); ?>
+    <?php require_once("./include/footer.php"); ?>
 </body>
 </html>

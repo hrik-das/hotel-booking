@@ -7,3 +7,24 @@
 <!-- Javascript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script src="./js/navbar.js" defer></script>
+
+<!-- Backend Integration for Dynamic Frontend -->
+<?php
+    require_once("./admin/include/connect.php");
+    require_once("./admin/include/essential.php");
+    date_default_timezone_set("Asia/Kolkata");
+    
+    $contactQuery = "SELECT * FROM `contact_details` WHERE `sr_no`=?";
+    $settingsQuery = "SELECT * FROM `settings` WHERE `sr_no`=?";
+    $values = [1];
+    $contact_r = mysqli_fetch_assoc(executeCrud("select", $contactQuery, $values, "i"));
+    $settings_r = mysqli_fetch_assoc(executeCrud("select", $settingsQuery, $values, "i"));
+    if ($settings_r["shutdown"]) {
+        echo<<<alertbar
+            <div class="bg-danger fw-bold text-center p-2">
+                <i class="bi bi-exclamation-triangle-fill"></i>
+                Bookings are Temporarily Closed!!!
+            </div>
+        alertbar;
+    }
+?>

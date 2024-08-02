@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php require_once("include/include.php"); ?>
-    <title>Rooms - Godlike Restaurant</title>
+    <?php require_once("./include/include.php"); ?>
+    <title>Rooms - <?php echo $settings_r["site_title"]; ?></title>
 </head>
 <body class="bg-light">
     <!-- Header -->
-    <?php require_once("include/header.php"); ?>
+    <?php require_once("./include/header.php"); ?>
 
     <!-- Body -->
     <div class="my-5 px-4">
@@ -185,6 +185,6 @@
     </div>
 
     <!-- Footer -->
-    <?php require_once("include/footer.php"); ?>
+    <?php require_once("./include/footer.php"); ?>
 </body>
 </html>

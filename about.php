@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <?php require_once("include/include.php"); ?>
+    <?php require_once("./include/include.php"); ?>
     <link rel="stylesheet" href="./css/about.css">
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="./js/swiper.js" defer></script>
-    <title>About - Godlike Restaurant</title>
+    <title>About - <?php echo $settings_r["site_title"]; ?></title>
 </head>
 <body class="bg-light">
     <!-- Header -->
-    <?php require_once("include/header.php"); ?>
+    <?php require_once("./include/header.php"); ?>
 
     <!-- Body -->
     <div class="my-5 px-4">
@@ -67,40 +67,24 @@
         <!-- Swiper -->
         <div class="swiper about-swiper">
             <div class="swiper-wrapper mb-5">
-                <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-                    <img src="./images/about/jacob.png" alt="" class="w-100">
-                    <h5 class="mt-2">Jacob Green</h5>
-                </div>
-                <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-                    <img src="./images/about/jacob.png" alt="" class="w-100">
-                    <h5 class="mt-2">Jacob</h5>
-                </div>
-                <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-                    <img src="./images/about/jacob.png" alt="" class="w-100">
-                    <h5 class="mt-2">Jacob</h5>
-                </div>
-                <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-                    <img src="./images/about/jacob.png" alt="" class="w-100">
-                    <h5 class="mt-2">Jacob</h5>
-                </div>
-                <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-                    <img src="./images/about/jacob.png" alt="" class="w-100">
-                    <h5 class="mt-2">Jacob</h5>
-                </div>
-                <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-                    <img src="./images/about/jacob.png" alt="" class="w-100">
-                    <h5 class="mt-2">Jacob</h5>
-                </div>
-                <div class="swiper-slide bg-white text-center overflow-hidden rounded">
-                    <img src="./images/about/jacob.png" alt="" class="w-100">
-                    <h5 class="mt-2">Jacob</h5>
-                </div>
+                <?php
+                    $path = ABOUT_IMG_PATH;
+                    $about_r = selectAll("team_details");
+                    while ($data = mysqli_fetch_assoc($about_r)) {
+                        echo<<<data
+                            <div class="swiper-slide bg-white text-center overflow-hidden rounded">
+                                <img src="$path$data[picture]" alt="" class="w-100">
+                                <h5 class="mt-2">$data[name]</h5>
+                            </div>
+                        data;
+                    }
+                ?>
             </div>
             <div class="swiper-pagination"></div>
         </div>
     </div>
 
     <!-- Footer -->
-    <?php require_once("include/footer.php"); ?>
+    <?php require_once("./include/footer.php"); ?>
 </body>
 </html>
