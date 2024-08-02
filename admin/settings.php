@@ -97,10 +97,10 @@
                                 <div class="mb-4">
                                     <h6 class="card-subtitle mb-1 fw-bold">Phone Numbers</h6>
                                     <p class="card-text mb-1">
-                                        <i class="bi bi-telephone-fill"></i> <span id="ph1"></span>
+                                        <i class="bi bi-telephone-fill"></i> <span id="phone1"></span>
                                     </p>
                                     <p class="card-text">
-                                        <i class="bi bi-telephone-fill"></i> <span id="ph2"></span>
+                                        <i class="bi bi-telephone-fill"></i> <span id="phone2"></span>
                                     </p>
                                 </div>
                                 <div class="mb-4">
@@ -112,13 +112,13 @@
                                 <div class="mb-4">
                                     <h6 class="card-subtitle mb-1 fw-bold">Social Links</h6>
                                     <p class="card-text mb-1">
-                                        <i class="bi bi-facebook me-1"></i><span id="fb"></span>
+                                        <i class="bi bi-facebook me-1"></i><span id="facebook"></span>
                                     </p>
                                     <p class="card-text mb-1">
-                                        <i class="bi bi-instagram me-1"></i><span id="insta"></span>
+                                        <i class="bi bi-instagram me-1"></i><span id="instagram"></span>
                                     </p>
                                     <p class="card-text">
-                                        <i class="bi bi-twitter me-1"></i><span id="tw"></span>
+                                        <i class="bi bi-twitter me-1"></i><span id="twitter"></span>
                                     </p>
                                 </div>
                                 <div class="mb-4">
@@ -144,26 +144,26 @@
                                             <div class="col-md-6">
                                                 <div class="mb-3">
                                                     <label class="form-label fw-bold">Address</label>
-                                                    <input type="text" name="address" id="address-inp" class="form-control shadow-none" required>
+                                                    <input type="text" name="address" id="address-input" class="form-control shadow-none" required>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label fw-bold">Google Map Link</label>
-                                                    <input type="text" name="gmap" id="gmap-inp" class="form-control shadow-none" required>
+                                                    <input type="text" name="gmap" id="gmap-input" class="form-control shadow-none" required>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label fw-bold">Phone Numbers</label>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text" id="basic-addon1"><i class="bi bi-telephone-fill"></i></span>
-                                                        <input type="number" name="ph1" id="ph1-inp" class="form-control shadow-none" required>
+                                                        <input type="number" name="ph1" id="phone1-input" class="form-control shadow-none" required>
                                                     </div>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text" id="basic-addon1"><i class="bi bi-telephone-fill"></i></span>
-                                                        <input type="number" name="ph2" id="ph2-inp" class="form-control shadow-none">
+                                                        <input type="number" name="ph2" id="phone2-input" class="form-control shadow-none">
                                                     </div>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label fw-bold">Email Address</label>
-                                                    <input type="email" name="email" id="email-inp" class="form-control shadow-none" required>
+                                                    <input type="email" name="email" id="email-input" class="form-control shadow-none" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -171,20 +171,20 @@
                                                     <label class="form-label fw-bold">Social Links</label>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text" id="basic-addon1"><i class="bi bi-facebook"></i></span>
-                                                        <input type="text" class="form-control shadow-none" name="fb" id="fb-inp" required>
+                                                        <input type="text" class="form-control shadow-none" name="fb" id="facebook-input" required>
                                                     </div>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text" id="basic-addon1"><i class="bi bi-instagram"></i></span>
-                                                        <input type="text" class="form-control shadow-none" name="insta" id="insta-inp" required>
+                                                        <input type="text" class="form-control shadow-none" name="insta" id="instagram-input" required>
                                                     </div>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text" id="basic-addon1"><i class="bi bi-twitter"></i></span>
-                                                        <input type="text" class="form-control shadow-none" name="tw" id="tw-inp">
+                                                        <input type="text" class="form-control shadow-none" name="tw" id="twitter-input">
                                                     </div>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label fw-bold">iFrame Source</label>
-                                                    <input type="text" name="iframe" id="iframe-inp" class="form-control shadow-none" required>
+                                                    <input type="text" name="iframe" id="iframe-input" class="form-control shadow-none" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -192,7 +192,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" onclick="contactsInput(contactData)" class="btn text-secondary shadow-none" data-bs-dismiss="modal">Cancel</button>
-                                    <button type="submit" name="updateContact" class="btn custom-bg text-white shadow-none">Save</button>
+                                    <button type="submit" name="updateContact" class="btn custom-background text-white shadow-none">Save</button>
                                 </div>
                             </div>
                         </form>
@@ -230,7 +230,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" onclick="member_name.value='', member_picture.value=''" class="btn text-secondary shadow-none" data-bs-dismiss="modal">Cancel</button>
-                                    <button type="submit" class="btn custom-bg text-white shadow-none">Save</button>
+                                    <button type="submit" class="btn custom-background text-white shadow-none">Save</button>
                                 </div>
                             </div>
                         </form>
