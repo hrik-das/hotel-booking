@@ -31,13 +31,16 @@
         echo<<<alert
             <div class="alert $bs_class alert-dismissible fade show custom-alert" role="alert">
                 <strong class="me-3">$message</strong>
-                <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>    
+                <button type="button" class="btn-close shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             <script>
-                let error = document.querySelector('.error');
-                error.style.display = 'block';
-                error.innerText = 'Login Failed - Invalid Credentials!';
-                setTimeout(() => error.style.display = 'none', 5000);
+                setTimeout(function() {
+                    let alertElement = document.querySelector('.custom-alert');
+                    if (alertElement) {
+                        let bsAlert = new bootstrap.Alert(alertElement);
+                        bsAlert.close();
+                    }
+                }, 3000);
             </script>
         alert;
     }

@@ -88,6 +88,20 @@
         </div>
     </div>
 
+    <?php
+        if (isset($_POST["send"])) {
+            $filterData = filteration($_POST);
+            $query = "INSERT INTO `user_queries` (`name`, `email`, `subject`, `message`) VALUES (?, ?, ?, ?)";
+            $values = [$filterData["name"], $filterData["email"], $filterData["subject"], $filterData["message"]];
+            $result = executeCrud("insert", $query, $values, "ssss");
+            if ($result) {
+                alert("success", "Email Sent Successfully.");
+            } else {
+                alert("error", "Cannot Send Email!");
+            }
+        }
+    ?>
+
     <!-- Footer -->
     <?php require_once("./include/footer.php"); ?>
 </body>

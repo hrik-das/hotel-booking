@@ -13,8 +13,10 @@
     <title>Admin Panel - Carousel</title>
 </head>
 <body class="bg-light">
+    <!-- Header -->
     <?php require_once("./include/header.php"); ?>
 
+    <!-- Body -->
     <div class="container-fluid" id="main-content">
         <div class="row">
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">

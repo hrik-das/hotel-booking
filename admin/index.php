@@ -17,6 +17,7 @@
     <title>Admin Login Panel</title>
 </head>
 <body class="bg-light">
+    <!-- Body -->
     <p class="error"></p>
     <div class="login-form text-center rounded bg-white shadow overflow-hidden">
         <form action="index.php" method="post">
