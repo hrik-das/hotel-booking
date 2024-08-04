@@ -21,7 +21,7 @@
     $settings_r = mysqli_fetch_assoc(executeCrud("select", $settingsQuery, $values, "i"));
     if ($settings_r["shutdown"]) {
         echo<<<alertbar
-            <div class="bg-danger fw-bold text-center p-2">
+            <div class="bg-danger fw-bold text-center p-2 sticky-top">
                 <i class="bi bi-exclamation-triangle-fill"></i>
                 Bookings are Temporarily Closed!!!
             </div>

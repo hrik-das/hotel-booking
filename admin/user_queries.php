@@ -36,7 +36,7 @@
         } else {
             $query = "DELETE FROM `user_queries` WHERE `sr_no`=?";
             $values = [$filterData["delete"]];
-            if (delete($query, $values, "i")) {
+            if (executeCrud("delete", $query, $values, "i")) {
                 alert("success", "Deleted Successfully.");
             } else {
                 alert("error", "Operation Failed!");
@@ -61,7 +61,7 @@
     <div class="container-fluid" id="main-content">
         <div class="row">
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
-                <h3 class="mb-4">User Queries</h3>
+                <h3 class="mb-4 fw-bold"><i class="bi bi-question-circle-fill"></i> User Queries</h3>
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">
                         <div class="text-end mb-4">
@@ -79,9 +79,9 @@
                                         <th scope="col">#</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Email</th>
-                                        <th scope="col" width="20%">Subject</th>
-                                        <th scope="col" width="25%">Message</th>
-                                        <th scope="col">Date</th>
+                                        <th scope="col" width="15%">Subject</th>
+                                        <th scope="col" width="30%">Message</th>
+                                        <th scope="col" width="10%">Date</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>

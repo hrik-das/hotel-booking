@@ -70,6 +70,6 @@ function deleteCarousel(value) {
     xhr.send("deleteCarousel="+value);
 }
 
-window.onload = function(){
+window.onload = function() {
     getCarousel();
 }

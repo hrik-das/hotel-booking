@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php require_once("./include/include.php"); ?>
     <script src="./js/carousel.js" defer></script>
-    <title>Admin Panel - Carousel</title>
+    <title>Carousel - Admin Panel</title>
 </head>
 <body class="bg-light">
     <!-- Header -->
@@ -20,7 +20,7 @@
     <div class="container-fluid" id="main-content">
         <div class="row">
             <div class="col-lg-10 ms-auto p-4 overflow-hidden">
-                <h3 class="mb-4">Carousel</h3>
+                <h3 class="mb-4 fw-bold"><i class="bi bi-file-earmark-easel-fill"></i> Carousel</h3>
                 <!-- Carousel Section -->
                 <div class="card border-0 shadow-sm mb-4">
                     <div class="card-body">

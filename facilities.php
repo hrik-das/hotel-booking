@@ -20,60 +20,23 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-6 mb-5 px-4">
-                <div class="bg-white rounded shadow p-4 border-top border-4 border-dark pop">
-                    <div class="d-flex align-items-center mb-2">
-                        <img src="./images/facilities/ac.svg" alt="" width="40px">
-                        <h5 class="m-0 ms-3">Air Conditioner</h5>
-                    </div>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur.</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-5 px-4">
-                <div class="bg-white rounded shadow p-4 border-top border-4 border-dark pop">
-                    <div class="d-flex align-items-center mb-2">
-                        <img src="./images/facilities/fire.svg" alt="" width="40px">
-                        <h5 class="m-0 ms-3">Gyeser</h5>
-                    </div>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur.</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-5 px-4">
-                <div class="bg-white rounded shadow p-4 border-top border-4 border-dark pop">
-                    <div class="d-flex align-items-center mb-2">
-                        <img src="./images/facilities/heater.svg" alt="" width="40px">
-                        <h5 class="m-0 ms-3">Room Heater</h5>
-                    </div>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur.</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-5 px-4">
-                <div class="bg-white rounded shadow p-4 border-top border-4 border-dark pop">
-                    <div class="d-flex align-items-center mb-2">
-                        <img src="./images/facilities/internet.svg" alt="" width="40px">
-                        <h5 class="m-0 ms-3">Unlimited Wifi</h5>
-                    </div>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur.</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-5 px-4">
-                <div class="bg-white rounded shadow p-4 border-top border-4 border-dark pop">
-                    <div class="d-flex align-items-center mb-2">
-                        <img src="./images/facilities/massage.svg" alt="" width="40px">
-                        <h5 class="m-0 ms-3">Massage Center</h5>
-                    </div>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur.</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-5 px-4">
-                <div class="bg-white rounded shadow p-4 border-top border-4 border-dark pop">
-                    <div class="d-flex align-items-center mb-2">
-                        <img src="./images/facilities/tv.svg" alt="" width="40px">
-                        <h5 class="m-0 ms-3">Smart Television</h5>
-                    </div>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur.</p>
-                </div>
-            </div>
+            <?php
+                $result = selectAll("facilities");
+                $path = FACILITIES_IMG_PATH;
+                while ($data = mysqli_fetch_assoc($result)) {
+                    echo<<<data
+                        <div class="col-lg-4 col-md-6 mb-5 px-4">
+                            <div class="bg-white rounded shadow p-4 border-top border-4 border-dark pop">
+                                <div class="d-flex align-items-center mb-2">
+                                    <img src="$path$data[icon]" alt="" width="40px">
+                                    <h5 class="m-0 ms-3">$data[name]</h5>
+                                </div>
+                                <p>$data[description]</p>
+                            </div>
+                        </div>
+                    data;
+                }
+            ?>
         </div>
     </div>
 
