@@ -1,3 +1,6 @@
+<!-- Recover Password Section -->
+<?php require_once("./ajax/recover_password.php"); ?>
+
 <div class="container-fluid mt-5 bg-white">
     <div class="row">
         <div class="col-lg-4 p-4">

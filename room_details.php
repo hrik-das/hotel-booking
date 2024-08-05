@@ -27,7 +27,7 @@
         <div class="row">
             <div class="col-12 my-5 px-4">
                 <h2 class="fw-bold"><?php echo $data["name"] ?></h2>
-                <div id="room-style">
+                <div id="room-style" style="font-size: 14px;">
                     <a href="index.php" class="text-secondary text-decoration-none">Home</a>
                     <span class="text-secondary"> > </span>
                     <a href="rooms.php" class="text-secondary text-decoration-none">Rooms</a>
@@ -45,7 +45,7 @@
                                 $activeClass = "active";
                                 while ($imageResult = mysqli_fetch_assoc($imageQuery)) {
                                     echo "<div class='carousel-item $activeClass'>
-                                              <img src='".ROOM_IMG_PATH.$imageResult['image']."' class='d-block w-100 rounded' alt='room image'>
+                                              <img src='".ROOM_IMG_PATH.$imageResult['image']."' class='d-block w-100 rounded' alt='room image' style='height: 500px; object-fit: contain;'>
                                           </div>";
                                     $activeClass = "";
                                 }
@@ -90,7 +90,7 @@
                             echo<<<features
                                 <div class="mb-2">
                                     <h6 class="mb-1">Features</h6>
-                                        $featuresData
+                                    $featuresData
                                 </div>
                             features;
                             $query2 = "SELECT f.name FROM `facilities` f INNER JOIN `room_facilities` rfac ON f.id = rfac.facilities_id WHERE rfac.room_id = '$data[id]'";
@@ -102,7 +102,7 @@
                             echo<<<facilities
                                 <div class="mb-2">
                                     <h6 class="mb-1">Facilities</h6>
-                                        $facilitiesData
+                                    $facilitiesData
                                 </div>
                             facilities;
                             echo<<<guests

@@ -16,7 +16,7 @@
     define("USER_FOLDER", "users/");
 
     // SENDGRID API KEY
-    define("SENDGRID_API_KEY", "Your Api Key for Sendgrid Mail API");
+    define("SENDGRID_API_KEY", "Your Sendgrid Mail API Key.");
     define("SENDGRID_NAME", "Godlike Restaurant");
     define("SENDGRID_EMAIL", "hrikdas012@gmail.com");
 
@@ -150,7 +150,7 @@
             $imgPath = UPLOAD_IMAGE_PATH.USER_FOLDER.$rname;
             if ($extension == "png" || $extension == "PNG") {
                 $img = imagecreatefrompng($image["tmp_name"]);
-            } else if($extension == "webp" || $extension == "WEBP") {
+            } else if ($extension == "webp" || $extension == "WEBP") {
                 $img = imagecreatefromwebp($image["tmp_name"]);
             } else {
                 $img = imagecreatefromjpeg($image["tmp_name"]);

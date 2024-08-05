@@ -102,7 +102,7 @@
                             if (isset($_SESSION["login"]) && $_SESSION["login"] == true) {
                                 $login = 1;
                             }
-                            $bookButton = "<button onclick='checkLoginToBook($login, $data[id])' class='btn btn-sm w-100 text-white custom-background shadow-none mb-2'>Book Now</button>";
+                            $bookButton = "<button onclick='checkLoginToBook($login, $data[id])' class='btn btn-sm w-100 text-white custom-background shadow-none mb-2'><i class='bi bi-bookmark-fill'></i> Book Now</button>";
                         }
                         // Print Room Card
                         echo<<<data
@@ -130,7 +130,7 @@
                                     <div class="col-md-2 text-center">
                                         <h6 class="mb-4">₹$data[price] Per Night</h6>
                                         $bookButton
-                                        <a href="room_details.php?id=$data[id]" class="btn btn-sm w-100 btn-outline-dark shadow-none">More Details</a>
+                                        <a href="room_details.php?id=$data[id]" class="btn btn-sm w-100 btn-outline-dark shadow-none"><i class="bi bi-info-circle-fill"></i> More Details</a>
                                     </div>
                                 </div>
                             </div>

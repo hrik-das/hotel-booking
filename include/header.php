@@ -24,8 +24,29 @@
                 </li>
             </ul>
             <div class="d-flex">
-                <button type="button" class="btn btn-outline-dark shadow-none me-lg-3 me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
-                <button type="button" class="btn btn-outline-dark shadow-none" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
+                <?php
+                    if (isset($_SESSION["login"]) && ($_SESSION["login"] == true)) {
+                        $path = USER_IMG_PATH;
+                        echo<<<data
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-outline-dark shadow-none rounded dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                    <img src="$path$_SESSION[userimage]" style="width: 28px; height: 28px;" class="me-2">
+                                    $_SESSION[username]
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-lg-end">
+                                    <li><a class="dropdown-item" href="profile.php">Profile</a></li>
+                                    <li><a class="dropdown-item" href="bookings.php">Bookings</a></li>
+                                    <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                                </ul>
+                            </div>
+                        data;
+                    } else {
+                        echo<<<data
+                            <button type="button" class="btn btn-outline-dark shadow-none me-lg-3 me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+                            <button type="button" class="btn btn-outline-dark shadow-none" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>                        
+                        data;
+                    }
+                ?>
             </div>
         </div>
     </div>
@@ -144,6 +165,33 @@
                     <div class="text-end mb-2">
                         <button type="button" class="btn shadow-none p-0 me-2" data-bs-toggle="modal" data-bs-target="#loginModal" data-bs-dismiss="modal">Cancel</button>
                         <button type="submit" class="btn btn-dark shadow-none">Send Link</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Password Reset Modal -->
+<div class="modal fade" id="recoveryModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="recovery-form">
+                <div class="modal-header">
+                    <h5 class="modal-title d-flex align-items-center">
+                        <i class="bi bi-shield-lock fs-3 me-2"></i> Set Up New Password
+                    </h5>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-4">
+                        <label class="form-label">New Password</label>
+                        <input type="password" name="pass" class="form-control shadow-none" required>
+                        <input type="hidden" name="email">
+                        <input type="hidden" name="token">
+                    </div>
+                    <div class="text-end mb-2">
+                        <button type="button" class="btn shadow-none" data-bs-toggle="modal" data-bs-target="#recoveryModal" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-dark shadow-none">Send</button>
                     </div>
                 </div>
             </form>
