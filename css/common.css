@@ -1,0 +1,46 @@
+/* Google Font "Inter" and "Merienda" Link */
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Merienda:wght@300..900&display=swap");
+
+:root {
+    --pearl-blue: #2e44c1;
+    --pearl-blue-hover: #31279e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", Arial;
+}
+
+.new-font {
+    font-family: "Merienda", Arial;
+}
+
+.horizontal-line {
+    width: 150px;
+    margin: 0 auto;
+    height: 1.7px;
+}
+
+.custom-background {
+    background: var(--pearl-blue);
+    border: 1px solid var(--pearl-blue-hover);
+}
+
+.custom-background:hover {
+    background: var(--pearl-blue-hover);
+    border: 1px solid var(--pearl-blue);
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: none;
+    appearance: none;
+}
