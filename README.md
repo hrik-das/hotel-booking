@@ -10,9 +10,7 @@ A Responsive and Interactive Hotel Booking Website where users can search for ho
 - [Contributing](#contributing)
 
 ## Introduction
-Welcome to our Hotel Booking Website Project! This project aims to create a user-friendly platform for booking hotel accommodations. Using a combination of HTML, CSS, JavaScript, AJAX, Bootstrap, PHP, and MySQL,
-we have developed a seamless and efficient way for users to search, view, and reserve hotel rooms based on their preferences. Whether you're a traveler looking for a comfortable stay or a hotel owner seeking to
-expand your online presence, our website project offers a comprehensive solution for all your booking needs. Join us on this journey to redefine the Hotel Booking experience!
+Welcome to our Hotel Booking Website Project! This project aims to create a user-friendly platform for booking hotel accommodations. Using a combination of HTML, CSS, JavaScript, AJAX, Bootstrap, PHP, and MySQL. We have developed a seamless and efficient way for users to search, view, and reserve hotel rooms based on their preferences. Whether you're a traveler looking for a comfortable stay or a hotel owner seeking to expand your online presence, our website project offers a comprehensive solution for all your booking needs. Join us on this journey to redefine the Hotel Booking experience!
 
 ## Features
 - **User Authentication**: Allow users to sign up and log in to manage their bookings.
