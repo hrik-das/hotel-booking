@@ -21,7 +21,7 @@ var swiper = new Swiper(".swiper-testimonials", {
     stretch: 0,
     depth: 100,
     modifier: 1,
-    slideShadows: false,
+    slideShadows: true,
   },
   pagination: {
     el: ".swiper-pagination",

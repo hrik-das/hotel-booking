@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <?php require_once("./include/include.php"); ?>
     <link rel="stylesheet" href="./css/index.css">
+    <?php require_once("./include/include.php"); ?>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="./js/swiper.js" defer></script>
     <title>Home - Godlike Restaurant</title>
@@ -311,7 +311,7 @@
     <h2 class="mt-5 pt-4 mb-4 text-center fw-bold new-font">Reach Us</h2>
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-md-8 p-4 mb-lg-0 mb-3 bg-white rounded">
+            <div class="col-lg-8 col-md-8 p-4 mb-lg-0 bg-white rounded">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15283674.799797209!2d72.09858950579333!3d20.73595779415586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30635ff06b92b791%3A0xd78c4fa1854213a6!2sIndia!5e0!3m2!1sen!2sin!4v1729630910616!5m2!1sen!2sin" height="320px" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-100 rounded"></iframe>
             </div>
             <div class="col-lg-4 col-md-4">
@@ -336,7 +336,7 @@
                             <i class="bi bi-instagram me-1"></i> Instagram
                         </span>
                     </a><br>
-                    <a href="#" class="d-inline-block mb-3">
+                    <a href="#" class="d-inline-block">
                         <span class="badge bg-light text-dark fs-6 p-2">
                             <i class="bi bi-twitter"></i> Twitter
                         </span>

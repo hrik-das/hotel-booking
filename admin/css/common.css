@@ -1,0 +1,66 @@
+/* Google Font "Inter" and "Merienda" Link */
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Merienda:wght@300..900&display=swap");
+
+:root {
+    --pearl-blue: #2e44c1;
+    --pearl-blue-hover: #31279e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", Arial;
+}
+
+.custom-background {
+    background: var(--pearl-blue);
+    border: 1px solid var(--pearl-blue-hover);
+}
+
+.custom-background:hover {
+    background: var(--pearl-blue-hover);
+    border: 1px solid var(--pearl-blue);
+}
+
+.custom-alert {
+    position: fixed;
+    top: 85px;
+    right: 25px;
+    z-index: 10;
+    height: 60px;
+    font-weight: 500;
+    width: 380px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(0, 0, 0);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #555555;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: none;
+    appearance: none;
+}
