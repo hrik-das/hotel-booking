@@ -19,6 +19,7 @@
             $value = htmlspecialchars($value);
             $data[$key] = $value;
         }
+        
         return $data;
     }
 
@@ -30,6 +31,7 @@
         if ($result) {
             return false;
         }
+
         return $result;
     }
 

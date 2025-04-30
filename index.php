@@ -291,7 +291,7 @@
                         <img src="./assets/about/rating.svg" width="30px">
                         <h6 class="m-0 ms-2">Random User One</h6>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente vitae perferendis temporibus maxime quo iure totam ea illum neque architecto consectetur quos, veniam dolore earum quis deleniti debitis nemo in?</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente vitae perferendis temporibus maxime quo iure totam ea illum neque architecto consectetur quos, veniam dolore earum quis deleniti debitis nemo in</p>
                     <div class="rating">
                         <i class="bi bi-star-fill text-warning"></i>
                         <i class="bi bi-star-fill text-warning"></i>

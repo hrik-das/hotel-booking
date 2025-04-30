@@ -89,10 +89,10 @@
                                 <span class="badge rounded-pill text-dark bg-light text-wrap">Air Conditioner</span>
                             </div>
                             <div class="guests">
-                            <h6 class="mb-1">Guests</h6>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">4 Children</span>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">5 Adults</span>
-                        </div>
+                                <h6 class="mb-1">Guests</h6>
+                                <span class="badge rounded-pill text-dark bg-light text-wrap">4 Children</span>
+                                <span class="badge rounded-pill text-dark bg-light text-wrap">5 Adults</span>
+                            </div>
                         </div>
                         <div class="col-md-2 text-center mt-lg-0 mt-md-0 mt-4">
                             <h6 class="mb-4">₹200 per night</h6>
