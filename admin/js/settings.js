@@ -2,9 +2,12 @@ let general_data, contact_data;
 
 let site_title_input = document.getElementById("site-title-input");
 let site_about_input = document.getElementById("site-about-input");
+let member_name_input = document.getElementById("member-name-input");
+let member_image_input = document.getElementById("member-image-input");
 
 let general_settings_form = document.getElementById("general-settings-form");
 let contact_details_form = document.getElementById("contact-details-form");
+let team_management_form = document.getElementById("management-team-form");
 
 general_settings_form.addEventListener("submit", function(e) {
     e.preventDefault();
@@ -14,6 +17,11 @@ general_settings_form.addEventListener("submit", function(e) {
 contact_details_form.addEventListener("submit", function(e) {
     e.preventDefault();
     updateContactData();
+});
+
+team_management_form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    uploadMember();
 });
 
 function getGeneralData() {
@@ -146,7 +154,69 @@ function updateContactData() {
     xhr.send(data);
 }
 
+function uploadMember() {
+    let data = new FormData();
+    data.append("name", member_name_input.value);
+    data.append("image", member_image_input.files[0]);
+    data.append("upload-member", "");
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "server/settings_crud.php", true);
+    // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    
+    xhr.onload = function() {
+        var myModal = document.getElementById("management-team");
+        var modal = bootstrap.Modal.getInstance(myModal);
+        modal.hide();
+
+        if (this.responseText == "invalid-image") {
+            alert("error", "Only JPG, JPEG, PNG and WEBP formats are allowed!");
+        } else if (this.responseText == "invalid-size") {
+            alert("error", "Image size should be less than 2MB!");
+        } else if (this.responseText == "upload-failed") {
+            alert("error", "Server didn't respond!");
+        } else {
+            alert("success", "New Member Uploaded.");
+            member_name_input.value = "";
+            member_image_input.value = "";
+            getMembers();
+        }
+    }
+
+    xhr.send(data);
+}
+
+function getMembers() {
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "server/settings_crud.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xhr.onload = function() {
+        document.getElementById("team-data").innerHTML = this.responseText;
+    }
+
+    xhr.send("get-members");
+}
+
+function removeMember(id) {
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "server/settings_crud.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xhr.onload = function() {
+        if (this.responseText == 1) {
+            alert("success", "Member details removed.");
+            getMembers();
+        } else {
+            alert("error", "Member details cannot be removed!");
+        }
+    }
+
+    xhr.send("remove-member="+id);
+}
+
 window.onload = function() {
     getGeneralData();
     getContactData();
+    getMembers();
 }
