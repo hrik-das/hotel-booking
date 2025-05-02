@@ -23,18 +23,6 @@
         return $data;
     }
 
-    function selectAllData($table) {
-        $connect = $GLOBALS["connect"];
-        $query = "SELECT * FROM `$$table`";
-        $result = mysqli_query($connect, $query);
-        
-        if ($result) {
-            return false;
-        }
-
-        return $result;
-    }
-
     function select($query, $values, $types) {
         $connect = $GLOBALS["connect"];
 
@@ -51,6 +39,25 @@
             }
         } else {
             die("Query cannot be executed - Select");
+        }
+    }
+
+    function update($query, $values, $types) {
+        $connect = $GLOBALS["connect"];
+
+        if ($stmt = mysqli_prepare($connect, $query)) {
+            mysqli_stmt_bind_param($stmt, $types, ...$values);
+            
+            if (mysqli_stmt_execute($stmt)) {
+                $result = mysqli_stmt_affected_rows($stmt);
+                mysqli_stmt_close($stmt);
+                return $result;
+            } else {
+                mysqli_stmt_close($stmt);
+                die("Query cannot be executed - Update");
+            }
+        } else {
+            die("Query cannot be executed - Update");
         }
     }
 ?>

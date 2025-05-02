@@ -13,6 +13,10 @@
     font-family: "Inter", Arial;
 }
 
+.new-font {
+    font-family: "Merienda", Arial;
+}
+
 .custom-background {
     background: var(--pearl-blue);
     border: 1px solid var(--pearl-blue-hover);
@@ -25,12 +29,12 @@
 
 .custom-alert {
     position: fixed;
-    top: 85px;
+    top: 80px;
     right: 25px;
     z-index: 10;
     height: 60px;
     font-weight: 500;
-    width: 380px;
+    width: 350px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -63,4 +67,22 @@ input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
 input[type=number] {
     -moz-appearance: none;
     appearance: none;
+}
+
+#menu {
+    position: fixed;
+    height: 100%;
+    z-index: 9;
+}
+
+@media screen and (max-width: 992px) {
+    #menu {
+        position: fixed;
+        height: auto;
+        width: 100%;
+    }
+
+    #main-content {
+        margin-top: 60px;
+    }
 }
