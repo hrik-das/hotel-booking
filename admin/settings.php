@@ -165,13 +165,13 @@
                                                         <span class="input-group-text">
                                                             <i class="bi bi-telephone-fill"></i>
                                                         </span>
-                                                        <input type="text" id="phone-one-input" name="phone_one" class="form-control shadow-none" required>
+                                                        <input type="number" id="phone-one-input" name="phone_one" class="form-control shadow-none" required>
                                                     </div>
                                                     <div class="input-group mb-3">
                                                         <span class="input-group-text">
                                                             <i class="bi bi-telephone-fill"></i>
                                                         </span>
-                                                        <input type="text" id="phone-two-input" name="phone_two" class="form-control shadow-none">
+                                                        <input type="number" id="phone-two-input" name="phone_two" class="form-control shadow-none">
                                                     </div>
                                                 </div>
                                                 <div class="mb-3">

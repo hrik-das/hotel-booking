@@ -1,3 +1,12 @@
+<?php
+    require_once("admin/include/connect.php");
+    require_once("admin/include/essential.php");
+
+    $contact_query = "SELECT * FROM `contact_details` WHERE `sr_no`=?";
+    $contact_values = [1];
+    $contact_result = mysqli_fetch_assoc(select($contact_query, $contact_values, "i"));
+?>
+
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm sticky-top">
     <div class="container-fluid">

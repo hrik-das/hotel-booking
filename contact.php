@@ -21,35 +21,49 @@
         <div class="row">
             <div class="col-lg-6 col-md-6 mb-5 px-4">
                 <div class="bg-white rounded shadow p-4">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15283674.799797209!2d72.09858950579333!3d20.73595779415586!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30635ff06b92b791%3A0xd78c4fa1854213a6!2sIndia!5e0!3m2!1sen!2sin!4v1729630910616!5m2!1sen!2sin" height="320px" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-100 rounded mb-4"></iframe>
+                    <iframe src="<?php echo $contact_result['iframe']; ?>" height="320px" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-100 rounded mb-4"></iframe>
                     <h5>Address</h5>
-                    <a href="https://maps.app.goo.gl/C291p9opm3xkUpBC7" target="_blank" class="d-inline-block mb-2 text-dark text-decoration-none">
-                        <i class="bi bi-geo-alt-fill"></i> XYZ, Assam, India
+                    <a href="<?php echo $contact_result['gmap']; ?>" target="_blank" class="d-inline-block mb-2 text-dark text-decoration-none">
+                        <i class="bi bi-geo-alt-fill"></i> <?php echo $contact_result["address"]; ?>
                     </a>
 
                     <h5 class="mt-4">Contact Us</h5>
-                    <a href="tel: +911234567890" class="d-inline-block mb-2 text-dark text-decoration-none">
-                        <i class="bi bi-telephone-fill"></i> +911234567890
+                    <a href="tel: +<?php echo $contact_result['phone_one']; ?>" class="d-inline-block mb-2 text-dark text-decoration-none">
+                        <i class="bi bi-telephone-fill"></i> +<?php echo $contact_result["phone_one"]; ?>
                     </a><br>
-                    <a href="tel: +911234567890" class="d-inline-block text-dark text-decoration-none">
-                        <i class="bi bi-telephone-fill"></i> +911234567890
-                    </a>
+                    
+                    <?php
+                        if ($contact_result["phone_two"] != "") {
+                            echo<<<data
+                                <a href="tel: +$contact_result[phone_two]" class="d-inline-block mb-2 text-dark text-decoration-none">
+                                    <i class="bi bi-telephone-fill"></i> +$contact_result[phone_two]
+                                </a>
+                            data;
+                        }
+                    ?>
                     
                     <h5 class="mt-4">Email Adrress</h5>
-                    <a href="mailto: emptynull01@gmail.com" class="d-inline-block text-dark text-decoration-none">
-                        <i class="bi bi-envelope-at-fill"></i> emptynull01@gmail.com
+                    <a href="mailto: <?php echo $contact_result['email']; ?>" class="d-inline-block text-dark text-decoration-none">
+                        <i class="bi bi-envelope-at-fill"></i> <?php echo $contact_result["email"]; ?>
                     </a>
                     
                     <h5 class="mt-4">Social Media</h5>
-                    <a href="#" class="d-inline-block text-dark fs-5 me-2">
+                    <a href="<?php echo $contact_result['facebook']; ?>" class="d-inline-block text-dark fs-5 me-2">
                         <i class="bi bi-facebook me-1"></i>
                     </a>
-                    <a href="#" class="d-inline-block text-dark fs-5 me-2">
+                    <a href="<?php echo $contact_result['instagram']; ?>" class="d-inline-block text-dark fs-5 me-2">
                         <i class="bi bi-instagram me-1"></i>
                     </a>
-                    <a href="#" class="d-inline-block text-dark fs-5">
-                        <i class="bi bi-twitter"></i>
-                    </a>
+                    
+                    <?php
+                        if ($contact_result["twitter"] != "") {
+                            echo<<<data
+                                <a href="$contact_result[twitter]" class="d-inline-block text-dark fs-5">
+                                    <i class="bi bi-twitter"></i>
+                                </a>
+                            data;
+                        }
+                    ?>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 px-4">
