@@ -33,6 +33,19 @@
     border: 1px solid var(--pearl-blue);
 }
 
+.custom-alert {
+    position: fixed;
+    top: 80px;
+    right: 25px;
+    z-index: 10;
+    height: 60px;
+    font-weight: 500;
+    width: 400px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-inner-spin-button, input::-webkit-outer-spin-button {
     -webkit-appearance: none;

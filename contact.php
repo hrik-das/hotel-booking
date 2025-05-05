@@ -68,33 +68,33 @@
             </div>
             <div class="col-lg-6 col-md-6 px-4">
                 <div class="bg-white rounded shadow p-4">
-                    <form action="">
+                    <form action="" method="post">
                         <h5><i class="bi bi-envelope"></i> Send a Message</h5>
                         <div class="mt-3">
                             <label class="form-label" style="font-weight: 500;">
                                 <i class="bi bi-person-fill"></i> Full Name
                             </label>
-                            <input type="text" name="" id="" class="form-control shadow-none">
+                            <input type="text" name="name" id="" class="form-control shadow-none" required>
                         </div>
                         <div class="mt-3">
                             <label class="form-label" style="font-weight: 500;">
                                 <i class="bi bi-envelope-at-fill"></i> Email Address
                             </label>
-                            <input type="email" name="" id="" class="form-control shadow-none">
+                            <input type="email" name="email" id="" class="form-control shadow-none" required>
                         </div>
                         <div class="mt-3">
                             <label class="form-label" style="font-weight: 500;">
                                 <i class="bi bi-journal-text"></i> Subject
                             </label>
-                            <input type="text" name="" id="" class="form-control shadow-none">
+                            <input type="text" name="subject" id="" class="form-control shadow-none" required>
                         </div>
                         <div class="mt-3">
                             <label class="form-label" style="font-weight: 500;">
                                 <i class="bi bi-chat-fill"></i> Message
                             </label>
-                            <textarea class="form-control shadow-none" rows="5" style="resize: none;"></textarea>
+                            <textarea name="message" class="form-control shadow-none" rows="5" style="resize: none;" required></textarea>
                         </div>
-                        <button type="submit" class="btn text-white custom-background mt-3">
+                        <button type="submit" name="submit" class="btn text-white custom-background mt-3">
                             <i class="bi bi-send-fill"></i> Send Message
                         </button>
                     </form>
@@ -102,6 +102,22 @@
             </div>
         </div>
     </div>
+
+    <?php
+        if (isset($_POST["submit"])) {
+            $filter_data = filteration($_POST);
+
+            $query = "INSERT INTO `user_queries` (`name`, `email`, `subject`, `message`) VALUES (?, ?, ?, ?)";
+            $values = [$filter_data["name"], $filter_data["email"], $filter_data["subject"], $filter_data["message"]];
+            $result = insert($query, $values, "ssss");
+
+            if ($result == 1) {
+                alert("success", "Query recieved, thank you for the feedback.");
+            } else {
+                alert("error", "Please try again later!");
+            }
+        }
+    ?>
 
     <!-- Footer -->
     <?php require_once("./include/footer.php"); ?>

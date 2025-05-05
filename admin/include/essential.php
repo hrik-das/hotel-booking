@@ -2,10 +2,12 @@
     // Data for frontend
     define("SITE_URL", "http://127.0.0.1/php/hotel-booking/");
     define("TEAM_IMAGE_PATH", SITE_URL."assets/team/");
+    define("CAROUSEL_IMAGE_PATH", SITE_URL."assets/carousel/");
 
     // Upload process data for backend
     define("TEAM_FOLDER", "team/");
     define("ABOUT_FOLDER", "about/");
+    define("CAROUSEL_FOLDER", "carousel/");
     define("UPLOAD_IMAGE_PATH", $_SERVER["DOCUMENT_ROOT"]."/php/hotel-booking/assets/");
 
     function alert($type, $message) {
@@ -16,6 +18,16 @@
                 <p class="m-0">$message</p>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
+
+            <script>
+                setTimeout(() => {
+                    let alertBox = document.querySelector(".alert");
+                    
+                    if (alertBox) {
+                        alertBox.remove();
+                    }
+                }, 3000);
+            </script>
         alert;
     }
 
