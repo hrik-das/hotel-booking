@@ -3,11 +3,13 @@
     define("SITE_URL", "http://127.0.0.1/php/hotel-booking/");
     define("TEAM_IMAGE_PATH", SITE_URL."assets/team/");
     define("CAROUSEL_IMAGE_PATH", SITE_URL."assets/carousel/");
+    define("FACILITY_IMAGE_PATH", SITE_URL."assets/facilities/");
 
     // Upload process data for backend
     define("TEAM_FOLDER", "team/");
     define("ABOUT_FOLDER", "about/");
     define("CAROUSEL_FOLDER", "carousel/");
+    define("FACILITY_FOLDER", "facilities/");
     define("UPLOAD_IMAGE_PATH", $_SERVER["DOCUMENT_ROOT"]."/php/hotel-booking/assets/");
 
     function alert($type, $message) {
@@ -70,6 +72,27 @@
             return true;
         } else {
             return false;
+        }
+    }
+
+    function uploadSVGImage($image, $folder) {
+        $valid_mime = ["image/svg+xml"];
+        $image_mime = $image["type"];
+
+        if (!in_array($image_mime, $valid_mime)) {
+            return "invalid-image";    // invalid image mime or format
+        } else if (($image["size"] / (1024 * 1024)) > 1) {
+            return "invalid-size";    // invalid image size (greater than 1MB)
+        } else {
+            $extension = pathinfo($image["name"], PATHINFO_EXTENSION);
+            $random_name = "SVG_".random_int(111111, 999999).".$extension";
+            $image_path = UPLOAD_IMAGE_PATH.$folder.$random_name;
+            
+            if (move_uploaded_file($image["tmp_name"], $image_path)) {
+                return $random_name;
+            } else {
+                return "upload-failed";
+            }
         }
     }
 ?>
