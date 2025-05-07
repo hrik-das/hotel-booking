@@ -90,7 +90,7 @@ function addFacility() {
             alert("error", "Unable to upload this icon!");
         } else {
             alert("success", "New facility added.");
-            feature_settings_form.reset();
+            facilities_settings_form.reset();
             getFacilities();
         }
     }

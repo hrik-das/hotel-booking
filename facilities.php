@@ -20,62 +20,25 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-6 mb-5 px-4">
-                <div class="bg-white rounded shadow p-4 border-top border-4 border-dark pop">
-                    <div class="d-flex mb-2 align-items-center">
-                        <img src="./assets/facilities/Internet.svg" width="40px">
-                        <h5 class="m-0 ms-3">Unlimited Wifi</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam tempore quasi tempora? Qui, id quis!</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-5 px-4">
-                <div class="bg-white rounded shadow p-4 border-top border-4 border-dark pop">
-                    <div class="d-flex mb-2 align-items-center">
-                        <img src="./assets/facilities/Internet.svg" width="40px">
-                        <h5 class="m-0 ms-3">Unlimited Wifi</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam tempore quasi tempora? Qui, id quis!</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-5 px-4">
-                <div class="bg-white rounded shadow p-4 border-top border-4 border-dark pop">
-                    <div class="d-flex mb-2 align-items-center">
-                        <img src="./assets/facilities/Internet.svg" width="40px">
-                        <h5 class="m-0 ms-3">Unlimited Wifi</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam tempore quasi tempora? Qui, id quis!</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-5 px-4">
-                <div class="bg-white rounded shadow p-4 border-top border-4 border-dark pop">
-                    <div class="d-flex mb-2 align-items-center">
-                        <img src="./assets/facilities/Internet.svg" width="40px">
-                        <h5 class="m-0 ms-3">Unlimited Wifi</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam tempore quasi tempora? Qui, id quis!</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-5 px-4">
-                <div class="bg-white rounded shadow p-4 border-top border-4 border-dark pop">
-                    <div class="d-flex mb-2 align-items-center">
-                        <img src="./assets/facilities/Internet.svg" width="40px">
-                        <h5 class="m-0 ms-3">Unlimited Wifi</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam tempore quasi tempora? Qui, id quis!</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-5 px-4">
-                <div class="bg-white rounded shadow p-4 border-top border-4 border-dark pop">
-                    <div class="d-flex mb-2 align-items-center">
-                        <img src="./assets/facilities/Internet.svg" width="40px">
-                        <h5 class="m-0 ms-3">Unlimited Wifi</h5>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam tempore quasi tempora? Qui, id quis!</p>
-                </div>
-            </div>
+            <?php
+                $result = selectAllData("facilities");
+                $path = FACILITY_IMAGE_PATH;
+
+                while ($data = mysqli_fetch_assoc($result)) {
+                    echo<<<data
+                        <div class="col-lg-4 col-md-6 mb-5 px-4">
+                            <div class="bg-white rounded shadow p-4 border-top border-4 border-dark pop">
+                                <div class="d-flex mb-2 align-items-center">
+                                    <img src="$path$data[icon]" width="40px">
+                                    <h5 class="m-0 ms-3">$data[name]</h5>
+                                </div>
+                                <p>$data[description]</p>
+                            </div>
+                        </div>
+                    data;
+                }
+            ?>
         </div>
-    </div>
 
     <!-- Footer -->
     <?php require_once("./include/footer.php"); ?>

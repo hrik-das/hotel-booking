@@ -36,9 +36,16 @@
         $filter_data = filteration($_POST);
         $values = [$filter_data["remove-feature"]];
 
-        $query = "DELETE FROM `features` WHERE `id`=?";
-        $result = delete($query, $values, "i");
-        echo $result;
+        $feature_validation = select("SELECT * FROM `room_features` WHERE `features_id`=?", [$filter_data["remove-feature"]], "i");
+
+        if (mysqli_num_rows($feature_validation) == 0) {
+            $query = "DELETE FROM `features` WHERE `id`=?";
+            $result = delete($query, $values, "i");
+            echo $result;
+        } else {
+            echo "in-use";
+        }
+
     }
 
     if (isset($_POST["add-facility"])) {
@@ -85,16 +92,23 @@
         $filter_data = filteration($_POST);
         $values = [$filter_data["remove-facility"]];
 
-        $pre_query = "SELECT * FROM `facilities` WHERE `id`=?";
-        $result = select($pre_query, $values, "i");
-        $image = mysqli_fetch_assoc($result);
+        $facility_validation = select("SELECT * FROM `room_facilities` WHERE `facilities_id`=?", [$filter_data["remove-facility"]], "i");
 
-        if (deleteImage($image["icon"], FACILITY_FOLDER)) {
-            $query = "DELETE FROM `facilities` WHERE `id`=?";
-            $result = delete($query, $values, "i");
-            echo $result;
+        if (mysqli_num_rows($facility_validation) == 0) {
+            $pre_query = "SELECT * FROM `facilities` WHERE `id`=?";
+            $result = select($pre_query, $values, "i");
+            $image = mysqli_fetch_assoc($result);
+    
+            if (deleteImage($image["icon"], FACILITY_FOLDER)) {
+                $query = "DELETE FROM `facilities` WHERE `id`=?";
+                $result = delete($query, $values, "i");
+                echo $result;
+            } else {
+                echo 0;
+            }
         } else {
-            echo 0;
+            echo "in-use";
         }
+
     }
 ?>
