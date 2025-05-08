@@ -39,9 +39,9 @@
 
     if (isset($_POST["remove-image"])) {
         $filter_data = filteration($_POST);
-        $values = [$filter_data["remove-image"]];
-
+        
         $pre_query = "SELECT * FROM `carousel` WHERE `sr_no`=?";
+        $values = [$filter_data["remove-image"]];
         $result = select($pre_query, $values, "i");
         $image = mysqli_fetch_assoc($result);
 

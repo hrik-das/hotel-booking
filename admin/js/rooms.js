@@ -1,5 +1,6 @@
 let add_room_form = document.getElementById("add-room-form");
 let edit_room_form = document.getElementById("edit-room-form");
+let add_image_form = document.getElementById("add-image-form");
 
 add_room_form.addEventListener("submit", function(e) {
     e.preventDefault();
@@ -9,6 +10,11 @@ add_room_form.addEventListener("submit", function(e) {
 edit_room_form.addEventListener("submit", function(e) {
     e.preventDefault();
     editRoom();
+});
+
+add_image_form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    uploadRoomImage();
 });
 
 function addRoom() {
@@ -166,6 +172,112 @@ function editRoom() {
     }
 
     xhr.send(data);
+}
+
+function uploadRoomImage() {
+    let data = new FormData();
+    data.append("image", add_image_form.elements["image"].files[0]);
+    data.append("room-id", add_image_form.elements["room_id"].value);
+    data.append("upload-image", "");
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "server/rooms.php", true);
+
+    xhr.onload = function() {
+        if (this.responseText == "invalid-image") {
+            alert("error", "Only JPG, JPEG, PNG and WEBP formats are allowed!", "alert");
+        } else if (this.responseText == "invalid-size") {
+            alert("error", "Image size should be less than 2MB!", "alert");
+        } else if (this.responseText == "upload-failed") {
+            alert("error", "Server didn't respond!", "alert");
+        } else {
+            alert("success", "New room image uploaded.", "alert");
+            roomImages(add_image_form.elements["room_id"].value, document.querySelector("#room-image .modal-title").innerText);
+            add_image_form.reset();
+        }
+    }
+
+    xhr.send(data);
+}
+
+function roomImages(id, name) {
+    document.querySelector("#room-image .modal-title").innerText = name;
+    add_image_form.elements["room_id"].value = id;
+    add_image_form.elements["image"].value = "";
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "server/rooms.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    
+    xhr.onload = function() {
+        document.getElementById("room-image-data").innerHTML = this.responseText;
+    }
+    
+    xhr.send("get-room-images="+id);
+}
+
+function removeImage(image_id, room_id) {
+    let data = new FormData();
+    data.append("image-id", image_id);
+    data.append("room-id", room_id);
+    data.append("remove-image", "");
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "server/rooms.php", true);
+
+    xhr.onload = function() {
+        if (this.responseText == 1) {
+            alert("success", "Image removed.", "alert");
+            roomImages(room_id, document.querySelector("#room-image .modal-title").innerText);            
+        } else {
+            alert("error", "Failed to remove image!", "alert");
+        }
+    }
+
+    xhr.send(data);
+}
+
+function thumbnailImage(image_id, room_id) {
+    let data = new FormData();
+    data.append("image-id", image_id);
+    data.append("room-id", room_id);
+    data.append("thumbnail-image", "");
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "server/rooms.php", true);
+
+    xhr.onload = function() {
+        if (this.responseText == 1) {
+            alert("success", "Thumbnail image changed.", "alert");
+            roomImages(room_id, document.querySelector("#room-image .modal-title").innerText);            
+        } else {
+            alert("error", "Failed to update thumbnail image!", "alert");
+        }
+    }
+
+    xhr.send(data);
+}
+
+function removeRoom(id) {
+    if (confirm("are you sure you want to remove this room?")) {
+        let data = new FormData();
+        data.append("room-id", id);
+        data.append("remove-room", "");
+
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", "server/rooms.php", true);
+    
+        xhr.onload = function() {
+            if (this.responseText == 1) {
+                alert("success", "Room removed.");
+                getAllRooms();
+            } else {
+                alert("error", "Failed to remove room!");
+            }
+        }
+    
+        xhr.send(data);
+    }
 }
 
 window.onload = function() {

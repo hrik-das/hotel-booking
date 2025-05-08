@@ -4,9 +4,11 @@
     define("TEAM_IMAGE_PATH", SITE_URL."assets/team/");
     define("CAROUSEL_IMAGE_PATH", SITE_URL."assets/carousel/");
     define("FACILITY_IMAGE_PATH", SITE_URL."assets/facilities/");
+    define("ROOM_IMAGE_PATH", SITE_URL."assets/rooms/");
 
     // Upload process data for backend
     define("TEAM_FOLDER", "team/");
+    define("ROOM_FOLDER", "rooms/");
     define("ABOUT_FOLDER", "about/");
     define("CAROUSEL_FOLDER", "carousel/");
     define("FACILITY_FOLDER", "facilities/");
