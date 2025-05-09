@@ -79,143 +79,90 @@
     <h2 class="mt-5 pt-4 mb-4 text-center fw-bold new-font">Our Rooms</h2>
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-6 my-3">
-                <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-                    <img src="./assets/rooms/1.jpg" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">Simple Room</h5>
-                        <h6 class="mb-4">₹200 per night</h6>
-                        <div class="features mb-4">
-                            <h6 class="mb-1">Features</h6>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">2 Rooms</span>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">1 Bathroom</span>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">1 Balcony</span>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">3 Sofa</span>
+            <?php
+                $query = "SELECT * FROM `rooms` WHERE `status`=? AND `removed`=? ORDER BY `id` DESC LIMIT 3";
+                $values = [1, 0];
+                $result = select($query, $values, "ii");
+
+                while ($room_data = mysqli_fetch_assoc($result)) {
+                    // get features of room
+                    $features_data = "";
+                    $features_query = "SELECT feature.name FROM `features` feature INNER JOIN `room_features` room_feature ON feature.id=room_feature.features_id WHERE room_feature.room_id='$room_data[id]'";
+                    $features_result = mysqli_query($connect, $features_query);
+
+                    while ($feature_row = mysqli_fetch_assoc($features_result)) {
+                        $features_data .= "
+                            <span class='badge rounded-pill text-dark bg-light text-wrap me-1 mb-1'>$feature_row[name]</span>
+                        ";
+                    }
+
+                    // get facilities of room
+                    $facilities_data = "";
+                    $feacilities_query = "SELECT facility.name FROM `facilities` facility INNER JOIN `room_facilities` room_facility ON facility.id=room_facility.facilities_id WHERE room_facility.room_id='$room_data[id]'";
+                    $feacilities_result = mysqli_query($connect, $feacilities_query);
+
+                    while ($facility_row = mysqli_fetch_assoc($feacilities_result)) {
+                        $facilities_data .= "
+                            <span class='badge rounded-pill text-dark bg-light text-wrap me-1 mb-1'>$facility_row[name]</span>
+                        ";
+                    }
+
+                    // get thumbnail image of room
+                    $default_thumbnail = ROOM_IMAGE_PATH."thumbnail.jpg";
+                    $thumbnail_query = "SELECT * FROM `room_image` WHERE `room_id`='$room_data[id]' AND `thumbnail`='1'";
+                    $thumbnail_result = mysqli_query($connect, $thumbnail_query);
+
+                    if (mysqli_num_rows($thumbnail_result) > 0) {
+                        $thumbnail = mysqli_fetch_assoc($thumbnail_result);
+                        $default_thumbnail = ROOM_IMAGE_PATH.$thumbnail["image"];
+                    }
+
+                    // print room card
+                    echo<<<data
+                        <div class="col-lg-4 col-md-6 my-3">
+                            <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
+                                <img src="$default_thumbnail" class="card-img-top">
+                                <div class="card-body">
+                                    <h5 class="card-title">$room_data[name]</h5>
+                                    <h6 class="mb-4">₹$room_data[price] per night</h6>
+                                    <div class="features mb-4">
+                                        <h6 class="mb-1">Features</h6>
+                                        $features_data
+                                    </div>
+                                    <div class="facilities mb-4">
+                                        <h6 class="mb-1">Facilities</h6>
+                                        $facilities_data
+                                    </div>
+                                    <div class="guests mb-4">
+                                        <h6 class="mb-1">Guests</h6>
+                                        <span class="badge rounded-pill text-dark bg-light text-wrap">$room_data[children] children</span>
+                                        <span class="badge rounded-pill text-dark bg-light text-wrap">$room_data[adult] Adults</span>
+                                    </div>
+                                    <div class="rating mb-4">
+                                        <h6 class="mb-1">Rating</h6>
+                                        <span class="badge rounded-pill bg-light">
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                            <i class="bi bi-star-fill text-warning"></i>
+                                        </span>
+                                    </div>
+                                    <div class="d-flex justify-content-evenly mb-2">
+                                        <a href="#" class="btn btn-sm text-white custom-background shadow-none">
+                                            <i class="bi bi-bookmark-fill"></i> Book Now
+                                        </a>
+                                        <a href="room_details.php?id=$room_data[id]" class="btn btn-sm btn-outline-dark shadow-none">
+                                            <i class="bi bi-exclamation-circle-fill"></i> More Details
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="facilities mb-4">
-                            <h6 class="mb-1">Facilities</h6>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">Unlimited Wifi</span>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">Room Heater</span>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">Air Conditioner</span>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">Smart Television</span>
-                        </div>
-                        <div class="guests mb-4">
-                            <h6 class="mb-1">Guests</h6>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">4 Children</span>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">5 Adults</span>
-                        </div>
-                        <div class="rating mb-4">
-                            <h6 class="mb-1">Rating</h6>
-                            <span class="badge rounded-pill bg-light">
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                            </span>
-                        </div>
-                        <div class="d-flex justify-content-evenly mb-2">
-                            <a href="#" class="btn btn-sm text-white custom-background shadow-none">
-                                <i class="bi bi-bookmark-fill"></i> Book Now
-                            </a>
-                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none">
-                                <i class="bi bi-exclamation-circle-fill"></i> More Details
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 my-3">
-                <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-                    <img src="./assets/rooms/1.jpg" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">Simple Room</h5>
-                        <h6 class="mb-4">₹200 per night</h6>
-                        <div class="features mb-4">
-                            <h6 class="mb-1">Features</h6>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">2 Rooms</span>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">1 Bathroom</span>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">1 Balcony</span>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">3 Sofa</span>
-                        </div>
-                        <div class="facilities mb-4">
-                            <h6 class="mb-1">Facilities</h6>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">Unlimited Wifi</span>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">Room Heater</span>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">Air Conditioner</span>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">Smart Television</span>
-                        </div>
-                        <div class="guests mb-4">
-                            <h6 class="mb-1">Guests</h6>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">4 Children</span>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">5 Adults</span>
-                        </div>
-                        <div class="rating mb-4">
-                            <h6 class="mb-1">Rating</h6>
-                            <span class="badge rounded-pill bg-light">
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                            </span>
-                        </div>
-                        <div class="d-flex justify-content-evenly mb-2">
-                            <a href="#" class="btn btn-sm text-white custom-background shadow-none">
-                                <i class="bi bi-bookmark-fill"></i> Book Now
-                            </a>
-                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none">
-                                <i class="bi bi-exclamation-circle-fill"></i> More Details
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 my-3">
-                <div class="card border-0 shadow" style="max-width: 350px; margin: auto;">
-                    <img src="./assets/rooms/1.jpg" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">Simple Room</h5>
-                        <h6 class="mb-4">₹200 per night</h6>
-                        <div class="features mb-4">
-                            <h6 class="mb-1">Features</h6>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">2 Rooms</span>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">1 Bathroom</span>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">1 Balcony</span>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">3 Sofa</span>
-                        </div>
-                        <div class="facilities mb-4">
-                            <h6 class="mb-1">Facilities</h6>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">Unlimited Wifi</span>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">Room Heater</span>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">Air Conditioner</span>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">Smart Television</span>
-                        </div>
-                        <div class="guests mb-4">
-                            <h6 class="mb-1">Guests</h6>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">4 Children</span>
-                            <span class="badge rounded-pill text-dark bg-light text-wrap">5 Adults</span>
-                        </div>
-                        <div class="rating mb-4">
-                            <h6 class="mb-1">Rating</h6>
-                            <span class="badge rounded-pill bg-light">
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                <i class="bi bi-star-fill text-warning"></i>
-                            </span>
-                        </div>
-                        <div class="d-flex justify-content-evenly mb-2">
-                            <a href="#" class="btn btn-sm text-white custom-background shadow-none">
-                                <i class="bi bi-bookmark-fill"></i> Book Now
-                            </a>
-                            <a href="#" class="btn btn-sm btn-outline-dark shadow-none">
-                                <i class="bi bi-exclamation-circle-fill"></i> More Details
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    data;
+                }
+            ?>
             <div class="col-lg-12 text-center mt-5">
-                <a href="#" class="btn btn-sm btn-outline-dark rounded fw-bold shadow-none">More Rooms >>></a>
+                <a href="rooms.php" class="btn btn-sm btn-outline-dark rounded fw-bold shadow-none">More Rooms >>></a>
             </div>
         </div>
     </div>
@@ -224,29 +171,20 @@
     <h2 class="mt-5 pt-4 mb-4 text-center fw-bold new-font">Our Facilities</h2>
     <div class="container">
         <div class="row justify-content-evenly px-lg-0 px-md-0 px-5">
-            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-                <img src="./assets/facilities/Internet.svg" width="80px">
-                <h5 class="mt-3">Unlimited Wifi</h5>
-            </div>
-            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-                <img src="./assets/facilities/Internet.svg" width="80px">
-                <h5 class="mt-3">Unlimited Wifi</h5>
-            </div>
-            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-                <img src="./assets/facilities/Internet.svg" width="80px">
-                <h5 class="mt-3">Unlimited Wifi</h5>
-            </div>
-            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-                <img src="./assets/facilities/Internet.svg" width="80px">
-                <h5 class="mt-3">Unlimited Wifi</h5>
-            </div>
-            <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
-                <img src="./assets/facilities/Internet.svg" width="80px">
-                <h5 class="mt-3">Unlimited Wifi</h5>
-            </div>
-            <div class="col-lg-12 text-center mt-5">
-                <a href="#" class="btn btn-sm btn-outline-dark rounded fw-bold shadow-none">More Facilities >>></a>
-            </div>
+            <?php
+                $query = "SELECT * FROM `facilities` ORDER BY `id` DESC LIMIT 5";
+                $result = mysqli_query($connect, $query);
+                $path = FACILITY_IMAGE_PATH;
+
+                while ($data = mysqli_fetch_assoc($result)) {
+                    echo<<<data
+                        <div class="col-lg-2 col-md-2 text-center bg-white rounded shadow py-4 my-3">
+                            <img src="$path$data[icon]" width="60px">
+                            <h5 class="mt-3">$data[name]</h5>
+                        </div>
+                    data;
+                }
+            ?>
         </div>
     </div>
 
@@ -298,7 +236,7 @@
             <div class="swiper-pagination"></div>
         </div>
         <div class="col-lg-12 text-center mt-5">
-            <a href="#" class="btn btn-sm btn-outline-dark rounded fw-bold shadow-none">Know More >>></a>
+            <a href="about.php" class="btn btn-sm btn-outline-dark rounded fw-bold shadow-none">Know More >>></a>
         </div>
     </div>
 
