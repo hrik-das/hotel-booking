@@ -5,14 +5,19 @@
     define("CAROUSEL_IMAGE_PATH", SITE_URL."assets/carousel/");
     define("FACILITY_IMAGE_PATH", SITE_URL."assets/facilities/");
     define("ROOM_IMAGE_PATH", SITE_URL."assets/rooms/");
+    define("USER_IMAGE_PATH", SITE_URL."assets/users/");
 
     // Upload process data for backend
     define("TEAM_FOLDER", "team/");
     define("ROOM_FOLDER", "rooms/");
+    define("USER_FOLDER", "users/");
     define("ABOUT_FOLDER", "about/");
     define("CAROUSEL_FOLDER", "carousel/");
     define("FACILITY_FOLDER", "facilities/");
     define("UPLOAD_IMAGE_PATH", $_SERVER["DOCUMENT_ROOT"]."/php/hotel-booking/assets/");
+
+    // SendGrid API key
+    define("SENDGRID_API_KEY", "your api key");
 
     function alert($type, $message) {
         $bs_class = ($type == "success") ? "alert-success" : "alert-danger";
@@ -91,6 +96,33 @@
             $image_path = UPLOAD_IMAGE_PATH.$folder.$random_name;
             
             if (move_uploaded_file($image["tmp_name"], $image_path)) {
+                return $random_name;
+            } else {
+                return "upload-failed";
+            }
+        }
+    }
+
+    function uploadUserImage($image) {
+        $valid_mime = ["image/jpg", "image/png", "image/jpeg", "image/webp"];
+        $image_mime = $image["type"];
+
+        if (!in_array($image_mime, $valid_mime)) {
+            return "invalid-image";    // invalid image mime or format
+        } else {
+            $extension = pathinfo($image["name"], PATHINFO_EXTENSION);
+            $random_name = "IMAGE_".random_int(111111, 999999).".jpeg";
+            $image_path = UPLOAD_IMAGE_PATH.USER_FOLDER.$random_name;
+
+            if ($extension == "png" || $extension == "PNG") {
+                $img = imagecreatefrompng($image["tmp_name"]);
+            } else if ($extension == "webp" || $extension == "WEBP") {
+                $img = imagecreatefromwebp($image["tmp_name"]);
+            } else {
+                $img = imagecreatefromjpeg($image["tmp_name"]);
+            }
+
+            if (imagejpeg($img, $image_path, 75)) {
                 return $random_name;
             } else {
                 return "upload-failed";
