@@ -12,3 +12,17 @@
 
 <!-- Common JS File -->
 <script src="./js/navbar.js" defer></script>
+<script src="./js/auth.js" defer></script>
+
+<?php
+    require_once("admin/include/connect.php");
+    require_once("admin/include/essential.php");
+
+    $contact_query = "SELECT * FROM `contact_details` WHERE `sr_no`=?";
+    $contact_values = [1];
+    $contact_result = mysqli_fetch_assoc(select($contact_query, $contact_values, "i"));
+
+    $settings_query = "SELECT * FROM `settings` WHERE `sr_no`=?";
+    $settings_values = [1];
+    $settings_result = mysqli_fetch_assoc(select($settings_query, $settings_values, "i"));
+?>
