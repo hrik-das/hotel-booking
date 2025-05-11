@@ -5,7 +5,7 @@
     define("CAROUSEL_IMAGE_PATH", SITE_URL."assets/carousel/");
     define("FACILITY_IMAGE_PATH", SITE_URL."assets/facilities/");
     define("ROOM_IMAGE_PATH", SITE_URL."assets/rooms/");
-    define("USER_IMAGE_PATH", SITE_URL."assets/users/");
+    define("USERS_IMAGE_PATH", SITE_URL."assets/users/");
 
     // Upload process data for backend
     define("TEAM_FOLDER", "team/");
@@ -17,7 +17,9 @@
     define("UPLOAD_IMAGE_PATH", $_SERVER["DOCUMENT_ROOT"]."/php/hotel-booking/assets/");
 
     // SendGrid API key
-    define("SENDGRID_API_KEY", "your api key");
+    define("SENDGRID_ORGANISATION", "Your organisation name");
+    define("SENDGRID_EMAIL_ADDRESS", "Your sendgrid email address");
+    define("SENDGRID_API_KEY", "Your API key");
 
     function alert($type, $message) {
         $bs_class = ($type == "success") ? "alert-success" : "alert-danger";
