@@ -18,6 +18,8 @@
                         alert('Email already verified!');
                     </script>
                 ";
+                
+                redirect("".SITE_URL."index.php");
             } else {
                 $update_query = "UPDATE `user_cred` SET `is_verified`=? WHERE `id`=?";
                 $update_values = [1, $fetch["id"]];
@@ -31,13 +33,13 @@
                     ";
                 } else {
                     echo "
-                        <script>
-                            alert('Email verification failed due to some internal server error!');
-                        </script>
+                    <script>
+                    alert('Email verification failed due to some internal server error!');
+                    </script>
                     ";
                 }
-                
-                header("Location: ".SITE_URL."index.php");
+
+                redirect("".SITE_URL."index.php");
             }
         } else {
             echo "
