@@ -1,8 +1,20 @@
 let register_form = document.getElementById("register-form");
+let login_form = document.getElementById("login-form");
+let forgot_form = document.getElementById("forgot-form");
 
 register_form.addEventListener("submit", function(e) {
     e.preventDefault();
     registerUser();
+});
+
+login_form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    loginUser();
+});
+
+forgot_form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    resetPassword();
 });
 
 function registerUser() {
@@ -43,6 +55,68 @@ function registerUser() {
         } else {
             alert("success", "Confirmation link send to the email address.");
             register_form.reset();
+        }
+    }
+    
+    xhr.send(data);
+}
+
+function loginUser() {
+    let data = new FormData();
+    data.append("email-phone", login_form.elements["email_phone"].value);
+    data.append("password", login_form.elements["password"].value);
+    data.append("login", "");
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "server/auth.php", true);
+
+    xhr.onload = function() {
+        var myModal = document.getElementById("loginModal");
+        var modal = bootstrap.Modal.getInstance(myModal);
+        modal.hide();
+
+        if (this.responseText == "invalid-details") {
+            alert("error", "Login details are invalid!");
+        } else if (this.responseText == "not-verified") {
+            alert("error", "Email address is not verified yet!");
+        } else if (this.responseText == "status-blocked") {
+            alert("error", "Account currently suspended, contact admin!");
+        } else if (this.responseText == "invalid-password") {
+            alert("error", "Incorrect password!");
+        } else {
+            window.location = window.location.pathname;
+        }
+    }
+    
+    xhr.send(data);
+}
+
+function resetPassword() {
+    let data = new FormData();
+    data.append("email", forgot_form.elements["email"].value);
+    data.append("forgot-password", "");
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "server/auth.php", true);
+
+    xhr.onload = function() {
+        var myModal = document.getElementById("forgotModal");
+        var modal = bootstrap.Modal.getInstance(myModal);
+        modal.hide();
+
+        if (this.responseText == "invalid-user") {
+            alert("error", "Invalid email address!");
+        } else if (this.responseText == "not-verified") {
+            alert("error", "Email address is not verified yet!");
+        } else if (this.responseText == "status-blocked") {
+            alert("error", "Account currently suspended, contact admin!");
+        } else if (this.responseText == "send-mail-failed") {
+            alert("error", "Couldn't send email due to some internal server error!");
+        } else if (this.responseText == "update-failed") {
+            alert("error", "Failed to reset your password!");
+        } else {
+            alert("success", "Password reset link send to your email address.");
+            forgot_form.reset();
         }
     }
     

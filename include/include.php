@@ -15,8 +15,11 @@
 <script src="./js/auth.js" defer></script>
 
 <?php
+    session_start();
+
     require_once("admin/include/connect.php");
     require_once("admin/include/essential.php");
+    date_default_timezone_set("Asia/Kolkata");
 
     $contact_query = "SELECT * FROM `contact_details` WHERE `sr_no`=?";
     $contact_values = [1];

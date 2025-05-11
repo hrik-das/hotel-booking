@@ -8,6 +8,7 @@
     <?php require_once("./include/include.php"); ?>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="./js/swiper.js" defer></script>
+    <!-- <script src="./js/reset_password.js" defer></script> -->
     <title>Home - <?php echo $settings_result["site_title"]; ?></title>
 </head>
 <body class="bg-light">
@@ -293,7 +294,63 @@
         </div>
     </div>
 
+    <!-- Reset Password Modal -->
+    <div class="modal fade" id="resetModal" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="" id="reset-form">
+                    <div class="modal-header">
+                        <h5 class="modal-title d-flex align-items-center" id="staticBackdropLabel">
+                            <i class="bi bi-shield-lock fs-3 me-2"></i> Set New Password
+                        </h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-4">
+                            <label for="exampleInputEmail1" class="form-label">
+                                <i class="bi bi-envelope-at-fill"></i> New Password
+                            </label>
+                            <input type="password" name="password" class="form-control shadow-none" required>
+                            <input type="hidden" name="email">
+                            <input type="hidden" name="token">
+                        </div>
+                        <div class="mb-2 text-end">
+                            <button type="button" class="btn text-secondary text-decoration-none shadow-none p-0 me-2" data-bs-toggle="modal" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-dark shadow-none">
+                                <i class="bi bi-box-arrow-in-right"></i> Submit
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <?php require_once("./include/footer.php"); ?>
+
+    <!-- Reset Password Modal Script -->
+    <script src="./js/reset_password.js"></script>
+
+    <?php
+        if (isset($_GET["reset-password"])) {
+            $filter_data = filteration($_GET);
+
+            $current_date = date("Y-m-d");
+
+            $query = "SELECT * FROM `user_cred` WHERE `email`=? AND `token`=? AND `token_expire`=? LIMIT 1";
+            $values = [$filter_data["email"], $filter_data["token"], $current_date];
+            $result = select($query, $values, "sss");
+
+            if (mysqli_num_rows($result) == 1) {
+                echo<<<modal
+                    <script>
+                        showResetModal("{$filter_data['email']}", "{$filter_data['token']}");
+                    </script>
+                modal;
+            } else {
+                alert("error", "Invalid or expired link address!");
+            }
+        }
+    ?>
 </body>
 </html>
