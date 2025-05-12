@@ -105,6 +105,22 @@
                             $default_thumbnail = ROOM_IMAGE_PATH.$thumbnail["image"];
                         }
 
+                        $book_button = "";
+
+                        if (!$settings_result["shutdown"]) {
+                            $login = 0;
+
+                            if (isset($_SESSION["login"]) && $_SESSION["login"] == true) {
+                                $login = 1;
+                            }
+
+                            $book_button = "
+                                <button onclick='authorizeUser($login, $room_data[id])' class='btn btn-sm w-100 text-white custom-background shadow-none mb-2'>
+                                    <i class='bi bi-bookmark-fill'></i> Book Now
+                                </button>
+                            ";
+                        }
+
                         // print room card
                         echo<<<data
                             <div class="card mb-4 border-0 shadow">
@@ -130,9 +146,7 @@
                                     </div>
                                     <div class="col-md-2 text-center mt-lg-0 mt-md-0 mt-4">
                                         <h6 class="mb-4">₹$room_data[price] per night</h6>
-                                        <a href="#" class="btn btn-sm w-100 text-white custom-background shadow-none mb-2">
-                                            <i class="bi bi-bookmark-fill"></i> Book Now
-                                        </a>
+                                        $book_button
                                         <a href="room_details.php?id=$room_data[id]" class="btn btn-sm w-100 btn-outline-dark shadow-none">
                                             <i class="bi bi-exclamation-circle-fill"></i> More Details
                                         </a>

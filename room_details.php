@@ -149,11 +149,19 @@
                                 </div>
                             area;
 
-                            echo<<<book
-                                <a href="#" class="btn w-100 text-white custom-background shadow-none mb-1">
-                                    <i class="bi bi-bookmark-fill"></i> Book Now
-                                </a>
-                            book;
+                            if (!$settings_result["shutdown"]) {
+                                $login = 0;
+
+                                if (isset($_SESSION["login"]) && $_SESSION["login"] == true) {
+                                    $login = 1;
+                                }
+
+                                echo<<<book
+                                    <button onclick="authorizeUser($login, $room_data[id])" class="btn w-100 text-white custom-background shadow-none mb-1">
+                                        <i class="bi bi-bookmark-fill"></i> Book Now
+                                    </button>
+                                book;
+                            }
                         ?>
                     </div>
                 </div>
