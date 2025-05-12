@@ -84,7 +84,13 @@ function loginUser() {
         } else if (this.responseText == "invalid-password") {
             alert("error", "Incorrect password!");
         } else {
-            window.location = window.location.pathname;
+            let fileURL = window.location.href.split("/").pop().split("?").shift();
+
+            if (fileURL == "room_details.php") {
+                window.location = window.location.href;
+            } else {
+                window.location = window.location.pathname;
+            }
         }
     }
     
@@ -121,4 +127,12 @@ function resetPassword() {
     }
     
     xhr.send(data);
+}
+
+function authorizeUser(status, room_id) {
+    if (status) {
+        window.location.href = "confirm_booking.php?id="+room_id;
+    } else {
+        alert("error", "Please login to book this room!");
+    }
 }
