@@ -21,6 +21,9 @@
     define("SENDGRID_EMAIL_ADDRESS", "Your sendgrid email address");
     define("SENDGRID_API_KEY", "Your API key");
 
+    // Possible booking status values in database (Pending, Failed, booked, cancelled)
+    // to configure paytm gateway check file 'project-folder/include/paytm/config_paytm.php'
+
     function alert($type, $message) {
         $bs_class = ($type == "success") ? "alert-success" : "alert-danger";
 
