@@ -30,7 +30,7 @@
         echo<<<alert
             <div class="alert $bs_class alert-dismissible fade show custom-alert" role="alert">
                 <p class="m-0">$message</p>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <button type="button" class="btn-clos shadow-none" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
 
             <script>
