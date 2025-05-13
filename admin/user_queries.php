@@ -88,8 +88,8 @@
                                         <th scope="col">Email</th>
                                         <th scope="col" width="20%">Subject</th>
                                         <th scope="col" width="25%">Message</th>
-                                        <th scope="col">Date</th>
-                                        <th scope="col d-flex">Action</th>
+                                        <th scope="col" width="10%">Date</th>
+                                        <th scope="col">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -103,7 +103,7 @@
 
                                             if ($data["seen"] != 1) {
                                                 $seen = "
-                                                    <a href='?seen=$data[sr_no]' class='btn btn-sm btn-outline-primary rounded-pill'>
+                                                    <a href='?seen=$data[sr_no]' class='btn btn-sm btn-outline-primary rounded-pill mb-2'>
                                                         <i class='bi bi-check-all'></i> mark as read
                                                     </a>
                                                 ";

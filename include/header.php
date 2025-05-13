@@ -33,7 +33,7 @@
                         echo<<<data
                             <div class="btn-group d-flex align-items-center">
                                 <button type="button" class="btn btn-outline-dark shadow-none dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                    <img src="$path$_SESSION[userprofile]" alt="$_SESSION[userprofile]" style="width: 25px; height: 25px;" class="me-1 rounded">
+                                    <img src="$path$_SESSION[userprofile]" alt="$_SESSION[userprofile]" style="width: 25px; height: 25px;" class="me-1 rounded-circle">
                                     $_SESSION[username]
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-lg-end">
@@ -106,7 +106,7 @@
                                 <label class="form-label">
                                     <i class="bi bi-house-add-fill"></i> Permanent Address
                                 </label>
-                                <textarea name="address" class="form-control shadow-none" rows="1" required></textarea>        
+                                <textarea name="address" class="form-control shadow-none" rows="1" style="resize: none;" required></textarea>
                             </div>
                             <div class="col-md-6 ps-0 mb-3">
                                 <label class="form-label">
