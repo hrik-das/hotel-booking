@@ -94,7 +94,7 @@
                             </label>
                             <textarea name="message" class="form-control shadow-none" rows="5" style="resize: none;" required></textarea>
                         </div>
-                        <button type="submit" name="submit" class="btn text-white custom-background mt-3">
+                        <button type="submit" name="submit" class="btn text-white custom-background shadow-none mt-3">
                             <i class="bi bi-send-fill"></i> Send Message
                         </button>
                     </form>
@@ -105,6 +105,11 @@
 
     <?php
         if (isset($_POST["submit"])) {
+            if (!(isset($_SESSION["login"]) && $_SESSION["login"] == true)) {
+                alert("error", "Please login to send feedback!");
+                exit;
+            }
+
             $filter_data = filteration($_POST);
 
             $query = "INSERT INTO `user_queries` (`name`, `email`, `subject`, `message`) VALUES (?, ?, ?, ?)";
