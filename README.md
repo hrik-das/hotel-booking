@@ -29,7 +29,7 @@ Welcome to our Hotel Booking Website Project! This project aims to create a user
 - PHP
 - MySQL
 - Sendgrid SMTP Mail Implimentation (STMP Mail API) https://sendgrid.com/en-us
-- payTM Payment Gateway Integration (Test Mode)
+- payTM Payment Gateway Integration (Test Mode) (Refund API not integrated)
 - mPDF PHP Library for Generating PDF https://mpdf.github.io/
 
 ## Installation
