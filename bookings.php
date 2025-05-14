@@ -21,7 +21,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 my-5 px-4">
-                <h2 class="fw-bold">Bookings</h2>
+                <h2 class="fw-bold">Your Bookings</h2>
                 <div style="font-size: 14px;">
                     <a href="index.php" class="text-secondary text-decoration-none">Home</a>
                     <span class="text-secondary">/</span>
@@ -49,11 +49,15 @@
                                 <a href='generate_pdf.php?generate-pdf&id=$data[booking_id]' class='btn btn-sm btn-dark shadow-none'>
                                     <i class='bi bi-file-pdf-fill'></i> Download PDF
                                 </a>
-
-                                <button type='button' class='btn btn-sm btn-outline-dark shadow-none'>
-                                    <i class='bi bi-star-fill'></i> Rate & Review
-                                </button>
                             ";
+
+                            if ($data["rate_review"] == 0) {
+                                $button .= "
+                                    <button type='button' class='btn btn-sm btn-outline-dark shadow-none ms-2' onclick='reviewRoom($data[booking_id], $data[room_id])' data-bs-toggle='modal' data-bs-target='#reviewModal'>
+                                        <i class='bi bi-star-fill'></i> Rate & Review
+                                    </button>
+                                ";  
+                            }
                         } else {
                             $button = "
                                 <button type='button' onclick='cancelBooking($data[booking_id])' class='btn btn-sm btn-danger shadow-none'>
@@ -110,9 +114,54 @@
         </div>
     </div>
 
+    <!-- Login Modal -->
+    <div class="modal fade" id="reviewModal" data-bs-backdrop="static" data-bs-keyboard="true" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="" id="review-form">
+                    <div class="modal-header">
+                        <h5 class="modal-title d-flex align-items-center" id="staticBackdropLabel">
+                            <i class="bi bi-chat-square-heart-fill me-2"></i> Rate & Review
+                        </h5>
+                        <button type="reset" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label">
+                                <i class="bi bi-star-fill"></i> Rating
+                            </label>
+                            <select class="form-select shadow-none" name="rating">
+                                <option value="5">Excellent</option>
+                                <option value="4">Pretty Good</option>
+                                <option value="3">It was okay</option>
+                                <option value="2">Poor</option>
+                                <option value="1">Worst</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">
+                                <i class="bi bi-chat-heart-fill"></i> Review
+                            </label>
+                            <textarea name="review" class="form-control shadow-none" rows="3" style="resize: none;" required></textarea>
+                        </div>
+                        <input type="hidden" name="booking_id">
+                        <input type="hidden" name="room_id">
+                        <div class="text-end">
+                            <button type="submit" class="btn text-light custom-background shadow-none">
+                                <i class="bi bi-send"></i> Send
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <?php
         if (isset($_GET["cancel-status"])) {
             alert("success", "Booking cancelled.");
+        } else if (isset($_GET["review-status"])) {
+            alert("success", "Thank you for your rating and review.");
         }
     ?>
 

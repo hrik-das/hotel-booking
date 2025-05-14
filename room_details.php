@@ -89,12 +89,21 @@
                                 <h4>₹$room_data[price] per night</h4>
                             price;
 
+                            $rating_data = "";
+
+                            $rating_query = "SELECT  AVG(rating) AS `avg_rating` FROM `rating_review` WHERE `room_id`='$room_data[id]' ORDER BY `sr_no` DESC LIMIT 20";
+                            $rating_result = mysqli_query($connect, $rating_query);
+                            $rating_fetch = mysqli_fetch_assoc($rating_result);
+
+                            if ($rating_fetch["avg_rating"] != null) {
+                                for ($i=0; $i<$rating_fetch["avg_rating"]; $i++) {
+                                    $rating_data .= "<i class='bi bi-star-fill text-warning'></i> ";
+                                }
+                            }
+
                             echo<<<rating
                                 <div class="mb-3">
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>
-                                    <i class="bi bi-star-fill text-warning"></i>
+                                    $rating_data
                                 </div>
                             rating;
 
@@ -177,19 +186,35 @@
 
                 <div class="review-rating">
                     <h5 class="mb-3">Review and Rating</h5>
-                    <div>
-                        <div class="d-flex align-items-center mb-2">
-                            <img src="./assets/about/rating.svg" width="30px">
-                            <h6 class="m-0 ms-2">Random User One</h6>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente vitae perferendis temporibus maxime quo iure totam ea illum neque architecto consectetur quos, veniam dolore earum quis deleniti debitis nemo in?</p>
-                        <div class="rating">
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                            <i class="bi bi-star-fill text-warning"></i>
-                        </div>
-                    </div>
+
+                    <?php
+                        $review_query = "SELECT rr.*, uc.username, uc.profile, room.name AS room_name FROM `rating_review` rr INNER JOIN `user_cred` uc ON rr.user_id=uc.id INNER JOIN `rooms` room ON rr.room_id=room.id WHERE rr.room_id='$room_data[id]' ORDER BY `sr_no` DESC LIMIT 15";
+                        $review_result = mysqli_query($connect, $review_query);
+                        $user_image_path = USERS_IMAGE_PATH;
+
+                        if (mysqli_num_rows($review_result) == 0) {
+                            echo "no-reviews-yet!";
+                        } else {
+                            while ($data = mysqli_fetch_assoc($review_result)) {
+                                $stars = "<i class='bi bi-star-fill text-warning'></i> ";
+
+                                for ($i=1; $i<$data["rating"]; $i++) {
+                                    $stars .= " <i class='bi bi-star-fill text-warning'></i>";
+                                }
+
+                                echo<<<reviews
+                                    <div class="mb-4">
+                                        <div class="d-flex align-items-center mb-2">
+                                            <img src="$user_image_path$data[profile]" width="30px" loading="lazy" class="rounded-circle">
+                                            <h6 class="m-0 ms-2">$data[username]</h6>
+                                        </div>
+                                        <p class="mb-1">$data[review]</p>
+                                        <div class="rating">$stars</div>
+                                    </div>
+                                reviews;
+                            }
+                        }
+                    ?>
                 </div>
             </div>
         </div>
