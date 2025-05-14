@@ -37,22 +37,25 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="features_facilities.php">Features & Facilities</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="user_queries.php">Users Queries</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="settings.php">Settings</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="carousel.php">Carousel</a>
+                        <a class="nav-link text-white" href="users.php">Users</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" href="rooms.php">Rooms</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="users.php">Users</a>
+                        <a class="nav-link text-white" href="carousel.php">Carousel</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="settings.php">Settings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="user_queries.php">Users Queries</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="rate_review.php">Rating & Review</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="features_facilities.php">Features & Facilities</a>
                     </li>
                 </ul>
             </div>
