@@ -1,5 +1,5 @@
-.env
 .vscode
 include/sendgrid
 include/paytm
 admin/include/mpdf
+.env
