@@ -1,0 +1,21 @@
+.custom-success {
+    background-color: #d1fae5;
+}
+.custom-primary {
+    background-color: #bee3f8;
+}
+.custom-danger {
+    background-color: #fde2e2;
+}
+.custom-purple {
+    background-color: #dcc4ff;
+}
+.custom-orange {
+    background-color: #ffdc9f;
+}
+.text-purple {
+    color: #7150aa;
+}
+.text-orange {
+    color: hsl(39, 41%, 45%);
+}

@@ -100,6 +100,7 @@
 
                                         while ($data = mysqli_fetch_assoc($result)) {
                                             $seen = "";
+                                            $date = date("d-m-Y", strtotime($data["date_time"]));
 
                                             if ($data["seen"] != 1) {
                                                 $seen = "
@@ -122,7 +123,7 @@
                                                     <td>$data[email]</td>
                                                     <td>$data[subject]</td>
                                                     <td>$data[message]</td>
-                                                    <td>$data[date]</td>
+                                                    <td>$date</td>
                                                     <td>$seen</td>
                                                 </tr>
                                             data;
