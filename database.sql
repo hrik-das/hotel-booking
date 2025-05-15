@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2025 at 02:28 PM
+-- Generation Time: May 15, 2025 at 08:07 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -249,10 +249,10 @@ CREATE TABLE `rating_review` (
 --
 
 INSERT INTO `rating_review` (`sr_no`, `booking_id`, `room_id`, `user_id`, `rating`, `review`, `seen`, `date_time`) VALUES
-(3, 10, 5, 17, 5, 'lorem ipsum dolor sit amet', 0, '2025-05-14 17:09:55'),
-(4, 8, 1, 17, 3, 'lorem ipsum dolor sit amet', 1, '2025-05-14 17:10:03'),
+(3, 10, 5, 17, 5, 'lorem ipsum dolor sit amet', 1, '2025-05-14 17:09:55'),
+(4, 8, 1, 17, 3, 'lorem ipsum dolor sit amet', 0, '2025-05-14 17:10:03'),
 (5, 5, 3, 17, 1, 'lorem ipsum dolor sit amet', 1, '2025-05-14 17:10:10'),
-(6, 2, 2, 17, 4, 'lorem ipsum dolor sit amet', 1, '2025-05-14 17:10:18');
+(6, 2, 2, 17, 4, 'lorem ipsum dolor sit amet', 0, '2025-05-14 17:10:18');
 
 -- --------------------------------------------------------
 
@@ -501,7 +501,7 @@ CREATE TABLE `user_queries` (
   `email` varchar(255) NOT NULL,
   `subject` varchar(255) NOT NULL,
   `message` varchar(255) NOT NULL,
-  `date` date NOT NULL DEFAULT current_timestamp(),
+  `date_time` datetime NOT NULL DEFAULT current_timestamp(),
   `seen` tinyint(4) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -509,8 +509,8 @@ CREATE TABLE `user_queries` (
 -- Dumping data for table `user_queries`
 --
 
-INSERT INTO `user_queries` (`sr_no`, `name`, `email`, `subject`, `message`, `date`, `seen`) VALUES
-(7, 'Nanda Gopal Das', 'emptynull01@gmail.com', 'I&#039;m testing this website functionality', 'I&#039;m just testing if this functionality is working correctly or not.', '2025-05-13', 0);
+INSERT INTO `user_queries` (`sr_no`, `name`, `email`, `subject`, `message`, `date_time`, `seen`) VALUES
+(7, 'Nanda Gopal Das', 'emptynull01@gmail.com', 'I&#039;m testing this website functionality', 'I&#039;m just testing if this functionality is working correctly or not.', '2025-05-13 00:00:00', 0);
 
 --
 -- Indexes for dumped tables
