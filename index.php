@@ -8,7 +8,7 @@
     <?php require_once("./include/include.php"); ?>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="./js/swiper.js" defer></script>
-    <!-- <script src="./js/reset_password.js" defer></script> -->
+    <script src="./js/reset_password.js" defer></script>
     <title>Home - <?php echo $settings_result["site_title"]; ?></title>
 </head>
 <body class="bg-light">
